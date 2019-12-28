@@ -34,7 +34,7 @@
     mediumzoom: false,
     lazyload: false,
     pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    comments: {"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},
     algolia: {
       appID: '',
       apiKey: '',
@@ -210,7 +210,7 @@
       </div>
 
       <h3 class="post-title">
-          <a class="post-title-link" href="/2019/12/28/20191228%20starting%20over%20is%20harder%20than%20starting%20up/" itemprop="url">
+          <a class="post-title-link" href="/2019/12/28/20191228%20starting%20over%20is%20harder%20than%20starting%20up%20-%20%E5%89%AF%E6%9C%AC/" itemprop="url">
             <span itemprop="name">starting over is harder than starting up</span>
           </a>
       </h3>
@@ -339,7 +339,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">3k</span>
+    <span title="站点总字数">2k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -411,6 +411,19 @@
   
 
   
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://YEHan.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
 
 </body>
 </html>
