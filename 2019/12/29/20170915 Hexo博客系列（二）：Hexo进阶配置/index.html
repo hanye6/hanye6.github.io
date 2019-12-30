@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="Nd8WSOuLF04A5twvq1fwZI1cAGAb4rSc40vYkMbbVdw">
+  <meta name="baidu-site-verification" content="SoaFKXc822">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://yehansharp.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: true,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="一、next主题配置next的主题配置文件，位于&lt;hexo folder&gt;\themes\next\_config.yml。注意区分站点配置文件和主题配置文件。位于&lt;hexo folder&gt;\_config.yml的为站点配置文件。位于&lt;hexo folder&gt;\themes\next\_config.yml的为主题配置文件。 1. 官方教程next主题配置_中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客系列（二）：Hexo进阶配置">
+<meta property="og:url" content="https://yehansharp.github.io/2019/12/29/20170915%20Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHexo%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="YEHan&#39;s blogs">
+<meta property="og:description" content="一、next主题配置next的主题配置文件，位于&lt;hexo folder&gt;\themes\next\_config.yml。注意区分站点配置文件和主题配置文件。位于&lt;hexo folder&gt;\_config.yml的为站点配置文件。位于&lt;hexo folder&gt;\themes\next\_config.yml的为主题配置文件。 1. 官方教程next主题配置_中">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-12-30T08:47:27.770Z">
+<meta property="article:author" content="YEHan">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="博客">
+<meta property="article:tag" content="next">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yehansharp.github.io/2019/12/29/20170915%20Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHexo%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Hexo博客系列（二）：Hexo进阶配置 | YEHan's blogs</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155095915-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155095915-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f1abb388db5e4757ffe6310147a6b6f8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YEHan's blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yehansharp.github.io/2019/12/29/20170915%20Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHexo%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="YEHan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YEHan's blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Hexo博客系列（二）：Hexo进阶配置
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-29 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-29T00:00:00+08:00">2019-12-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-30 16:47:27" itemprop="dateModified" datetime="2019-12-30T16:47:27+08:00">2019-12-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index">
+                    <span itemprop="name">项目实践</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/12/29/20170915%20Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHexo%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/29/20170915 Hexo博客系列（二）：Hexo进阶配置/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一、next主题配置"><a href="#一、next主题配置" class="headerlink" title="一、next主题配置"></a>一、next主题配置</h1><p>next的主题配置文件，位于<code>&lt;hexo folder&gt;\themes\next\_config.yml</code>。<br>注意区分<code>站点配置文件</code>和<code>主题配置文件</code>。<br>位于<code>&lt;hexo folder&gt;\_config.yml</code>的为<code>站点配置文件</code>。<br>位于<code>&lt;hexo folder&gt;\themes\next\_config.yml</code>的为<code>主题配置文件</code>。</p>
+<h2 id="1-官方教程"><a href="#1-官方教程" class="headerlink" title="1. 官方教程"></a>1. 官方教程</h2><p><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lmlpc3NuYW4uY29tL3RoZW1lLXNldHRpbmdzLmh0bWw=" title="https://theme-next.iissnan.com/theme-settings.html">next主题配置_中文<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZy9kb2NzL2dldHRpbmctc3RhcnRlZC8=" title="https://theme-next.org/docs/getting-started/">next主题配置_英文<i class="fa fa-external-link"></i></span><br><a id="more"></a></p>
+<h2 id="2-风格配置"><a href="#2-风格配置" class="headerlink" title="2. 风格配置"></a>2. 风格配置</h2><p>next有四种风格：Muse(默认)，Mist，Pisces，Gemini。<br><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvaGV4by10aGVtZS1uZXh0" title="https://github.com/theme-next/hexo-theme-next">风格展示<i class="fa fa-external-link"></i></span><br>这里将风格改为Gemini，修改<code>主题配置文件</code>如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-菜单配置"><a href="#3-菜单配置" class="headerlink" title="3. 菜单配置"></a>3. 菜单配置</h2><p>next默认只菜单项中只有home(首页), archieve(归档)。<br>这里打开更多菜单项：tags(标签),categories(分类)。</p>
+<h3 id="1-主题配置文件修改"><a href="#1-主题配置文件修改" class="headerlink" title="(1) 主题配置文件修改"></a>(1) 主题配置文件修改</h3><p>修改<code>主题配置文件</code>如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: &#x2F; || home</span><br><span class="line">  #about: &#x2F;about&#x2F; || user</span><br><span class="line">  tags: &#x2F;tags || tags</span><br><span class="line">  categories: &#x2F;categories || th</span><br><span class="line">  archives: &#x2F;archives || archive</span><br><span class="line">  # schedule: &#x2F;schedule&#x2F; || calendar</span><br><span class="line">  # sitemap: &#x2F;sitemap.xml || sitemap</span><br><span class="line">  # commonweal: &#x2F;404&#x2F; || heartbeat</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-tags标签配置"><a href="#2-tags标签配置" class="headerlink" title="(2) tags标签配置"></a>(2) tags标签配置</h3><p>生成标签页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">cd &lt;hexo folder&gt;</span><br><span class="line">hexo new page tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure><br>成功执行后生成文件<code>&lt;hexo folder&gt;\souce\tages\index.md</code>。修改文件内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tages</span><br><span class="line">date: 2019-12-27 22:15:29</span><br><span class="line">type: &quot;tags&quot;              # 添加此行</span><br><span class="line">---</span><br></pre></td></tr></table></figure><br>此后，可在具体每一篇博客文档中添加标签，文章将会自动被按照标签分类。标签添加如下所示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &lt;title&gt;</span><br><span class="line">date: &lt;date&gt;</span><br><span class="line">tags: </span><br><span class="line">- &lt;tags1&gt;</span><br><span class="line">- &lt;tags2&gt;</span><br><span class="line">- &lt;tags3&gt;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-categories分类配置"><a href="#3-categories分类配置" class="headerlink" title="(3) categories分类配置"></a>(3) categories分类配置</h3><p>生成分类页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;hexo folder&gt;</span><br><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure><br>成功执行后生成文件<code>&lt;hexo folder&gt;\souce\categories\index.md</code>。修改文件内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2019-12-27 22:15:29</span><br><span class="line">type: &quot;categories&quot;              # 添加此行</span><br><span class="line">---</span><br></pre></td></tr></table></figure><br>此后，可在具体每一篇博客文档中添加分类，文章将会自动被按照分类进行整理。分类添加如下所示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &lt;title&gt;</span><br><span class="line">date: &lt;date&gt;</span><br><span class="line">categories: </span><br><span class="line">- &lt;categories1&gt;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-头像配置"><a href="#4-头像配置" class="headerlink" title="4. 头像配置"></a>4. 头像配置</h2><p>此处为侧边栏加入头像，修改<code>主题配置文件</code>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: &lt;avatar image url&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="5-在侧边栏以及顶端显示当前阅读进度"><a href="#5-在侧边栏以及顶端显示当前阅读进度" class="headerlink" title="5. 在侧边栏以及顶端显示当前阅读进度"></a>5. 在侧边栏以及顶端显示当前阅读进度</h2><p>修改<code>主题配置文件</code>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">back2top:</span><br><span class="line">  enable: true</span><br><span class="line">  # Back to top in sidebar.</span><br><span class="line">  sidebar: false</span><br><span class="line">  # Scroll percent label in b2t button.</span><br><span class="line">  scrollpercent: true</span><br><span class="line">  </span><br><span class="line"># Reading progress bar</span><br><span class="line">reading_progress:</span><br><span class="line">  enable: top</span><br><span class="line">  # Available values: top | bottom</span><br><span class="line">  position: top</span><br><span class="line">  color: &quot;#37c6c0&quot;</span><br><span class="line">  height: 3px</span><br></pre></td></tr></table></figure></p>
+<h2 id="6-保持侧边栏目录时刻展开，并关闭目录自动编号"><a href="#6-保持侧边栏目录时刻展开，并关闭目录自动编号" class="headerlink" title="6. 保持侧边栏目录时刻展开，并关闭目录自动编号"></a>6. 保持侧边栏目录时刻展开，并关闭目录自动编号</h2><p>修改<code>主题配置文件</code>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: false</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: false</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure></p>
+<h2 id="7-移除底部Hexo与Next声明"><a href="#7-移除底部Hexo与Next声明" class="headerlink" title="7. 移除底部Hexo与Next声明"></a>7. 移除底部Hexo与Next声明</h2><p>修改<code>主题配置文件</code>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">powered:</span><br><span class="line">  # Hexo link (Powered by Hexo).</span><br><span class="line">  enable: false</span><br><span class="line">  # Version info of Hexo after Hexo link (vX.X.X).</span><br><span class="line">  version: false</span><br><span class="line"></span><br><span class="line">theme:</span><br><span class="line">  # Theme &amp; scheme info link (Theme - NexT.scheme).</span><br><span class="line">  enable: false</span><br><span class="line">  # Version info of NexT after scheme info (vX.X.X).</span><br><span class="line">  version: false</span><br></pre></td></tr></table></figure></p>
+<h2 id="8-打开移动端自适应"><a href="#8-打开移动端自适应" class="headerlink" title="8. 打开移动端自适应"></a>8. 打开移动端自适应</h2><p>修改<code>主题配置文件</code>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mobile_layout_economy: true</span><br></pre></td></tr></table></figure></p>
+<h2 id="9-开启打赏功能"><a href="#9-开启打赏功能" class="headerlink" title="9. 开启打赏功能"></a>9. 开启打赏功能</h2><p>修改<code>主题配置文件</code>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">reward_settings:</span><br><span class="line">  # If true, reward will be displayed in every article by default.</span><br><span class="line">  enable: true</span><br><span class="line">  animation: false</span><br><span class="line">  #comment: Donate comment here.</span><br><span class="line"></span><br><span class="line">reward:</span><br><span class="line">  wechatpay: &lt;your wechatpay reward image link&gt;</span><br><span class="line">  alipay: &lt;your alipay reward image link&gt;</span><br><span class="line">  #bitcoin: &lt;your bitcoin reward image link&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="二、第三方插件设置"><a href="#二、第三方插件设置" class="headerlink" title="二、第三方插件设置"></a>二、第三方插件设置</h1><h2 id="1-文章字数统计及阅读时长估计"><a href="#1-文章字数统计及阅读时长估计" class="headerlink" title="1. 文章字数统计及阅读时长估计"></a>1. 文章字数统计及阅读时长估计</h2><h3 id="1-插件安装"><a href="#1-插件安装" class="headerlink" title="(1) 插件安装"></a>(1) 插件安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;hexo folder&gt;</span><br><span class="line">npm install hexo-symbols-count-time</span><br></pre></td></tr></table></figure>
+<h3 id="2-站点配置文件"><a href="#2-站点配置文件" class="headerlink" title="(2) 站点配置文件"></a>(2) 站点配置文件</h3><p>修改<code>站点配置文件</code>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-主题配置文件"><a href="#3-主题配置文件" class="headerlink" title="(3) 主题配置文件"></a>(3) 主题配置文件</h3><p>修改<code>主题配置文件</code>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-数学公式支持"><a href="#2-数学公式支持" class="headerlink" title="2. 数学公式支持"></a>2. 数学公式支持</h2><h3 id="1-主题配置文件"><a href="#1-主题配置文件" class="headerlink" title="(1) 主题配置文件"></a>(1) 主题配置文件</h3><p>next主题支持两种数学渲染引擎，<code>mathjax</code>和<code>katex</code>。<br>由于Latex是最常用的数学排版系统，而mathjax集成了Latex，所以这里开启<code>mathjax</code>，配置如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">math:</span><br><span class="line">  mathjax:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-插件安装"><a href="#2-插件安装" class="headerlink" title="(2) 插件安装"></a>(2) 插件安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;hexo folder&gt;</span><br><span class="line">npm un hexo-renderer-marked</span><br><span class="line">npm i hexo-renderer-kramed # or hexo-renderer-pandoc</span><br></pre></td></tr></table></figure>
+<h2 id="3-博客评论支持"><a href="#3-博客评论支持" class="headerlink" title="3. 博客评论支持"></a>3. 博客评论支持</h2><p>next支持多种第三方评论插件，此处选择最流行的Disqus。</p>
+<h3 id="1-Disqus配置"><a href="#1-Disqus配置" class="headerlink" title="(1) Disqus配置"></a>(1) Disqus配置</h3><p>首先，注册并登陆<span class="exturl" data-url="aHR0cHM6Ly9kaXNxdXMuY29tLw==" title="https://disqus.com/">Disqus<i class="fa fa-external-link"></i></span><br>其次，按照<code>get started -&gt; I want to install Disqus on my site</code>导航，填写必要信息。重点是记住<code>Website Name</code>。计划选择Basic免费版，platform选择”I don’t see my platform listed, install manually with Universal Code”，然后完成设置。</p>
+<h3 id="2-主题配置文件"><a href="#2-主题配置文件" class="headerlink" title="(2) 主题配置文件"></a>(2) 主题配置文件</h3><p>在<code>主题配置文件</code>中，打开Disqus<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">comments:</span><br><span class="line">  active: disqus</span><br><span class="line"></span><br><span class="line">disqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname: &lt;your Website Name&gt;</span><br><span class="line">  count: true</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-网站流量分析"><a href="#4-网站流量分析" class="headerlink" title="4. 网站流量分析"></a>4. 网站流量分析</h2><h3 id="1-谷歌流量分析"><a href="#1-谷歌流量分析" class="headerlink" title="(1) 谷歌流量分析"></a>(1) 谷歌流量分析</h3><p>首先，注册并登陆<span class="exturl" data-url="aHR0cHM6Ly9hbmFseXRpY3MuZ29vZ2xlLmNvbQ==" title="https://analytics.google.com">Google Analysis<i class="fa fa-external-link"></i></span><br>其次，按照<code>侧边栏 -&gt; 设置 -&gt; 媒体资源 -&gt; 跟踪信息 -&gt; 跟踪代码</code>导航，找到并拷贝“跟踪代码”。<br>最后，在<code>主题配置文件</code>中，粘贴跟踪代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">google_analytics:</span><br><span class="line">  tracking_id: &lt;your tracking ID&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-百度流量分析（国内）"><a href="#2-百度流量分析（国内）" class="headerlink" title="(2) 百度流量分析（国内）"></a>(2) 百度流量分析（国内）</h3><p>首先，注册并登陆<span class="exturl" data-url="aHR0cHM6Ly90b25namkuYmFpZHUuY29tLw==" title="https://tongji.baidu.com/">百度统计<i class="fa fa-external-link"></i></span><br>其次，按照<code>我的报告 -&gt; 管理 -&gt; 代码获取</code>导航，找到新版统计代码获取，其格式一般如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var _hmt &#x3D; _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">  var hm &#x3D; document.createElement(&quot;script&quot;);</span><br><span class="line">  hm.src &#x3D; &quot;https:&#x2F;&#x2F;hm.baidu.com&#x2F;hm.js?&lt;your baidu tracking code&gt;&quot;;</span><br><span class="line">  var s &#x3D; document.getElementsByTagName(&quot;script&quot;)[0];</span><br></pre></td></tr></table></figure><br>拷贝<your baidu tracking code>部分，并粘贴到<code>主题配置文件</code>中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">baidu_analytics: &lt;your baidu tracking code&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="5-搜索功能"><a href="#5-搜索功能" class="headerlink" title="5. 搜索功能"></a>5. 搜索功能</h2><p>Next提供多种搜索功能，这里介绍本地搜索。本地搜索不需要第三方插件，但仍需安装软件包，特点是操作简单但搜索效果一般，不过已经能够满足基本的搜索需求。<br>Next同样提供基于第三方插件的搜索服务，如Algolia搜索和Swiftype搜索，但由于目前版本还不稳定，暂时不多做介绍。</p>
+<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="(1) 安装"></a>(1) 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;hexo folder&gt;</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<h3 id="2-站点配置文件-1"><a href="#2-站点配置文件-1" class="headerlink" title="(2) 站点配置文件"></a>(2) 站点配置文件</h3><p>设置如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># local search</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-主题配置文件-1"><a href="#3-主题配置文件-1" class="headerlink" title="(3) 主题配置文件"></a>(3) 主题配置文件</h3><p>设置如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Local search</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure></p>
+<h1 id="三、博客内容设置"><a href="#三、博客内容设置" class="headerlink" title="三、博客内容设置"></a>三、博客内容设置</h1><h2 id="1-文章折叠显示"><a href="#1-文章折叠显示" class="headerlink" title="1. 文章折叠显示"></a>1. 文章折叠显示</h2><p>在主页中，所有文章默认全部展开。一般，我们希望文章能够折叠显示，即只显示开头部分，后续部分可点开查看详情。<br>next 7.60版本之前，曾提供<code>auto_excerpt</code>功能，实现自动截断文章形成摘要。然而在7.60版本之后，该功能被移除，官方声明如下<br><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvaGV4by10aGVtZS1uZXh0L2lzc3Vlcy8xMjE3" title="https://github.com/theme-next/hexo-theme-next/issues/1217">next 7.60更新声明<i class="fa fa-external-link"></i></span><br>若希望继续体验<code>auto_excerpt</code>功能，则需使用next 7.60之前版本。<br>在next 7.60版本之后，文章折叠需要再具体每一篇博客中手动设置。具体方法为在文章中段手动添加<code>&lt;!-- more --&gt;</code>。<code>&lt;!-- more --&gt;</code>之前的内容为预览部分，<code>&lt;!-- more --&gt;</code>之后部分会被折叠，需要点开具体文章才可查看详情。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &lt;!-- more --&gt;测试</span><br><span class="line">date: &lt;date&gt;</span><br><span class="line">---</span><br><span class="line">这是在主页中，预览显示的部分。</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">这是在主页中，被折叠的部分。</span><br></pre></td></tr></table></figure></p>
+<h1 id="四、SEO"><a href="#四、SEO" class="headerlink" title="四、SEO"></a>四、SEO</h1><h2 id="1-主题配置文件-1"><a href="#1-主题配置文件-1" class="headerlink" title="1. 主题配置文件"></a>1. 主题配置文件</h2><p>在<code>主题配置文件</code>中，打开SEO和exlurl，优化SEO效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Change headers hierarchy on site-subtitle (will be main site description) and on all post &#x2F; page titles for better SEO-optimization.</span><br><span class="line">seo: true</span><br><span class="line"># Automatically add external URL with Base64 encrypt &amp; decrypt.</span><br><span class="line">exturl: true</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-谷歌SEO配置"><a href="#2-谷歌SEO配置" class="headerlink" title="2. 谷歌SEO配置"></a>2. 谷歌SEO配置</h2><h3 id="1-登录谷歌站点管理工具"><a href="#1-登录谷歌站点管理工具" class="headerlink" title="(1) 登录谷歌站点管理工具"></a>(1) 登录谷歌站点管理工具</h3><p><span class="exturl" data-url="aHR0cHM6Ly9zZWFyY2guZ29vZ2xlLmNvbS9zZWFyY2gtY29uc29sZT9obD16aC1DTiZhbXA7dXRtX3NvdXJjZT13bXgmYW1wO3V0bV9tZWRpdW09ZGVwcmVjYXRpb24tcGFuZSZhbXA7dXRtX2NvbnRlbnQ9aG9tZSZhbXA7cmVzb3VyY2VfaWQ9aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8=" title="https://search.google.com/search-console?hl=zh-CN&amp;utm_source=wmx&amp;utm_medium=deprecation-pane&amp;utm_content=home&amp;resource_id=https://yehansharp.github.io/">谷歌站点管理工具<i class="fa fa-external-link"></i></span></p>
+<h3 id="2-获取google-site-verification-code"><a href="#2-获取google-site-verification-code" class="headerlink" title="(2) 获取google site verification code"></a>(2) 获取google site verification code</h3><p>按照导航输入博客网址，进入Google search console。<br>按照”侧边栏 -&gt; 设置 -&gt; 所有权验证 -&gt; html标记”导航，找到HTML元标记，格式如下所示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;google-site-verification&quot; content&#x3D;&quot;&lt;your google site verification code&gt;&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-主题配置文件-2"><a href="#3-主题配置文件-2" class="headerlink" title="(3) 主题配置文件"></a>(3) 主题配置文件</h3><p>粘贴google site verification code到<code>主题配置文件</code>中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https:&#x2F;&#x2F;www.google.com&#x2F;webmasters</span><br><span class="line">google_site_verification: &lt;your google site verification code&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-百度SEO配置"><a href="#3-百度SEO配置" class="headerlink" title="3. 百度SEO配置"></a>3. 百度SEO配置</h2><h3 id="1-登录百度站点管理工具"><a href="#1-登录百度站点管理工具" class="headerlink" title="(1) 登录百度站点管理工具"></a>(1) 登录百度站点管理工具</h3><p><span class="exturl" data-url="aHR0cHM6Ly96aXl1YW4uYmFpZHUuY29tL3NpdGUv" title="https://ziyuan.baidu.com/site/">百度站点管理工具<i class="fa fa-external-link"></i></span></p>
+<h3 id="2-获取baidu-site-verification-code"><a href="#2-获取baidu-site-verification-code" class="headerlink" title="(2) 获取baidu site verification code"></a>(2) 获取baidu site verification code</h3><p>按照导航输入博客网址。<br>注意，此处协议头必须选择<code>https</code>而不是<code>http</code>，否则会导致无法验证。<br>验证网站是选择<code>HTML标签验证</code>，得到HTML标签验证，格式如下所示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;baidu-site-verification&quot; content&#x3D;&quot;&lt;your baidu site verification code&gt;&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-主题配置文件-3"><a href="#3-主题配置文件-3" class="headerlink" title="(3) 主题配置文件"></a>(3) 主题配置文件</h3><p>粘贴google site verification code到<code>主题配置文件</code>中，并开启百度推送<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Baidu Webmaster tools verification.</span><br><span class="line"># See: https:&#x2F;&#x2F;ziyuan.baidu.com&#x2F;site</span><br><span class="line">baidu_site_verification: &lt;your baidu site verification code&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-确认搜索引擎收录"><a href="#4-确认搜索引擎收录" class="headerlink" title="4. 确认搜索引擎收录"></a>4. 确认搜索引擎收录</h2><p>在谷歌/百度搜索引擎中，搜索<code>site:&lt;your blog url&gt;</code>,若出现结果，则证明被成功收录。<br>注意，从通过验证，到被成功收录，有一定时间延迟。特别是百度，延迟时间有时长达一个月。所以若站点管理页面显示通过验证，却未能在搜索引擎中查到结果，可过一段时间再尝试。</p>
+<h2 id="5-提交站点地图"><a href="#5-提交站点地图" class="headerlink" title="5. 提交站点地图"></a>5. 提交站点地图</h2><p>站点地图是一种文件，您可以通过该文件列出您网站上的网页，从而将您网站内容的组织架构告知Google和其他搜索引擎。<br>通过提交站点地图，可增加SEO效果和搜索引擎收录效率。</p>
+<h3 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="(1) 安装插件"></a>(1) 安装插件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;hexo folder&gt;</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+<h3 id="2-站点配置文件-2"><a href="#2-站点配置文件-2" class="headerlink" title="(2) 站点配置文件"></a>(2) 站点配置文件</h3><p>在站点配置文件中，添加以下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 自动生成sitemap</span><br><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br><span class="line">baidusitemap:</span><br><span class="line">  path: baidusitemap.xml</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-重新部署博客，生成站点地图"><a href="#3-重新部署博客，生成站点地图" class="headerlink" title="(3) 重新部署博客，生成站点地图"></a>(3) 重新部署博客，生成站点地图</h3><p>部署博客<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;hexo folder&gt;</span><br><span class="line">hexo clean</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure><br>查看链接<code>&lt;your blog url&gt;/sitemap.xml</code>和<code>&lt;your blog url&gt;/baidusitemap.xml</code>，验证站点地图生成成功。</p>
+<h3 id="4-提交谷歌站点地图"><a href="#4-提交谷歌站点地图" class="headerlink" title="(4) 提交谷歌站点地图"></a>(4) 提交谷歌站点地图</h3><p><span class="exturl" data-url="aHR0cHM6Ly9zZWFyY2guZ29vZ2xlLmNvbS9zZWFyY2gtY29uc29sZT9obD16aC1DTiZhbXA7dXRtX3NvdXJjZT13bXgmYW1wO3V0bV9tZWRpdW09ZGVwcmVjYXRpb24tcGFuZSZhbXA7dXRtX2NvbnRlbnQ9aG9tZSZhbXA7cmVzb3VyY2VfaWQ9aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8=" title="https://search.google.com/search-console?hl=zh-CN&amp;utm_source=wmx&amp;utm_medium=deprecation-pane&amp;utm_content=home&amp;resource_id=https://yehansharp.github.io/">谷歌站点管理工具<i class="fa fa-external-link"></i></span><br>按照”侧边栏-站点地图”导航，输入站点地图的链接<code>&lt;your blog url&gt;/sitemap.xml</code>，完成谷歌站点地图的提交。</p>
+<h3 id="5-提交百度站点地图"><a href="#5-提交百度站点地图" class="headerlink" title="(5) 提交百度站点地图"></a>(5) 提交百度站点地图</h3><p>百度提供多种站点地图提交方式。<br>第一是手动提交。<br>按照”侧边栏 -&gt; 站点地图 -&gt; 手动提交”导航，输入百度站点地图链接<code>&lt;your blog url&gt;/baidusitemap.xml</code>，提交即可。<br>第二是自动提交。此功能已被集成到next主题中，可以很方便地开启。<br>首先在next<code>主题配置文件</code>中，开启百度主动推送<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO.</span><br><span class="line">baidu_push: true</span><br></pre></td></tr></table></figure><br>按照”侧边栏-站点地图-自动提交-自动推送”导航，复制”自动推送工具代码”。将其复制到<code>&lt;hexo folder&gt;\themes\next\layout\_third-party\baidu-push.swig</code>中，具体格式如下所示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- if theme.baidu_push %&#125;</span><br><span class="line">  &lt;your 自动推送工具代码&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="YEHan 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="YEHan 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag"># 博客</a>
+              <a href="/tags/next/" rel="tag"># next</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/28/20170912%20Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E4%BD%BF%E7%94%A8Hexo%E9%85%8D%E5%90%88Github%E8%BF%9B%E8%A1%8C%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="prev" title="Hexo博客系列（一）：使用Hexo配合Github进行静态博客搭建">
+      <i class="fa fa-chevron-left"></i> Hexo博客系列（一）：使用Hexo配合Github进行静态博客搭建
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/30/Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9Amd%E7%BC%96%E8%BE%91%E5%99%A8/" rel="next" title="Hexo博客系列（三）：Hexo博客编辑器">
+      Hexo博客系列（三）：Hexo博客编辑器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、next主题配置"><span class="nav-text">一、next主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-官方教程"><span class="nav-text">1. 官方教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-风格配置"><span class="nav-text">2. 风格配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-菜单配置"><span class="nav-text">3. 菜单配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-主题配置文件修改"><span class="nav-text">(1) 主题配置文件修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-tags标签配置"><span class="nav-text">(2) tags标签配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-categories分类配置"><span class="nav-text">(3) categories分类配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-头像配置"><span class="nav-text">4. 头像配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-在侧边栏以及顶端显示当前阅读进度"><span class="nav-text">5. 在侧边栏以及顶端显示当前阅读进度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-保持侧边栏目录时刻展开，并关闭目录自动编号"><span class="nav-text">6. 保持侧边栏目录时刻展开，并关闭目录自动编号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-移除底部Hexo与Next声明"><span class="nav-text">7. 移除底部Hexo与Next声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-打开移动端自适应"><span class="nav-text">8. 打开移动端自适应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-开启打赏功能"><span class="nav-text">9. 开启打赏功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、第三方插件设置"><span class="nav-text">二、第三方插件设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-文章字数统计及阅读时长估计"><span class="nav-text">1. 文章字数统计及阅读时长估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-插件安装"><span class="nav-text">(1) 插件安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-站点配置文件"><span class="nav-text">(2) 站点配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-主题配置文件"><span class="nav-text">(3) 主题配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-数学公式支持"><span class="nav-text">2. 数学公式支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-主题配置文件"><span class="nav-text">(1) 主题配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-插件安装"><span class="nav-text">(2) 插件安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-博客评论支持"><span class="nav-text">3. 博客评论支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Disqus配置"><span class="nav-text">(1) Disqus配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-主题配置文件"><span class="nav-text">(2) 主题配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-网站流量分析"><span class="nav-text">4. 网站流量分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-谷歌流量分析"><span class="nav-text">(1) 谷歌流量分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-百度流量分析（国内）"><span class="nav-text">(2) 百度流量分析（国内）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-搜索功能"><span class="nav-text">5. 搜索功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装"><span class="nav-text">(1) 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-站点配置文件-1"><span class="nav-text">(2) 站点配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-主题配置文件-1"><span class="nav-text">(3) 主题配置文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、博客内容设置"><span class="nav-text">三、博客内容设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-文章折叠显示"><span class="nav-text">1. 文章折叠显示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、SEO"><span class="nav-text">四、SEO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-主题配置文件-1"><span class="nav-text">1. 主题配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-谷歌SEO配置"><span class="nav-text">2. 谷歌SEO配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-登录谷歌站点管理工具"><span class="nav-text">(1) 登录谷歌站点管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-获取google-site-verification-code"><span class="nav-text">(2) 获取google site verification code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-主题配置文件-2"><span class="nav-text">(3) 主题配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-百度SEO配置"><span class="nav-text">3. 百度SEO配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-登录百度站点管理工具"><span class="nav-text">(1) 登录百度站点管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-获取baidu-site-verification-code"><span class="nav-text">(2) 获取baidu site verification code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-主题配置文件-3"><span class="nav-text">(3) 主题配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-确认搜索引擎收录"><span class="nav-text">4. 确认搜索引擎收录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-提交站点地图"><span class="nav-text">5. 提交站点地图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装插件"><span class="nav-text">(1) 安装插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-站点配置文件-2"><span class="nav-text">(2) 站点配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-重新部署博客，生成站点地图"><span class="nav-text">(3) 重新部署博客，生成站点地图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-提交谷歌站点地图"><span class="nav-text">(4) 提交谷歌站点地图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-提交百度站点地图"><span class="nav-text">(5) 提交百度站点地图</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="YEHan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">YEHan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YEHan</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">14k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">12 分钟</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+	<script>
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+	</script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://YEHan.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://yehansharp.github.io/2019/12/29/20170915%20Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHexo%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/",
+            identifier: "2019/12/29/20170915 Hexo博客系列（二）：Hexo进阶配置/",
+            title: "Hexo博客系列（二）：Hexo进阶配置"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://YEHan.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
