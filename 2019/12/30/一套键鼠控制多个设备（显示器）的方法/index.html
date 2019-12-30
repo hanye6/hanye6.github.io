@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="Nd8WSOuLF04A5twvq1fwZI1cAGAb4rSc40vYkMbbVdw">
+  <meta name="baidu-site-verification" content="SoaFKXc822">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://yehansharp.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: true,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="当拥有多台设备时，若是能够只用一套键鼠连接所有设备，那将非常方便。此处介绍几种能够实现多设备键鼠互连的方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一套键鼠控制多个显示器的方法">
+<meta property="og:url" content="https://yehansharp.github.io/2019/12/30/%E4%B8%80%E5%A5%97%E9%94%AE%E9%BC%A0%E6%8E%A7%E5%88%B6%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%EF%BC%88%E6%98%BE%E7%A4%BA%E5%99%A8%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="YEHan&#39;s blogs">
+<meta property="og:description" content="当拥有多台设备时，若是能够只用一套键鼠连接所有设备，那将非常方便。此处介绍几种能够实现多设备键鼠互连的方法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-30T12:37:00.000Z">
+<meta property="article:modified_time" content="2019-12-30T12:51:21.144Z">
+<meta property="article:author" content="YEHan">
+<meta property="article:tag" content="YEHan">
+<meta property="article:tag" content=" blog">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yehansharp.github.io/2019/12/30/%E4%B8%80%E5%A5%97%E9%94%AE%E9%BC%A0%E6%8E%A7%E5%88%B6%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%EF%BC%88%E6%98%BE%E7%A4%BA%E5%99%A8%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>一套键鼠控制多个显示器的方法 | YEHan's blogs</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155095915-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155095915-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f1abb388db5e4757ffe6310147a6b6f8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YEHan's blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yehansharp.github.io/2019/12/30/%E4%B8%80%E5%A5%97%E9%94%AE%E9%BC%A0%E6%8E%A7%E5%88%B6%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%EF%BC%88%E6%98%BE%E7%A4%BA%E5%99%A8%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="YEHan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YEHan's blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          一套键鼠控制多个显示器的方法
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-30 20:37:00 / 修改时间：20:51:21" itemprop="dateCreated datePublished" datetime="2019-12-30T20:37:00+08:00">2019-12-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index">
+                    <span itemprop="name">杂项</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/12/30/%E4%B8%80%E5%A5%97%E9%94%AE%E9%BC%A0%E6%8E%A7%E5%88%B6%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%EF%BC%88%E6%98%BE%E7%A4%BA%E5%99%A8%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/30/一套键鼠控制多个设备（显示器）的方法/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>519</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>当拥有多台设备时，若是能够只用一套键鼠连接所有设备，那将非常方便。<br>此处介绍几种能够实现多设备键鼠互连的方法。  </p>
+<a id="more"></a>
+<h1 id="1-有网络（无线）"><a href="#1-有网络（无线）" class="headerlink" title="1. 有网络（无线）"></a>1. 有网络（无线）</h1><h2 id="1-Synergy"><a href="#1-Synergy" class="headerlink" title="(1) Synergy"></a>(1) Synergy</h2><p>Synergy目前官网是付费的，不过可以Google<code>1.5的免费版本</code>先进行试用，觉得OK了再购买最新高级版，享受更多功能。<br>其优势在于跨平台，可以连接Mac/win/linux等多个系统的设备。</p>
+<h2 id="2-mouth-without-borders"><a href="#2-mouth-without-borders" class="headerlink" title="(2) mouth without borders"></a>(2) mouth without borders</h2><p>免费，但仅限windows，仅限两台设备连接</p>
+<h1 id="2-无网络（有线）"><a href="#2-无网络（有线）" class="headerlink" title="2. 无网络（有线）"></a>2. 无网络（有线）</h1><h2 id="1-Smart-KM-Link"><a href="#1-Smart-KM-Link" class="headerlink" title="(1) Smart KM Link"></a>(1) Smart KM Link</h2><p>需要两台电脑都有usb接口，通过usb接口进行数据传输。<br>只支持两台设备互联，速度相比Synergy和mouth without borders更快，有线总是比无线更快更稳定，所以卡顿，断线的情况很少。</p>
+<h2 id="2-KVM转换器"><a href="#2-KVM转换器" class="headerlink" title="(2) KVM转换器"></a>(2) KVM转换器</h2><p>支持多个接口，多个设备，最强大的方法。</p>
+<h1 id="3-其他"><a href="#3-其他" class="headerlink" title="3. 其他"></a>3. 其他</h1><p>最终，我通过将服务器的服务，封装为URL链接的方式解决了这个问题。<br>自此，在用户机的浏览器上，只需输入服务器对应服务的ip和端口号，即可访问服务，也就用不着用键鼠再链接服务器了。<br>自用服务器常用的服务为Jupyter notebook和Transmission，都支持URL封装，具体配置将另开一篇博客进行介绍。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="YEHan 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="YEHan 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/30/ubuntu%E4%B8%8B%E5%88%A9%E7%94%A8openconnect%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="prev" title="ubuntu下利用openconnect科学上网">
+      <i class="fa fa-chevron-left"></i> ubuntu下利用openconnect科学上网
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/30/%E8%AE%A9%E4%BD%A0%E6%91%86%E8%84%B1%E9%BC%A0%E6%A0%87%E7%9A%84Chrome%E6%8E%A7%E5%88%B6%E6%8F%92%E4%BB%B6%E2%80%94%E2%80%94Vimium/" rel="next" title="让你摆脱鼠标的Chrome控制插件——Vimium">
+      让你摆脱鼠标的Chrome控制插件——Vimium <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-有网络（无线）"><span class="nav-text">1. 有网络（无线）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Synergy"><span class="nav-text">(1) Synergy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-mouth-without-borders"><span class="nav-text">(2) mouth without borders</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-无网络（有线）"><span class="nav-text">2. 无网络（有线）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Smart-KM-Link"><span class="nav-text">(1) Smart KM Link</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-KVM转换器"><span class="nav-text">(2) KVM转换器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-其他"><span class="nav-text">3. 其他</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="YEHan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">YEHan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YEHan</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">25k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">23 分钟</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+	<script>
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+	</script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://YEHan.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://yehansharp.github.io/2019/12/30/%E4%B8%80%E5%A5%97%E9%94%AE%E9%BC%A0%E6%8E%A7%E5%88%B6%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%EF%BC%88%E6%98%BE%E7%A4%BA%E5%99%A8%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95/",
+            identifier: "2019/12/30/一套键鼠控制多个设备（显示器）的方法/",
+            title: "一套键鼠控制多个显示器的方法"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://YEHan.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

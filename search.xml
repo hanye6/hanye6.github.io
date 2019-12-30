@@ -1,6 +1,396 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Mac下的软件推荐</title>
+    <url>/2019/12/30/Mac%E4%B8%8B%E7%9A%84%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>由于系统崩溃，花了两天重新安装Mac系统。<br>重新装完系统之后还需要安装软件，这里顺便推荐几个比较好用的软件。  </p>
+<a id="more"></a>
+<h1 id="2-软件推荐"><a href="#2-软件推荐" class="headerlink" title="2. 软件推荐"></a>2. 软件推荐</h1><h2 id="1-系统增强方面"><a href="#1-系统增强方面" class="headerlink" title="(1) 系统增强方面"></a>(1) 系统增强方面</h2><ul>
+<li>The Unarchiver</li>
+<li>Moom</li>
+<li>CleanMyMac 3</li>
+<li>Paragon NTFS for Mac 15</li>
+<li>Scroll Reverser</li>
+<li>Pap.er</li>
+<li>Bartender 3</li>
+<li>Gestimer</li>
+<li>HyperSwitch</li>
+<li>CheatSheet</li>
+</ul>
+<h2 id="2-效率增强方面"><a href="#2-效率增强方面" class="headerlink" title="(2) 效率增强方面"></a>(2) 效率增强方面</h2><ul>
+<li>Chrome</li>
+<li>Safari</li>
+<li>有道云笔记（印象笔记）</li>
+<li>快译</li>
+<li>Sublime</li>
+<li>Mweb</li>
+<li>Xcode</li>
+<li>PDF Expert</li>
+<li>Mindnode</li>
+<li>office组件</li>
+</ul>
+<h2 id="3-日常与娱乐所需"><a href="#3-日常与娱乐所需" class="headerlink" title="(3) 日常与娱乐所需"></a>(3) 日常与娱乐所需</h2><ul>
+<li>QQ</li>
+<li>Wechat</li>
+<li>Steam</li>
+<li>网易云音乐（qq音乐）</li>
+<li>IINA</li>
+</ul>
+<h1 id="3-Dock美化"><a href="#3-Dock美化" class="headerlink" title="3. Dock美化"></a>3. Dock美化</h1><p>在安装完软件后，还需要在LaunchPad和Docker中将其整理归类。<br>在这一步，有一个非常好用的小技巧：每输入一次以下代码，即可在Docker中添加一个间隔。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaults write com.apple.dock persistent-apps -array-add &#39;&#123;&quot;tile-type&quot;&#x3D;&quot;spacer-tile&quot;;&#125;&#39;; killall Dock</span><br></pre></td></tr></table></figure><br>如此一来既可<br>以通过调整间隔位置，在Docker中在视觉上将软件进行分类了，强迫症表示一本满足。<br>效果如下所示<br><img src="\images\pasted-9.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>软件推荐</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Excel中文乱码的解决方法</title>
+    <url>/2019/12/30/Excel%E6%89%93%E5%BC%80UTF-8%E7%BC%96%E7%A0%81CSV%E6%96%87%E4%BB%B6%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="1-乱码原因"><a href="#1-乱码原因" class="headerlink" title="1. 乱码原因"></a>1. 乱码原因</h1><p>Excel通过bom识别CSV文件编码。bom是微软自己定义的一种文件头部协定，存储在文件头部，存储内容就<br>是标识文件编码的信息。<br>很多CSV文件并非由微软软件生成，头部并没有bom，此时Excel默认按照unicode编码识别文件。若CSV文件<br>的编码方式为UTF-8，则会出现中文乱码。  </p>
+<a id="more"></a>
+<h1 id="2-解决方法一：文件头部加入bom"><a href="#2-解决方法一：文件头部加入bom" class="headerlink" title="2. 解决方法一：文件头部加入bom"></a>2. 解决方法一：文件头部加入bom</h1><p>可通过NotePad++等文本编辑器，将CSV文件另存为有bom头部的形式。<br>此时再用Excel读取，即可解决UTF-8编码下的中文乱码问题。  </p>
+<h1 id="3-解决方法一：从excel导入文件"><a href="#3-解决方法一：从excel导入文件" class="headerlink" title="3. 解决方法一：从excel导入文件"></a>3. 解决方法一：从excel导入文件</h1><p>先打开Excel。随后执行“数据 -&gt; 自文本 -&gt; 分隔符号选择逗号 -&gt; 完成导入”。<br>以这种方式，同样可解决中文乱码问题。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>conda配置多python环境</title>
+    <url>/2019/12/30/conda%E9%85%8D%E7%BD%AE%E5%A4%9Apython%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>在Windows/Mac中，可以很方便地通过<span class="exturl" data-url="aHR0cHM6Ly93d3cuYW5hY29uZGEuY29tLw==" title="https://www.anaconda.com/">Anaconda<i class="fa fa-external-link"></i></span>构建多个Python和R环境，相互之间互不干扰，实现不同工作环境的隔离。<br>然而，在服务器端，往往无图形化界面。那么如何通过命令行构建多python环境就成了问题。<br>下面介绍如何在命令行环境中，通过conda配置多python环境。</p>
+<a id="more"></a>
+<h2 id="2-conda安装"><a href="#2-conda安装" class="headerlink" title="2. conda安装"></a>2. conda安装</h2><p>在官网找到<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmNvbmRhLmlvL2VuL2xhdGVzdC9taW5pY29uZGEuaHRtbA==" title="https://docs.conda.io/en/latest/miniconda.html">conda下载链接<i class="fa fa-external-link"></i></span>，下载需要版本的.sh文件，并进行安装。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget -bc &lt;conda link&gt;</span><br><span class="line">bash &lt;conda .sh file name&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-环境配置"><a href="#3-环境配置" class="headerlink" title="3. 环境配置"></a>3. 环境配置</h2><p>创建新环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda create --name py27 python&#x3D;2.7</span><br></pre></td></tr></table></figure><br>激活环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source activate py27 # Linux and OS X</span><br><span class="line">activate py27        # Windows</span><br></pre></td></tr></table></figure><br>查看所有环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda info --envs</span><br></pre></td></tr></table></figure><br>返回默认环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source deactivate python27</span><br></pre></td></tr></table></figure><br>删除环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda remove --name py27 --all</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title> win7旗舰版与CentOS7双系统安装</title>
+    <url>/2019/12/30/win7%E6%97%97%E8%88%B0%E7%89%88%E4%B8%8ECentOS7%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="1-安装顺序"><a href="#1-安装顺序" class="headerlink" title="1. 安装顺序"></a>1. 安装顺序</h1><p>两个系统安装时都会安装开机启动项，为了使得二者不会相互覆盖，正确的安装顺序是<br>1.磁盘分区<br>2.选择一个磁盘安装Win7<br>3.选择另一个磁盘安装CenOS7  </p>
+<a id="more"></a>
+<h1 id="2-启动项修复"><a href="#2-启动项修复" class="headerlink" title="2. 启动项修复"></a>2. 启动项修复</h1><p>若是安装后，出现了启动项覆盖，则需要在CentOS系统下加载Win的启动项，建议使用EasyBCD工具。  </p>
+<h1 id="3-踩坑记录"><a href="#3-踩坑记录" class="headerlink" title="3. 踩坑记录"></a>3. 踩坑记录</h1><h2 id="1-启动过程报错"><a href="#1-启动过程报错" class="headerlink" title="(1) 启动过程报错"></a>(1) 启动过程报错</h2><p>报错如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dracut-initqueue[624]:Warning: Could not boot.</span><br><span class="line">dracut-initqueue[624]:Warning: &#x2F;dev&#x2F;root does not exist.</span><br><span class="line">Starting Dracut EmergencyShell…</span><br><span class="line">Warning: &#x2F;dev&#x2F;root does not exist</span><br></pre></td></tr></table></figure><br>错误原因：UltroISO在Window下写入U盘的安装文件路径，没有被linux安装程序识别<br>解决方法如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hd:LABEL&#x3D;CentOS\x207\x20x86_64 rd.live.check quiet 改为hd:&#x2F;dev&#x2F;sdb4 quiet</span><br><span class="line">注意：这里需要进入&#x2F;dev下ls查看硬件名称，可能不是sdb4而是其他</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-分区过程过程中报错"><a href="#2-分区过程过程中报错" class="headerlink" title="(2) 分区过程过程中报错"></a>(2) 分区过程过程中报错</h2><p>报错如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">No valid bootloader target device found. </span><br><span class="line">For UEFI installation , you must include an EFI System Partition on a </span><br><span class="line">GPT-formatted disk, mounted at &#x2F;boot&#x2F;efi.</span><br></pre></td></tr></table></figure><br>错误原因：使用UEFI时必须使用GPT分区格式，且需要挂载/boot/efi<br>解决方法如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在启动时按F2，在boot中将UEFI设置为disable，则默认使用BOIS启动</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-Win启动消失"><a href="#3-Win启动消失" class="headerlink" title="(3) Win启动消失"></a>(3) Win启动消失</h2><p>情况描述：CentOS7安装成功后，重启电脑，只看到CentOS7的选项，没有选择进入windos7系统的选项<br>错误原因：CentOS7使用新的grub2系统，原windos下的grub项目失效，所以需要进入/boot/grub2目录后使用vi编辑grub.cfg文件。<br>解决方法:修改Centos 7的Grub2引导，添加Windows的启动项<br>a. 运行命令<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vi &#x2F;boot&#x2F;grub2&#x2F;grub.cfg</span><br></pre></td></tr></table></figure></p>
+<p>b. 找到语句<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BEGIN &#x2F;etc&#x2F;grub.d&#x2F;30_os-prober</span><br></pre></td></tr></table></figure></p>
+<p>c. 后面加入win启动项</p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac下的软件破解方法</title>
+    <url>/2019/12/30/Mac%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%A0%B4%E8%A7%A3%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>Mac下软件丰富而强大，但部分软件价格过于昂贵，对于学生党十分不友好。<br>此处提供几个破解软件下载网站，以及软件破解方法。<br>有条件还是建议支持正版，也鼓励先试用后补票。<br><a id="more"></a></p>
+<h1 id="2-破解软件下载网站"><a href="#2-破解软件下载网站" class="headerlink" title="2. 破解软件下载网站"></a>2. 破解软件下载网站</h1><p><span class="exturl" data-url="aHR0cDovL3hjbGllbnQuaW5mby8/Xz04ZjBkYThlYzYzZDY4YTBlMzYxZjhjMzM2YjNkZGIyNw==" title="http://xclient.info/?_=8f0da8ec63d68a0e361f8c336b3ddb27">xclient<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuZmVuZy5jb20v" title="https://www.feng.com/">威锋<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cubWFjYmwuY29tLw==" title="https://www.macbl.com/">马可波罗<i class="fa fa-external-link"></i></span>  </p>
+<h1 id="3-Mac软件破解方法"><a href="#3-Mac软件破解方法" class="headerlink" title="3. Mac软件破解方法"></a>3. Mac软件破解方法</h1><p>很多时候，破解软件下载下来，Mac却提示文件破损。<br>这其实是一种错误信息，真实原因是Mac开启了内核保护，不允许安装Appstore之外的第三方软件。<br>此时，只需暂时关闭内核保护，安装完破解软件后重新开启，即可成功破解。  </p>
+<h2 id="1-关闭内核保护"><a href="#1-关闭内核保护" class="headerlink" title="(1) 关闭内核保护"></a>(1) 关闭内核保护</h2><p>在terminal中输入以下命令<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-调整安全选择设置"><a href="#2-调整安全选择设置" class="headerlink" title="(2) 调整安全选择设置"></a>(2) 调整安全选择设置</h2><p>Perferance -&gt; 安全性与隐私 -&gt; anywhere</p>
+<h2 id="3-安装软件"><a href="#3-安装软件" class="headerlink" title="(3) 安装软件"></a>(3) 安装软件</h2><p>安装之后，重新开启内核保护之前，需打开软件一次。</p>
+<h2 id="4-重新开启内核保护"><a href="#4-重新开启内核保护" class="headerlink" title="(4)重新开启内核保护"></a>(4)重新开启内核保护</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo spctl --master-enable</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac批量创建文件夹的方法</title>
+    <url>/2019/12/30/Mac%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="批量创建文件夹"><a href="#批量创建文件夹" class="headerlink" title="批量创建文件夹"></a>批量创建文件夹</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir Lecture&#123;01..09&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Chrome上的拓展及脚本安装</title>
+    <url>/2019/12/30/Chrome%E4%B8%8A%E7%9A%84%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>我们知道，Chrome本身提供了多种拓展，大大增强了Chrome浏览器的功能丰富性。<br>但除此之外，其实我们还可以在Chrome浏览器上安装脚本，进一步增强其易用性。<br>此处就简单介绍几种个人常用的Chrome拓展和脚本，供大家参考。  </p>
+<a id="more"></a>
+<h1 id="2-Chrome拓展"><a href="#2-Chrome拓展" class="headerlink" title="2. Chrome拓展"></a>2. Chrome拓展</h1><h2 id="1-AdBlock-—-最佳广告拦截工具"><a href="#1-AdBlock-—-最佳广告拦截工具" class="headerlink" title="(1) AdBlock — 最佳广告拦截工具"></a>(1) AdBlock — 最佳广告拦截工具</h2><p>AdBlock是Chrome上最受欢迎的拓展之一，其功能便是拦截烦人的广告，并且免费，非常良心。</p>
+<h2 id="2-LastPass"><a href="#2-LastPass" class="headerlink" title="(2) LastPass"></a>(2) LastPass</h2><p>LastPass是著名的密码管理工具，用它而不用Chrome自带的密码管理，是看重了其跨平台的能力。<br>LastPass免费版能够支持两台设备，跨越多个应用和浏览器使用，非常方便。 </p>
+<h2 id="3-捕捉网页截图"><a href="#3-捕捉网页截图" class="headerlink" title="(3) 捕捉网页截图"></a>(3) 捕捉网页截图</h2><p>捕捉网页截图用于在页面上进行截图，最重要的是其支持长截图，即让页面滚动进行长距离截图，非常有用。</p>
+<h2 id="4-Video-Downloader-Plus"><a href="#4-Video-Downloader-Plus" class="headerlink" title="(4) Video Downloader Plus"></a>(4) Video Downloader Plus</h2><p>Video Downloader Plus能够让你下载页面中的视频。<br>其实IDM(Internet Download Manager)功能更加强大，是Windows平台下的最强下载软件，并且提供Chrome插件。然而需要付费。<br>Video Downloader Plus为免费插件，并且基础功能也勉强够用。具体可酌情选择。 </p>
+<h2 id="5-Grammar-and-Spelling-checker-by-Ginger"><a href="#5-Grammar-and-Spelling-checker-by-Ginger" class="headerlink" title="(5) Grammar and Spelling checker by Ginger"></a>(5) Grammar and Spelling checker by Ginger</h2><p>Ginger能够自动实现英文拼写和语法纠错，英语读写苦手必备。  </p>
+<h2 id="6-Kopernio"><a href="#6-Kopernio" class="headerlink" title="(6) Kopernio"></a>(6) Kopernio</h2><p>Kopernio是一个文献全文数据库，能够让用户绕开文献数据库(如web of science)的封锁，下载文献全文，科研党必备。</p>
+<h2 id="7-Momentum"><a href="#7-Momentum" class="headerlink" title="(7)Momentum"></a>(7)Momentum</h2><p>Momentum是一个Chrome美化插件，主要用于美化Chrome的tab页面。<br>原始的Chrome tab页面会列出谷歌搜索和常用网页。<br>Momentum则会每天更新一张风景图，一则英文谚语，并且支持更多的功能定制，其效果如下所示。  </p>
+<p><img src="\images\pasted-8.png" alt="upload successful"></p>
+<h2 id="8-阅读模式"><a href="#8-阅读模式" class="headerlink" title="(8) 阅读模式"></a>(8) 阅读模式</h2><p>阅读模式是仿照<code>Safari浏览器阅读模式</code>的一个插件，作用在于去除页面中的杂乱信息，提供一个清晰干净的阅读页面。</p>
+<h2 id="9-专注看图"><a href="#9-专注看图" class="headerlink" title="(9) 专注看图"></a>(9) 专注看图</h2><p>与阅读模式类似，专注看图也是一款阅读体验优化的软件。<br>只不过阅读模式侧重文字的提取和体验优化。专注看图则是专注于网页中图片的提取，适合看图党。  </p>
+<h1 id="2-Chrome脚本"><a href="#2-Chrome脚本" class="headerlink" title="2. Chrome脚本"></a>2. Chrome脚本</h1><p>脚本比插件更强大，因为其更加自由，支持更多的自定义。<br>要安装脚本，首先需要安装脚本的管理器，即油猴(Tamperonkey)插件。<br>在Chrome线上应用程序商店中，安装完Tamperonkey，即可安装插件了。<br><span class="exturl" data-url="aHR0cHM6Ly93d3cudGFtcGVybW9ua2V5Lm5ldC9zY3JpcHRzLnBocA==" title="https://www.tampermonkey.net/scripts.php">Tamperonkey主页<i class="fa fa-external-link"></i></span>列出来几个脚本来源网站，都支持脚本的一键安装，非常方便。并且Tamperonkey还支持插件的管理以及云同步，便于跨机器使用。<br>这里推荐几个个人常用的脚本，抛砖引玉。 </p>
+<h2 id="1-Youtube系列"><a href="#1-Youtube系列" class="headerlink" title="(1) Youtube系列"></a>(1) Youtube系列</h2><h3 id="Youtube"><a href="#Youtube" class="headerlink" title="Youtube+"></a>Youtube+</h3><p>youtube播放效果增强，功能十分强大，广受好评。<br>不过只支持旧版布局的Youtube，所以往往需要和<code>Youtube - Restore Classic</code>搭配使用。</p>
+<h3 id="Youtube-Restore-Classic"><a href="#Youtube-Restore-Classic" class="headerlink" title="Youtube - Restore Classic"></a>Youtube - Restore Classic</h3><p>如其标题中表达的一样，此脚本的作用是自动将youtube布局修改为旧版(经典模式)。<br>适合需要使用<code>Youtube+</code>或者喜欢经典布局的用户使用。  </p>
+<h3 id="Youtube-Best-Video-Downloader-2"><a href="#Youtube-Best-Video-Downloader-2" class="headerlink" title="Youtube Best Video Downloader 2"></a>Youtube Best Video Downloader 2</h3><p>用于youtube视频下载，不能与Youtube+一起使用。</p>
+<h3 id="EasyVideoDownload"><a href="#EasyVideoDownload" class="headerlink" title="EasyVideoDownload"></a>EasyVideoDownload</h3><p>同样用于youtube视频下载，可与Youtube+兼容。</p>
+<h2 id="2-bilibili系列"><a href="#2-bilibili系列" class="headerlink" title="(2) bilibili系列"></a>(2) bilibili系列</h2><h3 id="bilibili-merged-flv-mp4-ass-enhance"><a href="#bilibili-merged-flv-mp4-ass-enhance" class="headerlink" title="bilibili merged flv+mp4+ass+enhance"></a>bilibili merged flv+mp4+ass+enhance</h3><p>bilibili播放效果增强，并且支持视频下载</p>
+<h3 id="解除B站区域限制"><a href="#解除B站区域限制" class="headerlink" title="解除B站区域限制"></a>解除B站区域限制</h3><p>bilibili某些番剧，限定了只支持某些地区能够观看。<br>此脚本可以解除区域限制，让用户自由观看所有番剧。  </p>
+<h2 id="3-百度系列"><a href="#3-百度系列" class="headerlink" title="(3)百度系列"></a>(3)百度系列</h2><h3 id="百度网盘直接下载助手"><a href="#百度网盘直接下载助手" class="headerlink" title="百度网盘直接下载助手"></a>百度网盘直接下载助手</h3><p>破解百度网盘下载链接，从而可以使用其他下载工具对文件进行下载，跳过百度网盘的限速。</p>
+<h3 id="百度文库文字复制及原格式下载"><a href="#百度文库文字复制及原格式下载" class="headerlink" title="百度文库文字复制及原格式下载"></a>百度文库文字复制及原格式下载</h3><p>功能如标题，能够绕开百度文库限制，实现文库中文章文字的复制及原格式下载。</p>
+<h2 id="4-豆瓣系列"><a href="#4-豆瓣系列" class="headerlink" title="(4) 豆瓣系列"></a>(4) 豆瓣系列</h2><h3 id="MoreMovieRatings"><a href="#MoreMovieRatings" class="headerlink" title="MoreMovieRatings"></a>MoreMovieRatings</h3><p>在豆瓣电影中，除豆瓣评分外，还显示IMDb评分。  </p>
+<h3 id="豆瓣资源下载大师：1秒搞定豆瓣电影-音乐-图书下载"><a href="#豆瓣资源下载大师：1秒搞定豆瓣电影-音乐-图书下载" class="headerlink" title="豆瓣资源下载大师：1秒搞定豆瓣电影|音乐|图书下载"></a>豆瓣资源下载大师：1秒搞定豆瓣电影|音乐|图书下载</h3><p>在豆瓣电影|音乐|图书的具体页面右侧，显示全网能够找到的下载链接。（含直链|FTP|BT|磁力|ED2K|NZB|迅雷|百度盘|115盘等）<br>省了自己一个个搜索下载链接的功夫，直接在页面右侧点击对应下载链接即可。  </p>
+<h2 id="5-其他"><a href="#5-其他" class="headerlink" title="(5) 其他"></a>(5) 其他</h2><h3 id="破解VIP会员视频集合"><a href="#破解VIP会员视频集合" class="headerlink" title="破解VIP会员视频集合"></a>破解VIP会员视频集合</h3><p>VIP会员破解，适用于爱奇艺，优酷等多个平台。<br>可以实现VIP会员视频的免费观看。  </p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Linux备份方法</title>
+    <url>/2019/12/30/Linux%E5%A4%87%E4%BB%BD%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>由于Ubuntu自带的backup存在很多bug，问题多多，所以在此介绍一下其他的Linux备份方法。<br>以下分别介绍parimage和tar两种常用的备份手段。<br><a id="more"></a></p>
+<h1 id="2-parimage"><a href="#2-parimage" class="headerlink" title="2. parimage"></a>2. parimage</h1><h2 id="1-使用条件"><a href="#1-使用条件" class="headerlink" title="(1)使用条件"></a>(1)使用条件</h2><p>parimage不支持etx4格式的分区。<br>若要使用parimage，必须使用其他格式进行分区。<br><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1PVWYyc2s3Mi1PRSZhbXA7dD0zNXM=" title="https://www.youtube.com/watch?v=OUf2sk72-OE&amp;t=35s">使用教程<i class="fa fa-external-link"></i></span></p>
+<h2 id="2-安装"><a href="#2-安装" class="headerlink" title="(2) 安装"></a>(2) 安装</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install partimage</span><br></pre></td></tr></table></figure>
+<h2 id="3-创建备份文件夹"><a href="#3-创建备份文件夹" class="headerlink" title="(3) 创建备份文件夹"></a>(3) 创建备份文件夹</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir &#x2F;backup</span><br></pre></td></tr></table></figure>
+<h2 id="4-开始备份"><a href="#4-开始备份" class="headerlink" title="(4) 开始备份"></a>(4) 开始备份</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">partimage</span><br></pre></td></tr></table></figure>
+<p>按照提示一步步进行操作即可。  </p>
+<h1 id="3-tar命令备份"><a href="#3-tar命令备份" class="headerlink" title="3. tar命令备份"></a>3. tar命令备份</h1><h2 id="1-备份命令"><a href="#1-备份命令" class="headerlink" title="(1) 备份命令"></a>(1) 备份命令</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar cvpzf backup.tgz –exclude&#x3D;&#x2F;proc –exclude&#x3D;&#x2F;lost+found –exclude&#x3D;&#x2F;backup.tgz –exclude&#x3D;&#x2F;mnt –exclude&#x3D;&#x2F;sys &#x2F;</span><br></pre></td></tr></table></figure>
+<h2 id="2-命令解释"><a href="#2-命令解释" class="headerlink" title="(2) 命令解释"></a>(2) 命令解释</h2><ul>
+<li>cvpfz: “创建档案文件”、“保持权限”(保留所有东西原来的权限)、“使用gzip来减小文件尺寸”。</li>
+<li>backup.gz: 文件名</li>
+<li>/: 要备份的目录，这里是整个文件系统</li>
+<li>-exlude： 不备份的目录，包括“/proc”、“/lost+ found”、“/sys”、“/mnt”和“backup.gz”自身</li>
+</ul>
+<h2 id="（3）备份恢复"><a href="#（3）备份恢复" class="headerlink" title="（3）备份恢复"></a>（3）备份恢复</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar xvpfz backup.tgz -C &#x2F;</span><br><span class="line"># mkdir proc</span><br><span class="line"># mkdir lost+found</span><br><span class="line"># mkdir mnt</span><br><span class="line"># mkdir sys</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>备份</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mac下配置环境变量的方法</title>
+    <url>/2019/12/30/mac%E4%B8%8B%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<h1 id="1-环境变量位置"><a href="#1-环境变量位置" class="headerlink" title="1. 环境变量位置"></a>1. 环境变量位置</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>权限</th>
+<th>优先级</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/etc/paths</td>
+<td>root</td>
+<td>1</td>
+<td>文件，每一行代表一个环境变量</td>
+</tr>
+<tr>
+<td>/etc/paths.d/xxx</td>
+<td>root</td>
+<td>2</td>
+<td>文件夹，里面可以新建任意不带后缀名的文件，环境变量写在文件中</td>
+</tr>
+<tr>
+<td>~/.bash_profile</td>
+<td>用户</td>
+<td>3</td>
+<td>文件，~代表当前用户目录，该文件可能不存在，不存在创建一个即可</td>
+</tr>
+<tr>
+<td>临时变量</td>
+<td>用户</td>
+<td>4</td>
+<td>仅在当前终端有效，关闭终端后自动失效</td>
+</tr>
+</tbody>
+</table>
+</div>
+<a id="more"></a>
+<h1 id="2-环境变量修改"><a href="#2-环境变量修改" class="headerlink" title="2. 环境变量修改"></a>2. 环境变量修改</h1><p>优先级代表查找顺序，优先级高的优先查找和执行。<br>不建议修改root权限的环境变量，建议只修改用户权限的环境变量，即~/.bash_profile中的环境变量。  </p>
+<h1 id="3-bash-profile修改"><a href="#3-bash-profile修改" class="headerlink" title="3. ~/.bash_profile修改"></a>3. ~/.bash_profile修改</h1><p>该文件格式是：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PATH&#x3D;&lt;path1&gt;:&lt;path2&gt;:&lt;path3&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PYTHON_HOME&#x3D;~&#x2F;WorkSpace&#x2F;Python</span><br><span class="line">export ANDROID_ADB&#x3D;~&#x2F;Library&#x2F;Android&#x2F;sdk&#x2F;platform-tools</span><br><span class="line">export PATH&#x3D;$&#123;PATH&#125;:$&#123;PYTHON_HOME&#125;:$&#123;ANDROID_ADB&#125;</span><br></pre></td></tr></table></figure><br>只需按照格式，在文件中添加对应环境变量即可。  </p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mac中修改默认文件的打开方式</title>
+    <url>/2019/12/30/mac%E4%B8%8B%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="1-修改单个文件的默认打开方式"><a href="#1-修改单个文件的默认打开方式" class="headerlink" title="1. 修改单个文件的默认打开方式"></a>1. 修改单个文件的默认打开方式</h1><p>右键单击该文件 -&gt; 打开方式 -&gt; 其他 -&gt; 选择一个应用程序 -&gt; 始终以此方式打开<br><a id="more"></a><br><img src="\images\pasted-5.png" alt="upload successful"></p>
+<h1 id="2-修改同类型文件的默认打开方式"><a href="#2-修改同类型文件的默认打开方式" class="headerlink" title="2. 修改同类型文件的默认打开方式"></a>2. 修改同类型文件的默认打开方式</h1><p>右键单击该文件 -&gt; 显示简介 -&gt; 打开方式 -&gt; 选择一个应用程序 -&gt; 全部更改</p>
+<p><img src="\images\pasted-7.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>让你摆脱鼠标的Chrome控制插件——Vimium</title>
+    <url>/2019/12/30/%E8%AE%A9%E4%BD%A0%E6%91%86%E8%84%B1%E9%BC%A0%E6%A0%87%E7%9A%84Chrome%E6%8E%A7%E5%88%B6%E6%8F%92%E4%BB%B6%E2%80%94%E2%80%94Vimium/</url>
+    <content><![CDATA[<h1 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h1><p>今天推荐一款Chrome上的插件，Vimium。<br>Vimium可以通过设置键盘快捷键，进而控制Chrome浏览器。其功能十分全面强大，通过键盘快捷键，可以完全取代鼠标点击等操作。  </p>
+<a id="more"></a>
+<h1 id="二、常用命令"><a href="#二、常用命令" class="headerlink" title="二、常用命令"></a>二、常用命令</h1><p>此处简单介绍一下我自己设置的操作快捷键（快捷键可自由定制），以此来介绍Vimium能够做到的基础功能。</p>
+<h2 id="1-网页操作"><a href="#1-网页操作" class="headerlink" title="1. 网页操作"></a>1. 网页操作</h2><p>q 历史向前<br>e 历史向后  </p>
+<h2 id="2-页面操作"><a href="#2-页面操作" class="headerlink" title="2. 页面操作"></a>2. 页面操作</h2><p>w 到达页面顶端<br>s 到达页面底端<br>a 到达页面最左端<br>d 到达页面最右端<br>j 页面向下滑动（相当于滚轮向下一格）<br>k 页面向上欢动（相当于滚轮向下一格）<br>x 关闭页面（相当于ctrl+w)<br>z 恢复关闭的标签页<br>r 刷新页面  </p>
+<h2 id="3-标签页操作"><a href="#3-标签页操作" class="headerlink" title="3. 标签页操作"></a>3. 标签页操作</h2><p>h 切换到左边标签页<br>l 切换到右边标签页<br>t 新建标签页  </p>
+<h2 id="4-文本相关"><a href="#4-文本相关" class="headerlink" title="4. 文本相关"></a>4. 文本相关</h2><p>c 复制向前页面url<br>v 在新的标签页打开“剪切板”内的地址<br>o 从历史记录和书签中进行搜索<br>i 将焦点置于页面第一个文本框<br>f 在新的标签页打开当前页面的某个链接<br>gf 拷贝当前页面的某个链接<br>gs 查看页面源代码  </p>
+<h1 id="三、使用体验"><a href="#三、使用体验" class="headerlink" title="三、使用体验"></a>三、使用体验</h1><p>用惯了Vimium后，基本在chrome内部摆脱了对鼠标的依赖，工作效率得到了一定的提升。<br>但其也存在着一定不足。<br>首先，只适用于浏览器，具体windows应用间暂时还是无法摆脱对鼠标的依赖。<br>其次，某些网页端应用往往拥有自己的快捷键规则，往往会和Vimium的快捷键造成冲突，引发错误。</p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>插件</tag>
+        <tag>Vimium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一套键鼠控制多个显示器的方法</title>
+    <url>/2019/12/30/%E4%B8%80%E5%A5%97%E9%94%AE%E9%BC%A0%E6%8E%A7%E5%88%B6%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%EF%BC%88%E6%98%BE%E7%A4%BA%E5%99%A8%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>当拥有多台设备时，若是能够只用一套键鼠连接所有设备，那将非常方便。<br>此处介绍几种能够实现多设备键鼠互连的方法。  </p>
+<a id="more"></a>
+<h1 id="1-有网络（无线）"><a href="#1-有网络（无线）" class="headerlink" title="1. 有网络（无线）"></a>1. 有网络（无线）</h1><h2 id="1-Synergy"><a href="#1-Synergy" class="headerlink" title="(1) Synergy"></a>(1) Synergy</h2><p>Synergy目前官网是付费的，不过可以Google<code>1.5的免费版本</code>先进行试用，觉得OK了再购买最新高级版，享受更多功能。<br>其优势在于跨平台，可以连接Mac/win/linux等多个系统的设备。</p>
+<h2 id="2-mouth-without-borders"><a href="#2-mouth-without-borders" class="headerlink" title="(2) mouth without borders"></a>(2) mouth without borders</h2><p>免费，但仅限windows，仅限两台设备连接</p>
+<h1 id="2-无网络（有线）"><a href="#2-无网络（有线）" class="headerlink" title="2. 无网络（有线）"></a>2. 无网络（有线）</h1><h2 id="1-Smart-KM-Link"><a href="#1-Smart-KM-Link" class="headerlink" title="(1) Smart KM Link"></a>(1) Smart KM Link</h2><p>需要两台电脑都有usb接口，通过usb接口进行数据传输。<br>只支持两台设备互联，速度相比Synergy和mouth without borders更快，有线总是比无线更快更稳定，所以卡顿，断线的情况很少。</p>
+<h2 id="2-KVM转换器"><a href="#2-KVM转换器" class="headerlink" title="(2) KVM转换器"></a>(2) KVM转换器</h2><p>支持多个接口，多个设备，最强大的方法。</p>
+<h1 id="3-其他"><a href="#3-其他" class="headerlink" title="3. 其他"></a>3. 其他</h1><p>最终，我通过将服务器的服务，封装为URL链接的方式解决了这个问题。<br>自此，在用户机的浏览器上，只需输入服务器对应服务的ip和端口号，即可访问服务，也就用不着用键鼠再链接服务器了。<br>自用服务器常用的服务为Jupyter notebook和Transmission，都支持URL封装，具体配置将另开一篇博客进行介绍。</p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ubuntu下利用openconnect科学上网</title>
+    <url>/2019/12/30/ubuntu%E4%B8%8B%E5%88%A9%E7%94%A8openconnect%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
+    <content><![CDATA[<h1 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h1><p>高校VPN往往使用Cisco connect进行封装。而Linux平台无法直接使用Cisco connect。<br>openconnect是Cisco connect的重新封装，比较稳定，可以在Linux平台上直接使用。  </p>
+<a id="more"></a>
+<h1 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install network-manager-openconnect-gnome</span><br></pre></td></tr></table></figure>
+<h1 id="三、使用命令"><a href="#三、使用命令" class="headerlink" title="三、使用命令"></a>三、使用命令</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo openconnect -u &lt;user name&gt; &lt;vpn-server-ip&gt;</span><br></pre></td></tr></table></figure>
+<p>回车键后，按照提示输入密码即可。  </p>
+<h1 id="四、配置文件"><a href="#四、配置文件" class="headerlink" title="四、配置文件"></a>四、配置文件</h1><p>为了避免每次登陆都要输入ip、账号、密码的麻烦，也可直接修改配置文件。<br>存储配置文件后，每次openconnect启动，会直接按照配置文件中的参数运行。  </p>
+]]></content>
+      <tags>
+        <tag>科学上网</tag>
+        <tag>openconnect</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>R语言数据聚合和透视的实现方式</title>
+    <url>/2019/12/30/R%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88%E5%92%8C%E9%80%8F%E8%A7%86%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>在R语言中，有多种方式实现数据的聚合和透视，包括自带函数和第三方库等。<br>这里举例几个自己使用过的函数。  </p>
+<h1 id="1-sqldf"><a href="#1-sqldf" class="headerlink" title="1. sqldf"></a>1. sqldf</h1><p>sqldf包中的sqldf函数，直接使用SQL语言进行聚合。<br><a id="more"></a><br>可以实现SQL语言能够处理的所有操作，功能强大<br>资源消耗较小，运算效率较高<br>强烈推荐   </p>
+<h1 id="2-reshape2"><a href="#2-reshape2" class="headerlink" title="2. reshape2"></a>2. reshape2</h1><p>reshape2包中的cast函数，可以实现Excel中数据透视表的所有功能<br>代码环境，数据透视表的定制型和便捷性更强<br>资源消耗较小，运算效率较高<br>推荐  </p>
+<h1 id="3-aggregate"><a href="#3-aggregate" class="headerlink" title="3. aggregate"></a>3. aggregate</h1><p>R原生函数，需要自己建立factor level，可由多个factor level组成list，实现多个level同时聚合<br>资源消耗较大，运算效率较低<br>无法实现复杂的透视逻辑，一次只能指定一种运算（sum/mean/count）<br>不推荐  </p>
+<h1 id="4-tapply"><a href="#4-tapply" class="headerlink" title="4. tapply"></a>4. tapply</h1><p>原生函数，同aggregate，需要自己建立factor level<br>资源消耗加大，运算效率较低<br>无法实现复杂的透视逻辑，一次只能指定一种运算（sum/mean/count）<br>不推荐  </p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>R</tag>
+        <tag>数据</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>R中文乱码的解决方法</title>
+    <url>/2019/12/30/R%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h1><p>R和Rstudio对中文的支持较差，以至于中文容易在console中变成乱码。</p>
+<h1 id="二、网上提供的解决方案"><a href="#二、网上提供的解决方案" class="headerlink" title="二、网上提供的解决方案"></a>二、网上提供的解决方案</h1><p>网上找到的几种解决方案，核心思路都是将字符编码集转换为utf-8，从而实现对中文的支持。<br><a id="more"></a><br>具体在实现方法上有所不同，分为以下几种：  </p>
+<ul>
+<li>将R Script的编码改为utf-8</li>
+<li>将源数据的编码改为utf-8<ul>
+<li>使用文本编辑器直接修改</li>
+<li>在console中通过iconv()函数转换字符编码集</li>
+</ul>
+</li>
+<li>将RStudio的语言改为utf-8<ul>
+<li>控制台-&gt;地区与语言-&gt;系统管理(Tab)-&gt;非 unicde程式的语言-&gt;选择 中文, 简体</li>
+<li>console中设定”Sys.setlocale(“LC_ALL”,”Chinese”)”</li>
+</ul>
+</li>
+<li>将区域语言改为中文/英文\</li>
+</ul>
+<h1 id="二、其他解决方案"><a href="#二、其他解决方案" class="headerlink" title="二、其他解决方案"></a>二、其他解决方案</h1><p>针对我遇到的情况，以上方法全部无效。<br>经过尝试，最终有效的解决方案为：  </p>
+<ul>
+<li>R和Excel的默认编码都是ASCII  </li>
+<li>不改变R和RStudio的编码，即从ASCII改为utf-8  </li>
+<li>而是将原始数据的编码格式改为ASCII，进行读取  </li>
+</ul>
+<p>最终成功解决中文乱码问题。</p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>R</tag>
+        <tag>乱码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git学习笔记</title>
+    <url>/2019/12/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>CVS/SVN是集中式版本控制，有中央服务器，所有子电脑通过中央服务器交互文件。Git是分布式版本控制，<br>各个子电脑自由交换文件。<br><span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS8=" title="https://git-scm.com/">git官网<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vbGlhb3h1ZWZlbmcvbGVhcm4tamF2YS9yYXcvbWFzdGVyL3RlYWNoL2dpdC1jaGVhdHNoZWV0LnBkZg==" title="https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf">git cheet sheet<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw" title="https://www.liaoxuefeng.com/wiki/896043488029600">廖雪峰Git教程<i class="fa fa-external-link"></i></span><br><a id="more"></a></p>
+<h2 id="2-版本管理流程"><a href="#2-版本管理流程" class="headerlink" title="2. 版本管理流程"></a>2. 版本管理流程</h2><p>add   -&gt; 本地修改<br>commit -&gt; 本地版本更新<br>push  -&gt; 远程同步  </p>
+<h2 id="3-工作区与暂存区"><a href="#3-工作区与暂存区" class="headerlink" title="3. 工作区与暂存区"></a>3. 工作区与暂存区</h2><p>工作区（working dirctory）：就是电脑中的目录，文件夹<br>版本库（Repository）：工作区中有一个隐藏目录.git。这个就是git的版本库  </p>
+<ul>
+<li>版本库里存了很多东西，其中最重要的就暂存区（stage/index）</li>
+<li>git add将文件加入暂存区</li>
+<li>git commit将暂存区所有文件提交到当前分支</li>
+</ul>
+<h1 id="二、常用命令"><a href="#二、常用命令" class="headerlink" title="二、常用命令"></a>二、常用命令</h1><h2 id="1-创建版本库"><a href="#1-创建版本库" class="headerlink" title="1.创建版本库"></a>1.创建版本库</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init #初始化仓库</span><br><span class="line">git add &lt;file&gt; #添加文件</span><br><span class="line">git commit -m &quot;备注&quot; #提交文件</span><br><span class="line">git status #掌握仓库当前状态</span><br><span class="line">git diff &lt;file&gt; #比较文件版本差异</span><br></pre></td></tr></table></figure>
+<h2 id="2-版本记录"><a href="#2-版本记录" class="headerlink" title="2. 版本记录"></a>2. 版本记录</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git log --pretty&#x3D;oneline #查看最近到最远的commit提交历史</span><br><span class="line">#HEAD表示当前版本</span><br><span class="line">#HEAD^表示上一个版本</span><br><span class="line">#HEAD^^表示上上版本</span><br><span class="line">#HEAD~100表示向上100个版本</span><br><span class="line">git reset --hard &lt;commit id&gt; #回退到之前版本</span><br><span class="line">git reflog #查看git中的命令历史</span><br></pre></td></tr></table></figure>
+<h2 id="3-修改管理"><a href="#3-修改管理" class="headerlink" title="3. 修改管理"></a>3. 修改管理</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout -- &lt;file&gt; #撤销&lt;file&gt;在工作区的所有修改</span><br></pre></td></tr></table></figure>
+<p>如果未放入暂存区（gitadd），则回滚到和版本库（上一个commit）一模一样的状态。<br>如果已经放入暂存区(git add），之后又进行了修改，则回滚到暂存区（上一个add状态）。<br>总之，就是回滚到最近的一个commit或add状态。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git rm &lt;file&gt; #删除文件，然后通过git commit进行确认，或通过git checkout -- &lt;file&gt;进行撤销</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-远程仓库"><a href="#4-远程仓库" class="headerlink" title="4. 远程仓库"></a>4. 远程仓库</h2><h3 id="1-连接本地库和github：Git仓库之间传输通过SSH加密"><a href="#1-连接本地库和github：Git仓库之间传输通过SSH加密" class="headerlink" title="(1) 连接本地库和github：Git仓库之间传输通过SSH加密"></a>(1) 连接本地库和github：Git仓库之间传输通过SSH加密</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 进入git bash</span><br><span class="line">ssh-keygen -t rsa -C &quot;yehansharp@gmail.com&quot; #创建SSH key（默认存储在用户根目录）</span><br></pre></td></tr></table></figure>
+<p>登录github，在setting中添加SSH keys，粘贴id_rsa.pub文件的内容。<br>添加了SSH keys的电脑才可以向github的库中推送git commimit。  </p>
+<h3 id="2-添加远程库"><a href="#2-添加远程库" class="headerlink" title="(2)添加远程库"></a>(2)添加远程库</h3><p>在github上创建库<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;yehansharp&#x2F;learngit.git</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>origin是给给远程库的代号</li>
+<li>yehansharp是github用户名</li>
+<li>learngit是远程库真正的名字</li>
+</ul>
+<h3 id="3-将本地库内容推送到远程库上"><a href="#3-将本地库内容推送到远程库上" class="headerlink" title="(3)将本地库内容推送到远程库上"></a>(3)将本地库内容推送到远程库上</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push &lt;-u&gt; origin master</span><br></pre></td></tr></table></figure>
+<ul>
+<li>origin是远程库的名字</li>
+<li>master是推送的，本地库的分支</li>
+<li>-u是指第一次推送时，将本地库的master与远程的master关联起来，之后可省略</li>
+<li>当第一次使用Git的clone或者push命令连接GitHub时，会得到一个ssh警告，输入yes回车即可</li>
+</ul>
+<h3 id="4-从远程库克隆"><a href="#4-从远程库克隆" class="headerlink" title="(4) 从远程库克隆"></a>(4) 从远程库克隆</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;yehansharp&#x2F;gitskills</span><br></pre></td></tr></table></figure>
+<h3 id="5-查看远程库"><a href="#5-查看远程库" class="headerlink" title="(5) 查看远程库"></a>(5) 查看远程库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<p>-v显示更详细信息</p>
+<h2 id="5-分支管理"><a href="#5-分支管理" class="headerlink" title="5. 分支管理"></a>5. 分支管理</h2><p>原理：<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAwLzkwMDAwMzc2Nzc3NTQyNA==" title="https://www.liaoxuefeng.com/wiki/896043488029600/900003767775424">指针<i class="fa fa-external-link"></i></span><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch #查看分支</span><br><span class="line">git branch &lt;name&gt; #创建分支</span><br><span class="line">git checkout &lt;name&gt; #切换分支</span><br><span class="line">git checkout -b &lt;name&gt; #创建+切换分支</span><br><span class="line">git merge &lt;name&gt; #合并某分支到当前分支</span><br><span class="line">git merge --no-ff -m &quot;merge with no-ff&quot; &lt;name&gt; #默认使用Fast forward模式合并，合并后删除分支</span><br><span class="line">git branch -d &lt;name&gt; #删除分支，只能删除合并后的分支</span><br><span class="line">git branch -D &lt;name&gt; #强制删除分支，可以删除还未合并的分支</span><br></pre></td></tr></table></figure></p>
+<h2 id="6-状态存储"><a href="#6-状态存储" class="headerlink" title="6. 状态存储"></a>6. 状态存储</h2><p>若你工作到一半，需要转换到其他分支，但又不想让只做到一半的工作成为一个commit，则可以使用stash临<br>时存储<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash #备份当前的工作区的内容，将当前的工作区内容保存到Git栈中。</span><br><span class="line">git stash list # 显示Git栈内的所有备份，可以利用这个列表来决定从那个地方恢复。</span><br><span class="line">git stash apply #恢复，但恢复后，stash list内容并不删除，需要用git stash drop来删除</span><br><span class="line">git stash pop #从Git栈中读取最近一次保存的内容，并将其从stash list中删除</span><br><span class="line">git stash clear # 清空Git栈。</span><br></pre></td></tr></table></figure></p>
+<h2 id="7-标签管理"><a href="#7-标签管理" class="headerlink" title="7. 标签管理"></a>7. 标签管理</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag &lt;name&gt; #创建标签，默认是向最新提交的commit打标签</span><br><span class="line">git tag &lt;name&gt; &lt;commit id&gt; #向指定commit打标签</span><br><span class="line">git tag -a &lt;tagname&gt; -m #&quot;说明文字&quot; &lt;commit id&gt; 添加标签说明</span><br><span class="line">git tag -s v0.2 -m &quot;signed version 0.2 released&quot; &lt;commit id&gt;#通过-s用私钥签名某一个标签</span><br><span class="line">git tag #查看所有标签，按字母排序</span><br><span class="line">git show &lt;tagname&gt; #查看特定标签信息</span><br><span class="line">git push origin &lt;tagname&gt; #向远程可以推送一个本地标签；</span><br><span class="line">git push origin --tags #可以推送全部未推送过的本地标签；</span><br><span class="line">git tag -d &lt;tagname&gt; #可以删除一个本地标签；</span><br><span class="line">git push origin :refs&#x2F;tags&#x2F;&lt;tagname&gt; #可以删除一个远程标签。</span><br></pre></td></tr></table></figure>
+<h2 id="8-git配置"><a href="#8-git配置" class="headerlink" title="8. git配置"></a>8. git配置</h2><p>所有仓库的存储文件都存放在.git/config文件中，可以直接进行文本编辑<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global color.ui true #显示颜色</span><br></pre></td></tr></table></figure><br>配置工作区下的&lt;.gitignore&gt;文件，设置在提交时每次都忽略特定的文件，&lt;.gitignore&gt;文件本身要放入版本<br>库中进行版本管理<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global alias.st statu #缩写，将status缩写为st</span><br></pre></td></tr></table></figure></p>
+<h2 id="9-自己搭建Git服务器，不使用Github（商业机密）"><a href="#9-自己搭建Git服务器，不使用Github（商业机密）" class="headerlink" title="9. 自己搭建Git服务器，不使用Github（商业机密）"></a>9. 自己搭建Git服务器，不使用Github（商业机密）</h2><p>(1) 运行Linux的机器，登录用户拥有sudo权限<br>(2) 安装git<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure><br>(3) 创建git用户<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo adduser git</span><br></pre></td></tr></table></figure><br>(4) 创建证书登录:收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入<br>到/home/git/.ssh/authorized_keys文件里，一行一个。<br>(5) 初始化Git仓库<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#假定仓库为&#x2F;srv&#x2F;sample.git</span><br><span class="line">#跳转到&#x2F;srv目录下</span><br><span class="line">sudo git init --bare sample.git</span><br></pre></td></tr></table></figure><br>(6) 禁止用户直接登录服务器，只允许用户通过push和get与服务器交互数据<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo chown -R git:git sample.git</span><br></pre></td></tr></table></figure><br>(7) 禁用shell登录</p>
+<ul>
+<li>打开/etc/passwd文件</li>
+<li>找到“git:x:1001:1001:,,,:/home/git:/bin/bash”</li>
+<li>改为“git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell”</li>
+</ul>
+<p>(8) 克隆远程库<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git@server:&#x2F;srv&#x2F;sample.git</span><br></pre></td></tr></table></figure><br>(9) 本地编辑推送到远程库<br>(10) 公钥管理  </p>
+<ul>
+<li>如果团队很小，把每个人的公钥收集起来放到服务器的/home/git/.ssh/authorized_keys文件里就是可<br>行的。</li>
+<li>如果团队有几百号人，就没法这么玩了，这时，可以用Gitosis来管理公钥。  </li>
+</ul>
+<p>(11) 权限控制<br>可以在服务器端编写一系列脚本来控制提交等操作，达到权限控制的目的。Gitolite就是这个工<br>具。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo博客系列（三）：Hexo博客编辑器</title>
     <url>/2019/12/30/Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9Amd%E7%BC%96%E8%BE%91%E5%99%A8/</url>
     <content><![CDATA[<p>Hexo博客的默认格式是<code>.md</code>，那么自然需要一个配套的Markdown编辑器。<br>以下介绍三种自己用过的，Markdown编辑器。</p>
