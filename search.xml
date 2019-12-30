@@ -4,7 +4,7 @@
     <title>Hexo博客系列（三）：Hexo博客编辑器</title>
     <url>/2019/12/30/Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9Amd%E7%BC%96%E8%BE%91%E5%99%A8/</url>
     <content><![CDATA[<p>Hexo博客的默认格式是<code>.md</code>，那么自然需要一个配套的Markdown编辑器。<br>以下介绍三种自己用过的，Markdown编辑器。</p>
-<h1 id="一、Mweb"><a href="#一、Mweb" class="headerlink" title="一、Mweb"></a>一、Mweb</h1><p>Mweb是Mac平台独占的一款Markdown编辑器，也是我目前用过体验最好的一款。<br><span class="exturl" data-url="aHR0cHM6Ly93d3cubXdlYi5pbS9oZWxwLmh0bWw=" title="https://www.mweb.im/help.html">Mweb官方教程<i class="fa fa-external-link"></i></span></p>
+<h1 id="一、Mweb"><a href="#一、Mweb" class="headerlink" title="一、Mweb"></a>一、Mweb</h1><p>Mweb是Mac平台独占的一款Markdown编辑器，也是我目前用过体验最好的一款。<br><span class="exturl" data-url="aHR0cHM6Ly93d3cubXdlYi5pbS9oZWxwLmh0bWw=" title="https://www.mweb.im/help.html">Mweb官方教程<i class="fa fa-external-link"></i></span><br><a id="more"></a></p>
 <h2 id="1-Mweb的优势"><a href="#1-Mweb的优势" class="headerlink" title="1. Mweb的优势"></a>1. Mweb的优势</h2><p>尝试Mweb进行Hexo Markdwon书写，效果很好，主要优势有以下几点：</p>
 <ol>
 <li>文件管理，直接在Mweb进行一站式文件编辑与管理。</li>
@@ -70,7 +70,7 @@
   </entry>
   <entry>
     <title>Hexo博客系列（二）：Hexo进阶配置</title>
-    <url>/2019/12/29/20170915%20Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHexo%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/</url>
+    <url>/2019/12/29/Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHexo%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h1 id="一、next主题配置"><a href="#一、next主题配置" class="headerlink" title="一、next主题配置"></a>一、next主题配置</h1><p>next的主题配置文件，位于<code>&lt;hexo folder&gt;\themes\next\_config.yml</code>。<br>注意区分<code>站点配置文件</code>和<code>主题配置文件</code>。<br>位于<code>&lt;hexo folder&gt;\_config.yml</code>的为<code>站点配置文件</code>。<br>位于<code>&lt;hexo folder&gt;\themes\next\_config.yml</code>的为<code>主题配置文件</code>。</p>
 <h2 id="1-官方教程"><a href="#1-官方教程" class="headerlink" title="1. 官方教程"></a>1. 官方教程</h2><p><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lmlpc3NuYW4uY29tL3RoZW1lLXNldHRpbmdzLmh0bWw=" title="https://theme-next.iissnan.com/theme-settings.html">next主题配置_中文<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZy9kb2NzL2dldHRpbmctc3RhcnRlZC8=" title="https://theme-next.org/docs/getting-started/">next主题配置_英文<i class="fa fa-external-link"></i></span><br><a id="more"></a></p>
 <h2 id="2-风格配置"><a href="#2-风格配置" class="headerlink" title="2. 风格配置"></a>2. 风格配置</h2><p>next有四种风格：Muse(默认)，Mist，Pisces，Gemini。<br><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvaGV4by10aGVtZS1uZXh0" title="https://github.com/theme-next/hexo-theme-next">风格展示<i class="fa fa-external-link"></i></span><br>这里将风格改为Gemini，修改<code>主题配置文件</code>如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure></p>
@@ -125,7 +125,7 @@
   </entry>
   <entry>
     <title>Hexo博客系列（一）：使用Hexo配合Github进行静态博客搭建</title>
-    <url>/2019/12/28/20170912%20Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E4%BD%BF%E7%94%A8Hexo%E9%85%8D%E5%90%88Github%E8%BF%9B%E8%A1%8C%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <url>/2019/12/28/Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E4%BD%BF%E7%94%A8Hexo%E9%85%8D%E5%90%88Github%E8%BF%9B%E8%A1%8C%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h1 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h1><h2 id="1-官网教程"><a href="#1-官网教程" class="headerlink" title="1.官网教程"></a>1.官网教程</h2><p>前置准备：<span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3poLWNuL2RvY3MvaW5kZXguaHRtbCMlRTUlQUUlODklRTglQTMlODUtSGV4bw==" title="https://hexo.io/zh-cn/docs/index.html#%E5%AE%89%E8%A3%85-Hexo">hexo官网安装文档<i class="fa fa-external-link"></i></span><br><a id="more"></a></p>
 <h2 id="2-node-js安装"><a href="#2-node-js安装" class="headerlink" title="2.node.js安装"></a>2.node.js安装</h2><h3 id="1-程序安装"><a href="#1-程序安装" class="headerlink" title="(1) 程序安装"></a>(1) 程序安装</h3><p><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2VuL2Rvd25sb2FkLw==" title="https://nodejs.org/en/download/">Node.js<i class="fa fa-external-link"></i></span></p>
 <h3 id="2-代码安装"><a href="#2-代码安装" class="headerlink" title="(2)代码安装"></a>(2)代码安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install node</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
@@ -163,7 +163,7 @@
   </entry>
   <entry>
     <title>starting over is harder than starting up</title>
-    <url>/2019/12/27/20191228%20starting%20over%20is%20harder%20than%20starting%20up/</url>
+    <url>/2019/12/27/starting%20over%20is%20harder%20than%20starting%20up/</url>
     <content><![CDATA[<p>2019年7月13日，放在办公室的笔记本电脑被人偷走，损失惨重。也让我对学校的安保深深失望。<br>不仅仅是价值一万八的Mac Pro没了，更重要的是电脑里面的所有资料也都找不回了，包括博客的源文件，统计学的学习总结，以及马上要进行的考试资料。<br><a id="more"></a><br><br><br>为此消沉了良久，后续也一直很忙，紧接着就是考试，以及新学期的紧张学习，博客的事情也就一直放着没管。<br>如今过了半年，心绪稍平，紧张的学期也暂时结束，才终于可以腾出手来解决博客的事情。<br><br><br>由于所有博客的源文件都丢失了，这意味着要重新开始。<br>此外，由于换了新的笔记本，从Mac系统迁移到了Windos系统，全部环境也需要重新配置一遍。<br>那就重新开始吧，Here we go agin.</p>
 ]]></content>
       <categories>
