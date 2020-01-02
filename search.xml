@@ -1,6 +1,780 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Latex学习笔记</title>
+    <url>/2020/01/02/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>Latex是一种排版系统，对数学公式有着良好的支持。<br>在<a href="https://yehansharp.github.io/2019/12/29/Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHexo%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/">Hexo博客系列（二）：Hexo进阶配置</a>中提及过如何开启数学公式支持。Latex配合Markdown，能够基本实现博客内较为方便地展现公式。<br>这里介绍Latex语法中的数学公式部分。其他高级内容如排版、宏等因为不受Markdown扩展支持，这里不多做介绍。<br><a id="more"></a></p>
+<h1 id="二、数学模式"><a href="#二、数学模式" class="headerlink" title="二、数学模式"></a>二、数学模式</h1><p>LaTeX的数学模式有两种形式：行间 (inline) 模式和独立 (display) 模式。  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>行间模式</th>
+<th>独立模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>简介</td>
+<td>行间模式中，Latex语句会嵌入到正文中，成为正文的一部分</td>
+<td>独立模式下，公式独立成行，且自动居中</td>
+</tr>
+<tr>
+<td>命令</td>
+<td><code>$&lt;Latex语句&gt;$</code></td>
+<td><code>$$&lt;Latex语句&gt;$$</code></td>
+</tr>
+<tr>
+<td>示例语句</td>
+<td><code>行间模式中的一个公式: $x+1$</code></td>
+<td><code>独立模式中的一个公式: $$x+1$$</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>行间模式示例效果如下：<br>行间模式中的一个公式: $x+1$</p>
+<p>独立模式效果如下：<br>独立模式中的一个公式: </p>
+<script type="math/tex; mode=display">x+1</script><h1 id="三、基本元素"><a href="#三、基本元素" class="headerlink" title="三、基本元素"></a>三、基本元素</h1><p>$符号是Latex语句起始和结束的标签。其中间，即为Latex语句。<br>如很多语言一样，在Latex中，常见的数学字符有自己的编码形式。这里介绍几种常见的基本元素。  </p>
+<h2 id="1-希腊字母"><a href="#1-希腊字母" class="headerlink" title="(1) 希腊字母"></a>(1) 希腊字母</h2><p><img src="\images\pasted-12.png" alt="upload successful"></p>
+<h2 id="2-上下标与根号"><a href="#2-上下标与根号" class="headerlink" title="(2) 上下标与根号"></a>(2) 上下标与根号</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>上标（指数）</th>
+<th>下标</th>
+<th>根号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>命令</td>
+<td><code>^</code></td>
+<td><code>_</code></td>
+<td><code>\sqrt</code></td>
+</tr>
+<tr>
+<td>示例语句</td>
+<td><code>$x^2$</code></td>
+<td><code>$x_2$</code></td>
+<td><code>$\sqrt{x}$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$x^2$</td>
+<td>$x_2$</td>
+<td>$\sqrt{x}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS1</strong>：<br>上下标内容如果是一个字母或符号，可以直接使用，如 <code>$x^2$</code>，效果为：$x^2$<br>如上下标内容多于一个字母或符号，比如是一个公式{x+1}，则需要将其用一对 {} 括起来。如<code>$x^{n+1}$</code> ，效果为：$x^{n+1}$  </p>
+<p><strong>PS2</strong>:<br>上下标可以叠加，如上标的上标。如<code>$ x^{a^n} $</code> ，效果为：$x^{a^n}$<br>更多例子如下：</p>
+<p><img src="\images\pasted-13.png" alt="upload successful"></p>
+<h2 id="3-分数"><a href="#3-分数" class="headerlink" title="(3) 分数"></a>(3) 分数</h2><p>命令格式：<br>分数用<code>\frac{}{}</code>命令表示，后跟两对{}，前面一对里面填分子，后面一对里面填分母。</p>
+<p>示例：<br>如<code>$\frac{3}{5}$</code>，效果为：$\frac{3}{5}$</p>
+<p><strong>PS</strong>:<br>分数会根据环境自动调整字号，比如在行间公式中小一点，在独立公式中则大一点。<br>若希望在行间公式中，分数的大小，仍然能够扩大到独立公式中一般，则可使用<code>\dfrac</code>命令。<br>下方为<code>\frac</code>命令，与<code>\dfrac</code>命令的对比。  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>\frac</code></th>
+<th><code>\dfrac</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>示例语句</td>
+<td><code>\frac命令下的分式： $\frac{3}{5}$</code></td>
+<td><code>\dfrac命令下的分式： $\dfrac{3}{5}$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>\frac命令下的分式： $\frac{3}{5}$</td>
+<td>\dfrac命令下的分式： $\dfrac{3}{5}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="4-三角函数与对数函数"><a href="#4-三角函数与对数函数" class="headerlink" title="(4) 三角函数与对数函数"></a>(4) 三角函数与对数函数</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>sin</code></th>
+<th><code>cos</code></th>
+<th><code>tan</code></th>
+<th><code>log</code></th>
+<th><code>ln</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>命令</td>
+<td><code>$\sin$</code></td>
+<td><code>$\cos$</code></td>
+<td><code>$\tan$</code></td>
+<td><code>$\log$</code></td>
+<td><code>$\ln$</code></td>
+</tr>
+<tr>
+<td>示例语句</td>
+<td><code>$\sin(x)$</code></td>
+<td><code>$\cos(x)$</code></td>
+<td><code>$\tan(x)$</code></td>
+<td><code>$\log_2 (x)$</code></td>
+<td><code>$\ln(x)$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\sin(x)$</td>
+<td>$\cos(x)$</td>
+<td>$\tan(x)$</td>
+<td>$\log_2 (x)$</td>
+<td>$\ln(x)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS</strong>:<br><code>\log</code>函数后，先跟下标与底，再跟括号与被取对数的函数。<br>如<code>$\log_5(x)$</code> ，效果为$\log_5(x)$  </p>
+<h2 id="5-常见关系符与运算符"><a href="#5-常见关系符与运算符" class="headerlink" title="(5) 常见关系符与运算符"></a>(5) 常见关系符与运算符</h2><p>部分运算可以直接输入，如<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>=</code> 等。另一些则需要特殊的命令。<br>常见的二元关系符如下：  </p>
+<p><img src="\images\pasted-15.png" alt="upload successful"><br>常见的二元运算符如下：  </p>
+<p><img src="\images\pasted-16.png" alt="upload successful"></p>
+<h2 id="6-常见微积分运算符"><a href="#6-常见微积分运算符" class="headerlink" title="(6) 常见微积分运算符"></a>(6) 常见微积分运算符</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>求和运算符</th>
+<th>求积运算符</th>
+<th>极限符号</th>
+<th>积分符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>命令</td>
+<td><code>\sum</code></td>
+<td><code>\prod</code></td>
+<td><code>$\tan$</code></td>
+<td><code>\lim</code></td>
+</tr>
+<tr>
+<td>示例语句</td>
+<td><code>$\sum_{i=1}^n f(x)$</code></td>
+<td><code>$\prod_{i=1}^n f(x)$</code></td>
+<td><code>$\lim_{i=1}^n f(x)$</code></td>
+<td><code>$\int_{i=1}^n f(x) dx$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\sum_{i=1}^n f(x)$</td>
+<td>$\prod_{i=1}^n f(x)$</td>
+<td>$\lim_{i=1}^n f(x)$</td>
+<td>$\int_{i=1}^n f(x) dx$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS1</strong>:<br>几个命令，都有着相似的格式。<br>命令后，先接下标符号与下标内容，再接上标符号^与上标内容，空格后接被运算函数 </p>
+<p><strong>PS2</strong>:<br>注意，上述运算符的上标与下标，都位于运算符的右边，这在LaTeX叫做不压缩上标，为默认选项。<br>若是希望将上下标分别移动到运算符的上方与下方，则可以在运算符后追加<code>\limits</code>显示指定。<br>下方为压缩上标和不压缩上标的对比：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>压缩上标</th>
+<th>不压缩上标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>示例语句</td>
+<td><code>$\sum_{i=1}^n f(x)$</code> <br> <code>$\prod_{i=1}^n f(x)$</code> <br> <code>$\lim_{i=1}^n f(x)$</code> <br> <code>$\int_{i=1}^n f(x) dx$</code></td>
+<td><code>$\sum \limits_{i=1}^n f(x)$</code> <br> <code>$\prod \limits_{i=1}^n f(x)$</code> <br> <code>$\lim \limits_{i=1}^n f(x)$</code> <br> <code>$\int \limits_{i=1}^n f(x) dx$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\sum_{i=1}^n f(x)$</td>
+<td>$\sum \limits_{i=1}^n f(x)$</td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\prod_{i=1}^n f(x)$</td>
+<td>$\prod \limits_{i=1}^n f(x)$</td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\lim_{i=1}^n f(x)$</td>
+<td>$\lim \limits_{i=1}^n f(x)$</td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\int_{i=1}^n f(x) dx$</td>
+<td>$\int \limits_{i=1}^n f(x) dx$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS3</strong>:<br>注意，在积分中，积分变量<code>dx</code>默认是斜体，若希望其不为斜体，可以通过<code>\mathrm</code>命令改变其字体。<br>下方为积分变量是否斜体的效果对比：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>默认斜体</th>
+<th>mathrm字体</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>示例语句</td>
+<td><code>$\int_{i=1}^n f(x) dx$</code></td>
+<td><code>$\int_{i=1}^n f(x) \mathrm{d} x$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\int_{i=1}^n f(x) dx$</td>
+<td>$\int_{i=1}^n f(x) \mathrm{d} x$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS4</strong>:<br>注意，多重积分如果用多个<code>\int</code>来输入的话，积分号之间的距离会过宽。<br>正确的方法是用<code>\iint, \iiint, \iiiint, \idotsint</code>等命令输入。<br>下方是几种命令的效果对比：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>多个<code>\int</code></th>
+<th><code>\iint</code></th>
+<th><code>\iiint</code></th>
+<th><code>\iiiint</code></th>
+<th><code>\idotsint</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>示例语句</td>
+<td><code>$\int \int \int f(x) dx$</code></td>
+<td><code>$\iint f(x) dx$</code></td>
+<td><code>$\iiint f(x) dx$</code></td>
+<td><code>$\iiiint f(x) dx$</code></td>
+<td><code>$\idotsint f(x) dx$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\int \int \int f(x) dx$</td>
+<td>$\iint f(x) dx$</td>
+<td>$\iiint f(x) dx$</td>
+<td>$\iiiint f(x) dx$</td>
+<td>$\idotsint f(x) dx$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS5</strong>:<br>其他微积分常见符号还有：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>LaTeX命令</th>
+<th><code>$\partial$</code></th>
+<th><code>$\nabla$</code></th>
+<th><code>$\infty$</code></th>
+<th><code>$\oint$</code></th>
+<th><code>$\triangle$</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$\partial$</td>
+<td>$\nabla$</td>
+<td>$\infty$</td>
+<td>$\oint$</td>
+<td>$\triangle$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="7-常见数学注音和标注符号"><a href="#7-常见数学注音和标注符号" class="headerlink" title="(7) 常见数学注音和标注符号"></a>(7) 常见数学注音和标注符号</h2><p>常见注音符号如下  </p>
+<p><img src="\images\pasted-17.png" alt="upload successful"><br>常见长标注符号如下  </p>
+<p><img src="\images\pasted-18.png" alt="upload successful"></p>
+<h2 id="8-括号"><a href="#8-括号" class="headerlink" title="(8) 括号"></a>(8) 括号</h2><p>一些常见括号可以直接打出，包括小括号<code>()</code>和中括号<code>[]</code>。</p>
+<p>其他一些括号需要使用命令打出，常见括号如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>大（花）括号</th>
+<th>尖括号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>命令</td>
+<td><code>\lbrace</code>和<code>\rbrace</code></td>
+<td><code>\langle</code>和<code>\rangle</code></td>
+</tr>
+<tr>
+<td>示例语句</td>
+<td><code>$\lbrace x+[a+(b+3)] \rbrace$</code></td>
+<td><code>$ \vec{v} = v_1 \vec{i} + v_2 \vec{j} = \langle v_1,v_2 \rangle$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\lbrace x+[a+(b+3)] \rbrace$</td>
+<td>$ \vec{v} = v_1 \vec{i} + v_2 \vec{j} = \langle v_1,v_2 \rangle$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS</strong>:<br>在使用分数时，括号往往因为长度不够而显得不够美观。此时可以在括号前加命令<code>\big</code>, <code>\Big</code>, <code>\bigg</code>, <code>\Bigg</code>来选择括号大小。其效果对比如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>()</code></th>
+<th><code>\big</code></th>
+<th><code>\Big</code></th>
+<th><code>\bigg</code></th>
+<th><code>\Bigg</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>示例语句</td>
+<td><code>$ 3(\frac{2}{4}) $</code></td>
+<td><code>$ 3\big(\frac{2}{4}\big) $</code></td>
+<td><code>$ 3\Big(\frac{2}{4}\Big) $</code></td>
+<td><code>$ 3\bigg(\frac{2}{4}\bigg) $</code></td>
+<td><code>$ 3\Bigg(\frac{2}{4}\Bigg) $</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$ 3(\frac{2}{4}) $</td>
+<td>$ 3\big(\frac{2}{4}\big) $</td>
+<td>$ 3\Big(\frac{2}{4}\Big) $</td>
+<td>$ 3\bigg(\frac{2}{4}\bigg) $</td>
+<td>$ 3\Bigg(\frac{2}{4}\Bigg) $</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="9-空白间距"><a href="#9-空白间距" class="headerlink" title="(9) 空白间距"></a>(9) 空白间距</h2><p>我们可以用若干命令，生成不用间距的空白。<br>注意负间距命令 ! 可以用来减小间距。  </p>
+<p><img src="\images\pasted-19.png" alt="upload successful"></p>
+<h2 id="10-省略号"><a href="#10-省略号" class="headerlink" title="(10) 省略号"></a>(10) 省略号</h2><p>不同的省略号，存在点数量和方向的区别。不同形式的省略号效果如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$\dots$</code></th>
+<th><code>$\cdot$</code></th>
+<th><code>$\cdots$</code></th>
+<th><code>$\vdots$</code></th>
+<th><code>$\ddots$</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$a \dots b $</td>
+<td>$a \cdot b$</td>
+<td>$a \cdots b$</td>
+<td>$a \vdots b$</td>
+<td>$a \ddots b$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS</strong>:<br><code>\dots</code>和<code>\cdot</code>都生成三个点，但点的高度不同。<br><code>\dots</code>生成的点位于底部。<code>\cdot</code>生成的点纵向居中。</p>
+<h2 id="11-箭头"><a href="#11-箭头" class="headerlink" title="(11) 箭头"></a>(11) 箭头</h2><p>常见箭头命令如下：<br><img src="\images\pasted-20.png" alt="upload successful"></p>
+<p>示例：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$a \leftarrow b$</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$a \leftarrow b$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS</strong>:<br>若要在箭头上下方生成内容，可以通过在箭头命令加<code>x</code>实现。如<code>\leftarrow</code>可变为<code>\xleftarrow</code>命令。<br>命令后面，先跟[]与箭头下方数学内容，再跟{}与箭头上方数学内容。箭头会自动根据内容调整长度。<br>常见示例如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$\xleftarrow[x&lt;y]{abc}$</code></th>
+<th><code>$\xrightarrow[x&lt;y]{abc}$</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$\xleftarrow[x&lt;y]{abc}$</td>
+<td>$\xrightarrow[x&lt;y]{abc}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="12-数学字体"><a href="#12-数学字体" class="headerlink" title="(12) 数学字体"></a>(12) 数学字体</h2><p>一些命令可以生成特殊的数学字体样式。具体命令如下：  </p>
+<p><img src="\images\pasted-21.png" alt="upload successful"></p>
+<h1 id="四、向量和矩阵"><a href="#四、向量和矩阵" class="headerlink" title="四、向量和矩阵"></a>四、向量和矩阵</h1><h2 id="1-向量"><a href="#1-向量" class="headerlink" title="(1) 向量"></a>(1) 向量</h2><p><code>\vec</code>表示向量，常见示例如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$ \vec{v}$</code></th>
+<th><code>$ \vec{v} = v_1 \vec{i} + v_2 \vec{j} = \langle v_1,v_2 \rangle$</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$ \vec{v}$</td>
+<td>$ \vec{v} = v_1 \vec{i} + v_2 \vec{j} = \langle v_1,v_2 \rangle$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-矩阵"><a href="#2-矩阵" class="headerlink" title="(2) 矩阵"></a>(2) 矩阵</h2><p>矩阵通过array环境生成矩阵，其语法如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\begin&#123;array&#125;[外部对齐]&#123;列对齐&#125;</span><br><span class="line">第一行第一列 &amp; 第一行第二列 \\</span><br><span class="line">第二行第一列 &amp; 第二行第二列 \\</span><br><span class="line">\end&#123;array&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>PS1: 外部对齐</strong><br>外部对齐是指整个矩阵和周围对象的对齐方式，有三种方式：居顶、居中 (缺省) 、居底，分别用 t, c, b 来表示<br>列对齐是指矩阵内部对象的对齐方式，也有三种方式：居左、居中、居右，分别用 l, c, r 表示。<br>行列内容为各个矩阵元素，使用<code>\</code>和<code>&amp;</code>分隔行列元素。<br>示例如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$ \vec{v}$</code></th>
+<th><code>$ \vec{v} = v_1 \vec{i} + v_2 \vec{j} = \langle v_1,v_2 \rangle$</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$ \vec{v}$</td>
+<td>$ \vec{v} = v_1 \vec{i} + v_2 \vec{j} = \langle v_1,v_2 \rangle$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\begin&#123;array&#125;&#123;ccc&#125;</span><br><span class="line">x_1 &amp; x_2 &amp; \dots \\</span><br><span class="line">x_3 &amp; x_4 &amp; \dots \\</span><br><span class="line">\vdots &amp; \vdots &amp; \ddots</span><br><span class="line">\end&#123;array&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为  </p>
+<script type="math/tex; mode=display">
+\begin{array}{ccc}
+x_1 & x_2 & \dots \\
+x_3 & x_4 & \dots \\
+\vdots & \vdots & \ddots
+\end{array}</script><p><strong>PS2: 矩阵两边的括号</strong><br>若想在矩阵两边生成不同类型的括号，可以说使用pmatrix, bmatrix, Bmatrix, vmatrix, Vmatrix等环境代替array环境。<br>下方依次演示各类括号。<br>如小括号<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;pmatrix&#125;</span><br><span class="line">a&amp;b\\</span><br><span class="line">c&amp;d \\</span><br><span class="line">\end&#123;pmatrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+a&b\\
+c&d \\
+\end{pmatrix}</script><p>如中括号<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;bmatrix&#125;</span><br><span class="line">a&amp;b\\</span><br><span class="line">c&amp;d \\</span><br><span class="line">\end&#123;bmatrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+a&b\\
+c&d \\
+\end{bmatrix}</script><p>如大括号<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;Bmatrix&#125;</span><br><span class="line">a&amp;b\\</span><br><span class="line">c&amp;d \\</span><br><span class="line">\end&#123;Bmatrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+\begin{Bmatrix}
+a&b\\
+c&d \\
+\end{Bmatrix}</script><p>如绝对值符号<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;vmatrix&#125;</span><br><span class="line">a&amp;b\\</span><br><span class="line">c&amp;d \\</span><br><span class="line">\end&#123;vmatrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+\begin{vmatrix}
+a&b\\
+c&d \\
+\end{vmatrix}</script><p>如双重绝对值符号<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;Vmatrix&#125;</span><br><span class="line">a&amp;b\\</span><br><span class="line">c&amp;d \\</span><br><span class="line">\end&#123;Vmatrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+\begin{Vmatrix}
+a&b\\
+c&d \\
+\end{Vmatrix}</script><p><strong>PS3:行内矩阵</strong><br><code>\smallmatrix</code>命令可以生成行间矩阵。示例如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$ 一个行间矩阵：( \begin{smallmatrix} a&amp;b \\\\ c&amp;d \end{smallmatrix} ) $</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$ 一个行间矩阵：( \begin{smallmatrix} a&amp;b \\ c&amp;d \end{smallmatrix} ) $</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>注意：在行间矩阵中，用<code>\\\\</code>来分割行，这是由于hexo语法中，<code>\</code>本身需要转义。  </p>
+<h1 id="五、-公式"><a href="#五、-公式" class="headerlink" title="五、 公式"></a>五、 公式</h1><p>普通公式可以直接输入，示例如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$ 一个普通公式：x = a+b+c+d+e+f+g+h $</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$ 一个普通公式：x = a+b+c+d+e+f+g+h $</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>特殊公式则需要具体命令，具体介绍如下。  </p>
+<h2 id="1-长公式"><a href="#1-长公式" class="headerlink" title="(1) 长公式"></a>(1) 长公式</h2><p>若是公式很长，或因为某些原因需要分成几段，可以通过split环境实现。<br>split用<code>\</code>和<code>&amp;</code>来分行和设置对齐的位置。同理，因为转义原因，原本的<code>\</code>在hexo中需要表示为<code>\\</code>。<br>如<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;split&#125;</span><br><span class="line">x &#x3D; &amp; a+b+c+&#123;&#125; \\</span><br><span class="line">&amp; d+e+f+g</span><br><span class="line">\end&#123;split&#125; $$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+\begin{split}
+x = & a+b+c+{} \\
+& d+e+f+g
+\end{split}</script><h2 id="2-公式组"><a href="#2-公式组" class="headerlink" title="(2) 公式组"></a>(2) 公式组</h2><p>多个公式可以共同构成公式组。<br>不需要对齐的公式组可以使用 gather 环境，需要对齐的公式组用 align 环境。<br>公式组会自动对其中的各个公式进行编号，便于引用。<br>注意，gather环境和align环境，共用一套编号。示例如下：  </p>
+<p>如gather环境，公式组不对齐，且编号。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$\begin&#123;gather&#125;</span><br><span class="line">x &#x3D; a+b+c \\</span><br><span class="line">y &#x3D; c+d+f</span><br><span class="line">\end&#123;gather&#125; $$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">\begin{gather}
+x = a+b+c \\
+y = c+d+f
+\end{gather}</script><p>如align环境，公式组对齐，且继续编号（与gather共用一套编号）。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$\begin&#123;align&#125;</span><br><span class="line">x &#x3D; a+b+c \\</span><br><span class="line">y &#x3D; c+d+f</span><br><span class="line">\end&#123;align&#125; $$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">\begin{align}
+x = a+b+c+ \\
+y = c+d+f
+\end{align}</script><p><strong>PS:</strong><br>若不想生成公式编号，则可在环境后面带<code>*</code><br>如<code>align*</code>，不生成编号。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$\begin&#123;align*&#125;</span><br><span class="line">x &#x3D; a+b+c+ \\</span><br><span class="line">y &#x3D; c+d+f</span><br><span class="line">\end&#123;align*&#125; $$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">\begin{align*}
+x = a+b+c+ \\
+y = c+d+f
+\end{align*}</script><h2 id="3-分支公式"><a href="#3-分支公式" class="headerlink" title="(3) 分支公式"></a>(3) 分支公式</h2><p>使用<code>cases</code>环境可以实现分支函数。不同分支之间，使用<code>\</code>间隔。在hexo中，因为转义需要，使用<code>\\</code>间隔。<br>如<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">y&#x3D;</span><br><span class="line">\begin&#123;cases&#125;</span><br><span class="line">-x,x \leq a \\</span><br><span class="line">x, x&gt;a</span><br><span class="line">\end&#123;cases&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+y=
+\begin{cases}
+-x,x \leq a \\
+x, x>a
+\end{cases}</script>]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jupyter进阶：扩展配置</title>
+    <url>/2020/01/01/Jupyter%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>Jupyter本身已经是一款十分好用的交互式python开发工具了，但其实我们还可以为Jupyter安装扩展，进一步增强其功能的丰富性。<br>下面具体介绍如何安装Jupyter扩展，以及几款扩展的推荐。<br><a id="more"></a></p>
+<h1 id="2-Jupyter扩展安装"><a href="#2-Jupyter扩展安装" class="headerlink" title="2. Jupyter扩展安装"></a>2. Jupyter扩展安装</h1><p>扩展有多重安装方式，具体命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># conda安装</span><br><span class="line">conda install -c conda-forge jupyter_contrib_nbextensions</span><br><span class="line"># pip安装</span><br><span class="line">pip install jupyter_contrib_nbextensions</span><br></pre></td></tr></table></figure><br>安装完毕后，打开Juyputer notebook，即可在主页面找到nbextensions选项，效果如下图所示。</p>
+<p><img src="\images\pasted-10.png" alt="upload successful"></p>
+<p>取消勾选<code>disable configuration for nbextensions without explicit compatibility (they may break your notebook environment, but can be useful to show for nbextension development)</code>后，下方呈现的各个插件就可以勾选并使用了。<br>此外，值得注意的是，部分插件并不能勾选即用，还需要另外安装，具体情况，点开下方每一款插件，可以看到详细介绍。</p>
+<h1 id="3-Jupyter扩展推荐"><a href="#3-Jupyter扩展推荐" class="headerlink" title="3. Jupyter扩展推荐"></a>3. Jupyter扩展推荐</h1><p>这里根据自己使用体验，推荐几款比较好用的扩展。</p>
+<h2 id="1-AutoSaveTime"><a href="#1-AutoSaveTime" class="headerlink" title="(1) AutoSaveTime"></a>(1) AutoSaveTime</h2><p>此扩展的作用是对ipynb文件每隔一段时间进行自动保存。时间间隔可以自由设置。</p>
+<h2 id="2-Code-prettify"><a href="#2-Code-prettify" class="headerlink" title="(2) Code prettify"></a>(2) Code prettify</h2><p>安装此插件后，将会自动在ipynb文件面板上生成一个按钮。点击按钮，可自动对选中代码进行美化，包括缩进，间隔等美化。效果如下<br><img src="https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/_images/demo-py.gif" alt="upload successful"></p>
+<h2 id="3-Codefolding"><a href="#3-Codefolding" class="headerlink" title="(3) Codefolding"></a>(3) Codefolding</h2><p>此插件能够按照缩进格式，整合代码块，并提供代码块的折叠功能。</p>
+<h2 id="4-ExecuteTime"><a href="#4-ExecuteTime" class="headerlink" title="(4) ExecuteTime"></a>(4) ExecuteTime</h2><p>此插件能够在每个cell执行后，显示cell内代码的执行时间。</p>
+<h2 id="5-highlighter"><a href="#5-highlighter" class="headerlink" title="(5) highlighter"></a>(5) highlighter</h2><p>此插件能够在ipynb文件面板上生成一个按钮。点击按钮后，能够对文件内文本进行高亮。</p>
+<h2 id="6-Runtools"><a href="#6-Runtools" class="headerlink" title="(6) Runtools"></a>(6) Runtools</h2><p>此插件提供更为先进的运行工具。如运行此cell之前所有代码、运行此cell之后所有代码等。</p>
+<h2 id="7-Table-of-Contents-2"><a href="#7-Table-of-Contents-2" class="headerlink" title="(7) Table of Contents (2)"></a>(7) Table of Contents (2)</h2><p>此插件能够根据文件Markdown内容，自动生成目录。</p>
+<h2 id="8-Variable-Inspector"><a href="#8-Variable-Inspector" class="headerlink" title="(8) Variable Inspector"></a>(8) Variable Inspector</h2><p>此插件能够像R studio一样，实时展示当前命名空间内所有变量。</p>
+]]></content>
+      <categories>
+        <category>项目实践</category>
+      </categories>
+      <tags>
+        <tag>jupyter notebook</tag>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux&amp;docker系列（三）：transmission_docker配置</title>
+    <url>/2020/01/01/Linux-docker%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9Atransmission-docker%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>在jupyter notebook之后，另一个docker化的服务是transmission。<br>transmission是Linux下的下载软件，支持多种下载方式，并且提供web UI。<br>与juypter notebook一样，有了web UI，就有着远程访问的潜力。在配置完成后，我们可以很方便地在远程向服务器发送下载任务。  </p>
+<a id="more"></a>
+<h1 id="2-配置流程"><a href="#2-配置流程" class="headerlink" title="2. 配置流程"></a>2. 配置流程</h1><h2 id="1-获取镜像"><a href="#1-获取镜像" class="headerlink" title="(1) 获取镜像"></a>(1) 获取镜像</h2><p>在docker hub中，已经有了配置好的transimission镜像，直接获取即可，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull linuxserver&#x2F;transmission</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-生成容器"><a href="#2-生成容器" class="headerlink" title="(2) 生成容器"></a>(2) 生成容器</h2><p>命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo docker create --name&#x3D;transmission \</span><br><span class="line">--restart&#x3D;always \</span><br><span class="line">-v &#x2F;home&#x2F;g13&#x2F;docker&#x2F;transmission&#x2F;config:&#x2F;config \</span><br><span class="line">-v &#x2F;home&#x2F;g13&#x2F;docker&#x2F;transmission&#x2F;downloads:&#x2F;downloads \</span><br><span class="line">-v &#x2F;home&#x2F;g13&#x2F;docker&#x2F;transmission&#x2F;watch:&#x2F;watch \</span><br><span class="line">-e PGID&#x3D;1000 -e PUID&#x3D;1000 \</span><br><span class="line">-p 9091:9091 -p 51413:51413 -p 51413:51413&#x2F;udp \</span><br><span class="line">-d \</span><br><span class="line">linuxserver&#x2F;transmission</span><br></pre></td></tr></table></figure><br>命令详解</p>
+<ul>
+<li><code>sudo docker create --name=transmission linuxserver/transmission</code>。运行镜像”linuxserver/transmission”生成容器，并将容器命名为”transmission”</li>
+<li><code>--restart=always</code>。设置此容器开机自动启动。</li>
+<li><code>-v /home/g13/docker/transmission/config:/config</code>。将容器的”/config”路径，映射到主机的”/home/g13/docker/transmission/config”路径。</li>
+<li><code>-v /home/g13/docker/transmission/downloads:/downloads</code>。将容器的”/downloads”路径，映射到主机的”/home/g13/docker/transmission/downloads”路径。</li>
+<li><code>-v /home/g13/docker/transmission/watch:/watch</code>。将容器的”/watch”路径，映射到主机的”/home/g13/docker/transmission/watch”路径。以上三个路径，是transmission服务所必须的三个路径。</li>
+<li><code>-e PGID=1000 -e PUID=1000</code>。当容器访问以上三个路径时，可能会出现权限问题。此处设置容器的指定用户ID为1000(docker user)，容器的指定用户组ID为1000(docker group)。具体ID可根据自身情况修改。</li>
+<li><code>-p 9091:9091 -p 51413:51413 -p 51413:51413/udp</code>。将容器的IP映射到对应主机ID。以上三个IP是transmission服务中会用到的。</li>
+<li><code>-d</code>。在后台运行容器，容器生成后不进入容器。</li>
+</ul>
+<h2 id="3-启动容器"><a href="#3-启动容器" class="headerlink" title="(3) 启动容器"></a>(3) 启动容器</h2><p>命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo docker start transmission</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-远程访问transmission服务"><a href="#4-远程访问transmission服务" class="headerlink" title="(4) 远程访问transmission服务"></a>(4) 远程访问transmission服务</h2><p>在主机上，访问链接<code>http://0.0.0.0:9091/transmission/web/</code>，即可进入transmission的Web UI。<br>在其他机器上，访问链接<code>http://&lt;主机IP&gt;:9091/transmission/web/</code>，即可实现对主机transmission docker服务的远程访问。  </p>
+]]></content>
+      <categories>
+        <category>项目实践</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+        <tag>Linux</tag>
+        <tag>docker</tag>
+        <tag>transmission</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux&amp;docker系列（二）：jupyter_docker配置</title>
+    <url>/2020/01/01/Linux-docker%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9Ajupyter-docker%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h1 id="一-前言"><a href="#一-前言" class="headerlink" title="一. 前言"></a>一. 前言</h1><p>基本的<span class="exturl" data-url="aHR0cHM6Ly9odWIuZG9ja2VyLmNvbS9fL3VidW50dQ==" title="https://hub.docker.com/_/ubuntu">Ubuntu<i class="fa fa-external-link"></i></span>以及深度学习<span class="exturl" data-url="aHR0cHM6Ly9odWIuZG9ja2VyLmNvbS9yL252aWRpYS9jdWRh" title="https://hub.docker.com/r/nvidia/cuda">CUDA<i class="fa fa-external-link"></i></span>的Docker配置，都相对简单。<br>然而，之后在尝试构建jupyter notebook的Docker版本时，发现流程较为复杂，此处记录一下，以供参考。<br><a id="more"></a></p>
+<h1 id="二、配置流程"><a href="#二、配置流程" class="headerlink" title="二、配置流程"></a>二、配置流程</h1><h2 id="1-建立container"><a href="#1-建立container" class="headerlink" title="1. 建立container"></a>1. 建立container</h2><p>命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --gpus all -it --name notebook-server -p 7777:8888 -v &#x2F;home&#x2F;g13:&#x2F;g13 --restart&#x3D;always nvidia-docker  &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure><br>命令详解</p>
+<ul>
+<li><code>docker run nvidia-docker</code>。运行名为nvidia-docker的镜像生成容器。</li>
+<li><code>--gpus all</code>。允许容器使用主机所有GPU。</li>
+<li><code>--name notebook-server</code>。将容器命名为”notebook-server”。</li>
+<li><code>-p 7777:8888</code>。将容器的8888端口，映射到主机的7777端口。</li>
+<li><code>-v /home/g13:/g13</code>。将主机的”/home/g13”路径，映射到容器的”/g13”路径。如此即可在容器上访问对应主机路径。</li>
+<li><code>-it /bin/bash</code>。生成容器终端，让容器终端接收主机输入，命令结束后直接进入容器终端。</li>
+<li><code>--restart=always</code>。开机后自动启动该容器。</li>
+</ul>
+<h2 id="2-安装conda环境"><a href="#2-安装conda环境" class="headerlink" title="2. 安装conda环境"></a>2. 安装conda环境</h2><p>进入容器终端后，在容器内，安装conda环境，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get upgrade</span><br><span class="line">apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6</span><br><span class="line">apt-get install vim</span><br><span class="line"># 官网下载安装包到路径&#x2F;g13&#x2F;Downloads&#x2F;</span><br><span class="line">bash &#x2F;g13&#x2F;Downloads&#x2F;Anaconda3-2019.07-Linux-x86_64.sh</span><br><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-配置jupyter-notebook"><a href="#3-配置jupyter-notebook" class="headerlink" title="3. 配置jupyter notebook"></a>3. 配置jupyter notebook</h2><p>首先生成配置文件，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure><br>然后修改配置文件，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.jupyter&#x2F;jupyter-notebook-config.py</span><br></pre></td></tr></table></figure><br>修改以下内容<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 允许root启动</span><br><span class="line">c.NotebookApp.allow_root &#x3D; True</span><br><span class="line"># 允许远程访问</span><br><span class="line">c.NotebookApp.ip &#x3D; &#39;127.0.0.1&#39;</span><br><span class="line"># 设置远程访问密码</span><br><span class="line">c.NotebookApp.token &#x3D; u&#39;&lt;password hash&gt;&#39;</span><br></pre></td></tr></table></figure><br>密码可根据以下命令生成<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter notebook password</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-运行jupyter-notebook，并退出容器"><a href="#4-运行jupyter-notebook，并退出容器" class="headerlink" title="4. 运行jupyter notebook，并退出容器"></a>4. 运行jupyter notebook，并退出容器</h2><p>配置完毕后，即可在容器中运行jupyter notebook，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter notebook --ip 127.0.0.1 --no-browser --allow-root &amp;</span><br></pre></td></tr></table></figure><br>随后可通过<code>ctrl + p + q</code>按键退出但不关闭容器，返回主机。</p>
+<h2 id="5-远程访问jupyter服务"><a href="#5-远程访问jupyter服务" class="headerlink" title="5. 远程访问jupyter服务"></a>5. 远程访问jupyter服务</h2><p>随后，在主机上访问链接<code>http://127.0.0.1:7777/tree</code>，即可访问jupyter服务。<br>在主机以外的机器上，通过访问链接<code>http://&lt;主机ip&gt;:7777/tree</code>，也可访问jupyter服务。<br>自此，实现了jupyter的docker封装和远程访问。</p>
+]]></content>
+      <categories>
+        <category>项目实践</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+        <tag>Linux</tag>
+        <tag>docker</tag>
+        <tag>Jupyter notebook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux&amp;Docker系列（一）：docker配置</title>
+    <url>/2020/01/01/Linux%E4%B8%8B%E7%9A%84docker%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>相信在服务器上配置过深度学习环境，或者类似操作的同学，都会因为各种bug而挠光头皮。此类复杂的配置，往往会出现以下状况：</p>
+<ul>
+<li>配置时必须小心翼翼，长达几个小时的配置流程必须时刻盯着进展。中间一步错了，就会导致前功尽弃，重头再来。很有游戏“Getting over it”的感觉。</li>
+<li>网上教程繁杂，很多相互冲突，让人不知所云。往往需要尝试很多次，才能找到适合自己的那款。</li>
+<li>即使严格遵守教程，也往往会出现一些莫名其妙的bug。最怕的是几个debug过程中的配置导致相互冲突，最后又莫名其妙地不能成功。</li>
+<li>每次失败，为了保证之前的配置删除干净，往往需要重装系统，一切重来。</li>
+</ul>
+<p>总而言之，整个过程漫长繁琐，一步一坑，挫败感强烈。这个时候，就是使用Docker的最好时机。</p>
+<a id="more"></a>
+<h1 id="2-Docker简介"><a href="#2-Docker简介" class="headerlink" title="2. Docker简介"></a>2. Docker简介</h1><p>第一，Docker可以被理解为一种特殊的虚拟机环境，所以它有着虚拟机的一切优点。</p>
+<ul>
+<li>可同时建立多个环境，相互隔离</li>
+<li>可随时备份或还原，当前docker容器状态，方便版本管理</li>
+</ul>
+<p>第二，由于Docker通过技术上的封装，使得其解决了虚拟机技术的一个主要缺点：占用资源过多。<br>传统虚拟机，其架构模式为”主机内核 -&gt; 主机操作系统 -&gt; 虚拟机应用(如VMware) -&gt; 虚拟机内核 -&gt; 虚拟机操作系统 -&gt; 应用”。层层叠加下来，需要很多计算资源。<br>Docker技术，其架构模式为”主机内核 -&gt; Docker引擎 -&gt; 应用”。没有了虚拟机内核和硬件的虚拟，轻便很多。<br>其性能差距如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>性能对比</th>
+<th>虚拟机</th>
+<th>Docker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>启动速度</td>
+<td>分钟级</td>
+<td>秒级</td>
+</tr>
+<tr>
+<td>硬盘占用</td>
+<td>GB级</td>
+<td>MB级</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>弱于原生</td>
+<td>接近原生</td>
+</tr>
+<tr>
+<td>系统支持量</td>
+<td>一般为几十个</td>
+<td>一般为上千个</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>第三，随着Docker技术的发展，很多已经被配置好的模板已经被上传到网络中。如之前谈到过的深度学习配置，只要把对应模板下载到本地，就可以在已经配置好的docker环境中，进一步工作了，极其方便。<br>基本上，比较常用的各类docker配置，都已经能够在<span class="exturl" data-url="aHR0cHM6Ly9odWIuZG9ja2VyLmNvbS8=" title="https://hub.docker.com/">Docker Hub<i class="fa fa-external-link"></i></span>上搜到。  </p>
+<h1 id="3-Docker概念"><a href="#3-Docker概念" class="headerlink" title="3. Docker概念"></a>3. Docker概念</h1><p>在Docker的语境下，存在三个基本概念：<code>镜像Image</code>,<code>容器Container</code>,<code>仓库Repository</code>。这三个概念共同组合成了Docker的整套运行体系。  </p>
+<h2 id="1-镜像Image"><a href="#1-镜像Image" class="headerlink" title="(1) 镜像Image"></a>(1) 镜像Image</h2><p>镜像本质上是一个特殊的文件系统，提供容器运行所必要的程序、配置和配置参数。<br>对于有面向对象编程基础的同学来说，可以简单地把镜像和容器的关系，理解为类和实例的关系。<br>镜像就如类一样，是对一个运行实例的静态定义。而容器则就是的的确确一个运行中的Docker环境。  </p>
+<h2 id="2-容器Container"><a href="#2-容器Container" class="headerlink" title="(2) 容器Container"></a>(2) 容器Container</h2><p>如上所述，容器就是一个实际运行的docker实例。<br>每一个容器有自己独立的操作系统、系统配置。这使得各个容器相互隔离，独立开来。也使得在容器中运行程序，比在自己操作系统上运行程序更加安全。<br>每一个镜像可以产生多个独立的容器，便于进行各个对照组的比较。<br>每个容器也能够把自己当前状态重新抽象为镜像。这相当与虚拟机中快照功能。便于将镜像分享给其他人进行重现，或者对比同一个容器不同时间的状态，又或者单纯做一个存储备份。  </p>
+<h2 id="3-仓库Repository"><a href="#3-仓库Repository" class="headerlink" title="(3) 仓库Repository"></a>(3) 仓库Repository</h2><p>有了镜像和容器后，本地就能很方便地使用docker了。<br>然而，为了达到之前说的，能够很方便地使用其他人已经配置好的环境，在此基础上进行二次开发，就还需要一个镜像的集中存储和分发网站。<br>这一类网站，可以被理解为镜像文件的github，专门用于镜像文件的存储和分发。<br>全球范围内，最常用的仓库是<span class="exturl" data-url="aHR0cHM6Ly9odWIuZG9ja2VyLmNvbS8=" title="https://hub.docker.com/">Docker Hub<i class="fa fa-external-link"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC5nb29nbGUuY29tL2NvbnRhaW5lci1yZWdpc3RyeS8=" title="https://cloud.google.com/container-registry/">google container registry<i class="fa fa-external-link"></i></span>等。然而，由于不可抗拒原因，国内访问这些服务可能会有问题。中国范围内，常用的有<span class="exturl" data-url="aHR0cHM6Ly9jLjE2My5jb20vaHViIy9tL2xpYnJhcnkv" title="https://c.163.com/hub#/m/library/">网易云镜像<i class="fa fa-external-link"></i></span>,<span class="exturl" data-url="aHR0cHM6Ly9jci5jb25zb2xlLmFsaXl1bi5jb20v" title="https://cr.console.aliyun.com/">阿里云镜像<i class="fa fa-external-link"></i></span>等。<br>Docker仓库中的文件，其固定格式往往为<code>&lt;仓库名&gt;:&lt;标签&gt;</code>。<code>&lt;仓库名&gt;</code>指定服务名称，<code>&lt;标签&gt;</code>指定服务版本。如<code>ubuntu:18.04</code>就是指18.04版本ubuntu的镜像。将其下载并实例化为容器后，就可以在容器中进行进一步的开发工作。  </p>
+<h1 id="4-Docker安装与配置"><a href="#4-Docker安装与配置" class="headerlink" title="4. Docker安装与配置"></a>4. Docker安装与配置</h1><h2 id="1-Docker安装"><a href="#1-Docker安装" class="headerlink" title="(1) Docker安装"></a>(1) Docker安装</h2><p>Docker官方已经将安装脚本打包，可以直接下载并安装，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">sudo sh get-docker.sh</span><br><span class="line">sudo systemctl enable docker</span><br><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-docker用户组配置"><a href="#2-docker用户组配置" class="headerlink" title="(2) docker用户组配置"></a>(2) docker用户组配置</h2><p>Docker服务默认只能由root用户以及docker用户组进行访问。因此，需要将需要使用Docker服务的用户，添加到docker用户组中。命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo groupadd docker               # 建立docker用户组</span><br><span class="line">sudo usermod -aG docker &lt;User ID&gt;  # 将用户添加到docker用户组</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-Docker安装验证"><a href="#3-Docker安装验证" class="headerlink" title="(3) Docker安装验证"></a>(3) Docker安装验证</h2><p>为了验证Docker是否安装成功，可运行内置的<code>hello-world</code>镜像，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure><br>若成功运行，则证明安装成功。  </p>
+<h1 id="5-Docker常用命令"><a href="#5-Docker常用命令" class="headerlink" title="5. Docker常用命令"></a>5. Docker常用命令</h1><h2 id="1-镜像相关命令"><a href="#1-镜像相关命令" class="headerlink" title="(1) 镜像相关命令"></a>(1) 镜像相关命令</h2><p>a. 从仓库Repository获取镜像<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull [Docker Registry 地址:端口号]&#x2F;] 仓库名[:标签]</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>[Docker Registry 地址:端口号]</code>。默认为Docker Hub</li>
+<li><code>仓库名</code>。指定所需要获取的镜像名称</li>
+<li><code>[:标签]</code>。默认为<code>latest</code>，即最新的镜像版本</li>
+</ul>
+<p>实例如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull ubuntu:18.04</span><br></pre></td></tr></table></figure></p>
+<p>b. 查看本地已有的镜像<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker image ls</span><br></pre></td></tr></table></figure><br>c. 删除本地镜像<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker image rm &lt;镜像ID&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-容器相关命令"><a href="#2-容器相关命令" class="headerlink" title="(2) 容器相关命令"></a>(2) 容器相关命令</h2><p>a. 根据镜像，新建并启动容器<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run &lt;镜像&gt;</span><br></pre></td></tr></table></figure><br>常见实例如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 根据镜像ubuntu:18.04新建容器，并将容器命名为myUbuntu。-d表示容器启动后在后台运行</span><br><span class="line">docker run --name myUbuntu ubuntu:18.04 -d</span><br><span class="line"></span><br><span class="line"># 根据镜像ubuntu:18.04新建容器。将容器的80端口映射到主机80端口。将主机的&#x2F;data目录，映射到容器的&#x2F;data目录。</span><br><span class="line">docker run -p 80:80 -v &#x2F;data:&#x2F;data ubuntu:18.04 -d</span><br><span class="line"></span><br><span class="line"># 根据镜像ubuntu:18.04新建容器。进入容器内bash终端。这与-d后台运行形成区别。-t表示为容器分配终端，-i表示让容器接收标准输入。</span><br><span class="line">docker run -it ubuntu:18.04 &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure></p>
+<p>b. 中止某容器运行<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker container stop &lt;container ID&gt;</span><br></pre></td></tr></table></figure></p>
+<p>c. 启动某容器运行<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 启动</span><br><span class="line">docker container start &lt;container ID&gt;</span><br><span class="line"></span><br><span class="line"># 重启：先中止再启动</span><br><span class="line">docker container restart &lt;container ID&gt;</span><br></pre></td></tr></table></figure></p>
+<p>d. 退出某容器<br>当执行命令<code>docker run -it ubuntu:18.04 /bin/bash</code>后，会进入container终端。<br>当需要退出container终端，返回主机服务器时，按住<code>ctrl + q + p</code>即可。</p>
+<p>e. 进入某容器<br>当退出某容器后，或运行<code>docker run --name myUbuntu ubuntu:18.04 -d</code>让容器后台运行后，若是需要重新进入容器终端，需要运行以下命令<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it &lt;container ID&gt; bash</span><br></pre></td></tr></table></figure></p>
+<p>f. 删除某容器<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker container rm  &lt;container ID&gt;</span><br></pre></td></tr></table></figure></p>
+<p>g. 列出当前所有容器<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker container ls</span><br></pre></td></tr></table></figure></p>
+<p>h. 将容器当前快照导出为镜像<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker export &lt;container ID&gt; &gt; &lt;image name&gt;</span><br></pre></td></tr></table></figure><br>实例如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">将ID为7691a814370e的容器，导出快照并命名为Myubuntu_v2.tar</span><br><span class="line">docker export 7691a814370e &gt; myUbuntu_v2.tar</span><br></pre></td></tr></table></figure></p>
+<p>i. 导入容器快照<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker import &lt;URL&gt; &lt;container name&gt;</span><br></pre></td></tr></table></figure><br>实例如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">从当前文件夹下导入myUbuntu_v2.tar，并重命名为myUbuntu_v3</span><br><span class="line">docker import  myUbuntu_v2.tar myUbuntu_v3</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-仓库相关命令"><a href="#3-仓库相关命令" class="headerlink" title="(3) 仓库相关命令"></a>(3) 仓库相关命令</h2><p>a. 访问Docker hub<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 登录</span><br><span class="line">docker login -u &lt;用户名&gt; -p &lt;密码&gt;</span><br><span class="line"></span><br><span class="line"># 登出</span><br><span class="line">docker logout</span><br></pre></td></tr></table></figure></p>
+<p>b. 搜索相应镜像<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker search &lt;image name&gt;</span><br></pre></td></tr></table></figure><br>实例如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 从Docker Hub查找所有镜像名包含java，并且收藏数大于10的镜像</span><br><span class="line">docker search -s 10 java</span><br></pre></td></tr></table></figure></p>
+<p>c. 将本地镜像，上传到仓库Docker Hub<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker push &lt;your docker hub username&gt;&#x2F;&lt;container&gt;</span><br></pre></td></tr></table></figure><br>实例如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker push yehan&#x2F;myUbuntu_v3</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>项目实践</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+        <tag>Linux</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>有道云笔记 vs 印象笔记</title>
+    <url>/2020/01/01/%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0-vs-%E5%8D%B0%E8%B1%A1%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>从2015年到如今，我使用有道云笔记也已经有5年了。不过其实重度使用，也只有近2年而已。<br>记得5年前，还是印象笔记最火的时候，网上捧印象笔记踩有道云笔记的言论不绝于耳。<br>在这样的情况下，我还是选择了有道云笔记，只有两个原因。<br>其一，免费，且免费力度直到现在为止也比印象笔记好很多。可以说，印象笔记不付费是没法好好用的，有道云笔记不付费也能用的很自然。<br>其二，UI。我一直对程序员们钟爱的dark系列无感，反而很喜欢有道云这样白色、扁平的UI设计。<br>然而，前几天一个偶然的原因，还是让我有了从有道云笔记迁移的想法。<br><a id="more"></a></p>
+<h1 id="2-迁移与对比"><a href="#2-迁移与对比" class="headerlink" title="2. 迁移与对比"></a>2. 迁移与对比</h1><p>事情的起因，是我很愚蠢地在一系列笔记中，都把2019打成了2018。我希望能够通过<code>替换</code>功能来修复这个问题，然而，这才发现，有道云笔记中，只有<code>查找</code>，没有<code>替换</code>。<br>在上网找解决方法的时候，发现也有人吐槽这个问题。进一步扩展开来，发现网友们吐槽有道云笔记的主要是两个方面：</p>
+<ul>
+<li>发生过笔记丢失现象，还不止一次。</li>
+<li>不开放公用导出接口，只能导出有道云笔记格式的本地文件。（我尝试过每三个月才能用一次的PDF导出，然而导出的笔记全是空白）</li>
+</ul>
+<p>由于我的笔记内容大多为日记，这引发了我深深的忧虑。第一点笔记丢失现象，让我开始为自己笔记的安全性开始担心。第二点不开放导出接口，用有道云笔记产生的笔记只能用有道云笔记打开，提高迁移成本。除非能下定决心放弃之前的内容，否则很难做出迁移的决定。  </p>
+<p>然而，虽然理性上我能理解这种商业模式的合理之处，感性上却很不爽，特别是针对日记这种内容，个人觉得应该是完全私有并且自由的。如果规定只能用有道云笔记打开，那有一天这个软件倒闭了，那我的日记不也就全部作废了吗？也因此，我做出了迁移的决定。</p>
+<p>一篇篇手动迁移真的心累，花了我一个下午，然而，在迁移到印象笔记之后，在我尝试进行新的笔记创作时，我才惊讶地发现，印象笔记竟然有如此多的功能不足。虽然印象笔记比有道云笔记多了一个<code>替换</code>的功能，但也缺少了很多有道云笔记拥有的功能，用起来很不方便，具体如下</p>
+<ul>
+<li>免费版印象笔记只支持两台设备，不满足<code>主机+笔记本+手机</code>的配置。</li>
+<li>没有多级目录。不过通过标签也可勉强解决问题。<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC85NTcwMzBiNjU5Nzg=" title="https://www.jianshu.com/p/957030b65978">标签与层级之争<i class="fa fa-external-link"></i></span>。</li>
+<li>没有格式刷</li>
+<li>没有笔记内容历史记录</li>
+<li>文本高亮只有一种颜色，不支持多种颜色高亮。</li>
+</ul>
+<h1 id="3-现状"><a href="#3-现状" class="headerlink" title="3. 现状"></a>3. 现状</h1><p>最终，我选择的解决方案是同时使用两款笔记，各取所长。<br>有道云笔记因为其完善的编辑功能，成为我笔记创作的首选，主要的笔记创作都集中在这款软件上。<br>印象笔记由于其安全和支持通用格式导出的特性，成为我笔记存储的首选。在有道云笔记完成一份笔记的创作后，我会将笔记全部内容剪切到印象笔记中进行存储。<br>希望两家笔记越来越好，特别是印象笔记。若是能够将功能完善，付费支持也可啊。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>有道云笔记</tag>
+        <tag>印象笔记</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mac下的软件推荐</title>
     <url>/2019/12/30/Mac%E4%B8%8B%E7%9A%84%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
     <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>由于系统崩溃，花了两天重新安装Mac系统。<br>重新装完系统之后还需要安装软件，这里顺便推荐几个比较好用的软件。  </p>
@@ -53,6 +827,13 @@
 <h1 id="2-解决方法一：文件头部加入bom"><a href="#2-解决方法一：文件头部加入bom" class="headerlink" title="2. 解决方法一：文件头部加入bom"></a>2. 解决方法一：文件头部加入bom</h1><p>可通过NotePad++等文本编辑器，将CSV文件另存为有bom头部的形式。<br>此时再用Excel读取，即可解决UTF-8编码下的中文乱码问题。  </p>
 <h1 id="3-解决方法一：从excel导入文件"><a href="#3-解决方法一：从excel导入文件" class="headerlink" title="3. 解决方法一：从excel导入文件"></a>3. 解决方法一：从excel导入文件</h1><p>先打开Excel。随后执行“数据 -&gt; 自文本 -&gt; 分隔符号选择逗号 -&gt; 完成导入”。<br>以这种方式，同样可解决中文乱码问题。</p>
 ]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Excel</tag>
+        <tag>乱码</tag>
+      </tags>
   </entry>
   <entry>
     <title>conda配置多python环境</title>
@@ -68,6 +849,8 @@
       <tags>
         <tag>配置</tag>
         <tag>Linux</tag>
+        <tag>Conda</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -87,6 +870,8 @@
       </categories>
       <tags>
         <tag>配置</tag>
+        <tag>Windows</tag>
+        <tag>CentOS</tag>
       </tags>
   </entry>
   <entry>
@@ -99,8 +884,12 @@
 <h2 id="2-调整安全选择设置"><a href="#2-调整安全选择设置" class="headerlink" title="(2) 调整安全选择设置"></a>(2) 调整安全选择设置</h2><p>Perferance -&gt; 安全性与隐私 -&gt; anywhere</p>
 <h2 id="3-安装软件"><a href="#3-安装软件" class="headerlink" title="(3) 安装软件"></a>(3) 安装软件</h2><p>安装之后，重新开启内核保护之前，需打开软件一次。</p>
 <h2 id="4-重新开启内核保护"><a href="#4-重新开启内核保护" class="headerlink" title="(4)重新开启内核保护"></a>(4)重新开启内核保护</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo spctl --master-enable</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
       <tags>
         <tag>Mac</tag>
+        <tag>破解</tag>
       </tags>
   </entry>
   <entry>
@@ -108,6 +897,9 @@
     <url>/2019/12/30/Mac%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h1 id="批量创建文件夹"><a href="#批量创建文件夹" class="headerlink" title="批量创建文件夹"></a>批量创建文件夹</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir Lecture&#123;01..09&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
       <tags>
         <tag>Mac</tag>
       </tags>
@@ -140,6 +932,14 @@
 <h3 id="豆瓣资源下载大师：1秒搞定豆瓣电影-音乐-图书下载"><a href="#豆瓣资源下载大师：1秒搞定豆瓣电影-音乐-图书下载" class="headerlink" title="豆瓣资源下载大师：1秒搞定豆瓣电影|音乐|图书下载"></a>豆瓣资源下载大师：1秒搞定豆瓣电影|音乐|图书下载</h3><p>在豆瓣电影|音乐|图书的具体页面右侧，显示全网能够找到的下载链接。（含直链|FTP|BT|磁力|ED2K|NZB|迅雷|百度盘|115盘等）<br>省了自己一个个搜索下载链接的功夫，直接在页面右侧点击对应下载链接即可。  </p>
 <h2 id="5-其他"><a href="#5-其他" class="headerlink" title="(5) 其他"></a>(5) 其他</h2><h3 id="破解VIP会员视频集合"><a href="#破解VIP会员视频集合" class="headerlink" title="破解VIP会员视频集合"></a>破解VIP会员视频集合</h3><p>VIP会员破解，适用于爱奇艺，优酷等多个平台。<br>可以实现VIP会员视频的免费观看。  </p>
 ]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Chrome</tag>
+        <tag>扩展</tag>
+        <tag>脚本</tag>
+      </tags>
   </entry>
   <entry>
     <title>Linux备份方法</title>
@@ -158,6 +958,9 @@
 <li>-exlude： 不备份的目录，包括“/proc”、“/lost+ found”、“/sys”、“/mnt”和“backup.gz”自身</li>
 </ul>
 <h2 id="（3）备份恢复"><a href="#（3）备份恢复" class="headerlink" title="（3）备份恢复"></a>（3）备份恢复</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar xvpfz backup.tgz -C &#x2F;</span><br><span class="line"># mkdir proc</span><br><span class="line"># mkdir lost+found</span><br><span class="line"># mkdir mnt</span><br><span class="line"># mkdir sys</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
       <tags>
         <tag>Linux</tag>
         <tag>备份</tag>
@@ -247,6 +1050,7 @@
         <category>杂项</category>
       </categories>
       <tags>
+        <tag>Chrome</tag>
         <tag>插件</tag>
         <tag>Vimium</tag>
       </tags>
@@ -265,6 +1069,12 @@
       <categories>
         <category>杂项</category>
       </categories>
+      <tags>
+        <tag>Synergy</tag>
+        <tag>mouth without borders</tag>
+        <tag>Smart KM Link</tag>
+        <tag>KVM转换器</tag>
+      </tags>
   </entry>
   <entry>
     <title>ubuntu下利用openconnect科学上网</title>
@@ -276,9 +1086,13 @@
 <p>回车键后，按照提示输入密码即可。  </p>
 <h1 id="四、配置文件"><a href="#四、配置文件" class="headerlink" title="四、配置文件"></a>四、配置文件</h1><p>为了避免每次登陆都要输入ip、账号、密码的麻烦，也可直接修改配置文件。<br>存储配置文件后，每次openconnect启动，会直接按照配置文件中的参数运行。  </p>
 ]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
       <tags>
         <tag>科学上网</tag>
         <tag>openconnect</tag>
+        <tag>ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -329,8 +1143,8 @@
         <category>杂项</category>
       </categories>
       <tags>
-        <tag>R</tag>
         <tag>乱码</tag>
+        <tag>R</tag>
       </tags>
   </entry>
   <entry>
@@ -448,7 +1262,7 @@
 <h2 id="3-存在问题-1"><a href="#3-存在问题-1" class="headerlink" title="3. 存在问题"></a>3. 存在问题</h2><p>然而，由于Hexo admin是个人维护的，已经几年未更新了，所以仍然存在着一些使用上的问题。</p>
 <h3 id="1-安装时错误"><a href="#1-安装时错误" class="headerlink" title="(1) 安装时错误"></a>(1) 安装时错误</h3><p>在Hexo admin安装时，会出现包安装错误提示，这是由于其依赖的包很多已经过时了。<br>不过，目前来说，还不影响Hexo admin的正常使用，忽略即可。</p>
 <h3 id="2-图片插入问题"><a href="#2-图片插入问题" class="headerlink" title="(2) 图片插入问题"></a>(2) 图片插入问题</h3><p>Hexo admin可以直接复制图片，然而由于bug原因，在插入图片时其前后会各自多加一个斜杠，导致链接错误。<br>为了图片能够正常显示，我们需要手动在前后各删除一个斜杠，有些不太方便。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">E:\image                             # 原始图片位置</span><br><span class="line">![upload successful](\\images\pasted-3.png\)     # 直接向Hexo admin中粘贴图片，图片会被自动上传到路径&lt;hexo folder&gt;\images，并且图片会被自动命名。然而由于路径错误，图片无法正常显示。</span><br><span class="line">![upload successful](\images\pasted-3.png)       # 前后手动各删除一个斜杠后，图片可正常显示</span><br></pre></td></tr></table></figure></p>
-<h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><p>Hexo博客的可视化编辑，Mweb是最好用的，然而其只支持Mac独占平台。<br>在Windows平台，可使用Hexo admin实现基本的可视化编辑。然而由于其长久不更新，功能显得先对基本，且存在一定bug需要手动修复弥补。<br>此外，Sublime加第三方插件也可满足需要。然而，其针对MD的第三方插件繁多，想要找到功能不覆盖影响，且搭配合理的插件组合相对麻烦。而且，针对图片管理没有很好地解决方案。</p>
+<h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><p>Hexo博客的可视化编辑，Mweb是最好用的，然而其只支持Mac独占平台。<br>在Windows平台，可使用Hexo admin实现基本的可视化编辑。然而由于其长久不更新，功能显得先对基本，且存在一定bug需要手动修复弥补。Hexo admin虽然支持图片插入，但图片的存储管理是本地化的，相比于Mweb的云端图床，还是略逊一筹。<br>此外，Sublime加第三方插件也可满足需要。然而，其针对MD的第三方插件繁多，想要找到功能不覆盖影响，且搭配合理的插件组合相对麻烦。而且，针对图片管理没有很好地解决方案。</p>
 ]]></content>
       <categories>
         <category>项目实践</category>
@@ -456,6 +1270,9 @@
       <tags>
         <tag>hexo</tag>
         <tag>博客</tag>
+        <tag>Mweb</tag>
+        <tag>Sublime</tag>
+        <tag>Hexo admin</tag>
       </tags>
   </entry>
   <entry>
@@ -479,6 +1296,7 @@
 <h3 id="3-主题配置文件"><a href="#3-主题配置文件" class="headerlink" title="(3) 主题配置文件"></a>(3) 主题配置文件</h3><p>修改<code>主题配置文件</code>如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure></p>
 <h2 id="2-数学公式支持"><a href="#2-数学公式支持" class="headerlink" title="2. 数学公式支持"></a>2. 数学公式支持</h2><h3 id="1-主题配置文件"><a href="#1-主题配置文件" class="headerlink" title="(1) 主题配置文件"></a>(1) 主题配置文件</h3><p>next主题支持两种数学渲染引擎，<code>mathjax</code>和<code>katex</code>。<br>由于Latex是最常用的数学排版系统，而mathjax集成了Latex，所以这里开启<code>mathjax</code>，配置如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">math:</span><br><span class="line">  mathjax:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure></p>
 <h3 id="2-插件安装"><a href="#2-插件安装" class="headerlink" title="(2) 插件安装"></a>(2) 插件安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &lt;hexo folder&gt;</span><br><span class="line">npm un hexo-renderer-marked</span><br><span class="line">npm i hexo-renderer-kramed # or hexo-renderer-pandoc</span><br></pre></td></tr></table></figure>
+<h3 id="3-博客内容修改"><a href="#3-博客内容修改" class="headerlink" title="(3) 博客内容修改"></a>(3) 博客内容修改</h3><p>由于数学公式渲染相当消耗资源，所以默认不会给每一篇博客都进行渲染。要开启某一篇博客的数学渲染，需要手动在Front-matter中生命，形式如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &lt;your blog title&gt;</span><br><span class="line">date: &lt;date&gt;</span><br><span class="line">tags:</span><br><span class="line">categories: </span><br><span class="line">mathjax: true</span><br><span class="line">--</span><br></pre></td></tr></table></figure></p>
 <h2 id="3-博客评论支持"><a href="#3-博客评论支持" class="headerlink" title="3. 博客评论支持"></a>3. 博客评论支持</h2><p>next支持多种第三方评论插件，此处选择最流行的Disqus。</p>
 <h3 id="1-Disqus配置"><a href="#1-Disqus配置" class="headerlink" title="(1) Disqus配置"></a>(1) Disqus配置</h3><p>首先，注册并登陆<span class="exturl" data-url="aHR0cHM6Ly9kaXNxdXMuY29tLw==" title="https://disqus.com/">Disqus<i class="fa fa-external-link"></i></span><br>其次，按照<code>get started -&gt; I want to install Disqus on my site</code>导航，填写必要信息。重点是记住<code>Website Name</code>。计划选择Basic免费版，platform选择”I don’t see my platform listed, install manually with Universal Code”，然后完成设置。</p>
 <h3 id="2-主题配置文件"><a href="#2-主题配置文件" class="headerlink" title="(2) 主题配置文件"></a>(2) 主题配置文件</h3><p>在<code>主题配置文件</code>中，打开Disqus<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">comments:</span><br><span class="line">  active: disqus</span><br><span class="line"></span><br><span class="line">disqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname: &lt;your Website Name&gt;</span><br><span class="line">  count: true</span><br></pre></td></tr></table></figure></p>
@@ -549,6 +1367,7 @@
       <tags>
         <tag>hexo</tag>
         <tag>博客</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
