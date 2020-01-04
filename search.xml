@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Khan系列（九）：完结总结</title>
+    <url>/2020/01/04/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E5%AE%8C%E7%BB%93%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>截至此章节，基本数学部分已经结束。<br>Khan还剩下的章节为</p>
+<ul>
+<li>统计学部分：包括<code>statictics and probability</code> 和 <code>high school statistics</code>。</li>
+<li>微积分部分：包括<code>precalculus</code>, <code>differential calculus</code>, <code>integral calculus</code>, <code>multivariable calculus</code>, <code>differential equations</code>。</li>
+<li>线性代数部分：<code>linear algebra</code>。</li>
+</ul>
+<p>如之前所言，由于考虑到时间限制，以上三个部分不再以Khan academy为主要学习资源，而是会通过其他途径学习，从而尽快补足数学基础。  </p>
+<p>下面对于之前整个系列的内容，做简单的知识结构梳理。<br> <a id="more"></a></p>
+<h1 id="2-知识点总结"><a href="#2-知识点总结" class="headerlink" title="2. 知识点总结"></a>2. 知识点总结</h1><h2 id="1-代数"><a href="#1-代数" class="headerlink" title="(1) 代数"></a>(1) 代数</h2><p><img src="\images\pasted-87.png" alt="upload successful"></p>
+<h2 id="2-运算"><a href="#2-运算" class="headerlink" title="(2) 运算"></a>(2) 运算</h2><p><img src="\images\pasted-88.png" alt="upload successful"></p>
+<h2 id="3-表达式、等式、函数"><a href="#3-表达式、等式、函数" class="headerlink" title="(3) 表达式、等式、函数"></a>(3) 表达式、等式、函数</h2><p><img src="\images\pasted-89.png" alt="upload successful"></p>
+<p><img src="\images\pasted-90.png" alt="upload successful"></p>
+<h2 id="4-几何与解析几何"><a href="#4-几何与解析几何" class="headerlink" title="(4) 几何与解析几何"></a>(4) 几何与解析几何</h2><p><img src="\images\pasted-91.png" alt="upload successful"></p>
+<p><img src="\images\pasted-92.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Khan</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Khan系列（八）：代数II</title>
     <url>/2020/01/04/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E5%85%AB%EF%BC%89%EF%BC%9A%E4%BB%A3%E6%95%B0II/</url>
     <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>这是Khan系列的第八章节，这部分讲Algebra II代数II。<br> <a id="more"></a></p>
@@ -18,13 +44,6 @@
 <p><img src="\images\pasted-85.png" alt="upload successful"></p>
 <p><img src="\images\pasted-86.png" alt="upload successful"></p>
 <h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>这部分内容较多较杂。总体来说，感觉Khan最开始的几章是内容组织最清晰的。而从Algebra I开始，由于内容开始变多变杂，而且相互之间有所交织，后续的几个章节就开始显得有些散乱了。  </p>
-<p>截至此章节，基本数学部分已经结束。<br>Khan还剩下的章节为</p>
-<ul>
-<li>统计学部分：包括<code>statictics and probability</code> 和 <code>high school statistics</code>。</li>
-<li>微积分部分：包括<code>precalculus</code>, <code>differential calculus</code>, <code>integral calculus</code>, <code>multivariable calculus</code>, <code>differential equations</code>。</li>
-<li>线性代数部分：<code>linear algebra</code>。</li>
-</ul>
-<p>如之前所言，由于考虑到时间限制，以上三个部分不再以Khan academy为主要学习资源，而是会通过其他途径学习，从而尽快补足数学基础。 </p>
 ]]></content>
       <categories>
         <category>学习笔记</category>
