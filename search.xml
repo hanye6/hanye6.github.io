@@ -1,6 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Khan系列（七）：高中几何</title>
+    <url>/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E9%AB%98%E4%B8%AD%E5%87%A0%E4%BD%95/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>这是Khan系列的第七章节，这部分讲High school geometry高中几何。<br>这部分内容与Basic Geometry基本几何，有重叠部分。重叠部分不再详述。<br><a id="more"></a></p>
+<h1 id="2-笔记"><a href="#2-笔记" class="headerlink" title="2. 笔记"></a>2. 笔记</h1><h2 id="1-几何基础"><a href="#1-几何基础" class="headerlink" title="(1) 几何基础"></a>(1) 几何基础</h2><p><img src="\images\pasted-65.png" alt="upload successful"></p>
+<h2 id="2-变形、全等、相似"><a href="#2-变形、全等、相似" class="headerlink" title="(2) 变形、全等、相似"></a>(2) 变形、全等、相似</h2><p><img src="\images\pasted-66.png" alt="upload successful"></p>
+<h2 id="3-直角三角形"><a href="#3-直角三角形" class="headerlink" title="(3) 直角三角形"></a>(3) 直角三角形</h2><p><img src="\images\pasted-67.png" alt="upload successful"></p>
+<h2 id="4-立体几何"><a href="#4-立体几何" class="headerlink" title="(4) 立体几何"></a>(4) 立体几何</h2><p><img src="\images\pasted-68.png" alt="upload successful"></p>
+<h2 id="5-解析几何"><a href="#5-解析几何" class="headerlink" title="(5) 解析几何"></a>(5) 解析几何</h2><p><img src="\images\pasted-69.png" alt="upload successful"></p>
+<h2 id="6-圆"><a href="#6-圆" class="headerlink" title="(6) 圆"></a>(6) 圆</h2><p><img src="\images\pasted-70.png" alt="upload successful"></p>
+<p><img src="\images\pasted-71.png" alt="upload successful"></p>
+<p><img src="\images\pasted-72.png" alt="upload successful"></p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>第一，Law of sin and law of cos可以被视为勾股定理的推广。<br>勾股定理只使用于直角三角形，探索边与角之间的关系。Law of sin and law of cos适用于任何三角形，探索边与角之间的关系。  </p>
+<p>第二，这章主要讲二维和三维的图形，与图形之间的几何特征与关系。<br>从这章的内容安排上可以看出，二维中主要以三角形和圆形为主。很多其他图形问题，都可以转化为三角形问题和圆形问题。  </p>
+<p>第三，数形结合，其实专业名词就叫做解析几何。<br>纯代数研究数、计算、方程等问题，纯几何研究图形的特征与关系。解析几何指的是坐标系下的几何研究，通<br>过将点在坐标系下化为坐标，将线与图形在坐标系下转化为方程的方式，解析几何将几何与代数联系在了一<br>起，实现了真正的数形结合。<br>如此想来，空间坐标系的发明，远比我想象得要重要和有意义得多。  </p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Khan</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Khan系列（六）：代数I</title>
+    <url>/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E4%BB%A3%E6%95%B0I/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>这是Khan系列的第六章节，这部分讲Algebra I代数第一章。<br><a id="more"></a></p>
+<h1 id="2-笔记"><a href="#2-笔记" class="headerlink" title="2. 笔记"></a>2. 笔记</h1><h2 id="1-变量与表达式"><a href="#1-变量与表达式" class="headerlink" title="(1) 变量与表达式"></a>(1) 变量与表达式</h2><p><img src="\images\pasted-50.png" alt="upload successful"></p>
+<h2 id="2-等式求解"><a href="#2-等式求解" class="headerlink" title="(2) 等式求解"></a>(2) 等式求解</h2><p><img src="\images\pasted-51.png" alt="upload successful"></p>
+<h2 id="3-不等式求解"><a href="#3-不等式求解" class="headerlink" title="(3) 不等式求解"></a>(3) 不等式求解</h2><p><img src="\images\pasted-52.png" alt="upload successful"></p>
+<h2 id="4-单位"><a href="#4-单位" class="headerlink" title="(4) 单位"></a>(4) 单位</h2><p><img src="\images\pasted-53.png" alt="upload successful"></p>
+<h2 id="5-直线方程与图像"><a href="#5-直线方程与图像" class="headerlink" title="(5) 直线方程与图像"></a>(5) 直线方程与图像</h2><p><img src="\images\pasted-54.png" alt="upload successful"></p>
+<h2 id="6-函数"><a href="#6-函数" class="headerlink" title="(6) 函数"></a>(6) 函数</h2><p><img src="\images\pasted-55.png" alt="upload successful"></p>
+<h2 id="7-数列"><a href="#7-数列" class="headerlink" title="(7) 数列"></a>(7) 数列</h2><p><img src="\images\pasted-56.png" alt="upload successful"></p>
+<h2 id="8-方程组、不等方程组与图像"><a href="#8-方程组、不等方程组与图像" class="headerlink" title="(8) 方程组、不等方程组与图像"></a>(8) 方程组、不等方程组与图像</h2><p><img src="\images\pasted-57.png" alt="upload successful"></p>
+<h2 id="9-绝对值和分段函数"><a href="#9-绝对值和分段函数" class="headerlink" title="(9) 绝对值和分段函数"></a>(9) 绝对值和分段函数</h2><p><img src="\images\pasted-58.png" alt="upload successful"></p>
+<h2 id="10-有理指数与根式"><a href="#10-有理指数与根式" class="headerlink" title="(10) 有理指数与根式"></a>(10) 有理指数与根式</h2><p><img src="\images\pasted-59.png" alt="upload successful"></p>
+<h2 id="11-指数增长与下降"><a href="#11-指数增长与下降" class="headerlink" title="(11) 指数增长与下降"></a>(11) 指数增长与下降</h2><p><img src="\images\pasted-60.png" alt="upload successful"></p>
+<h2 id="12-多项式与因式分解"><a href="#12-多项式与因式分解" class="headerlink" title="(12) 多项式与因式分解"></a>(12) 多项式与因式分解</h2><p><img src="\images\pasted-62.png" alt="upload successful"></p>
+<h2 id="13-二次方程"><a href="#13-二次方程" class="headerlink" title="(13) 二次方程"></a>(13) 二次方程</h2><p><img src="\images\pasted-63.png" alt="upload successful"></p>
+<h2 id="14-无理数"><a href="#14-无理数" class="headerlink" title="(14) 无理数"></a>(14) 无理数</h2><p><img src="\images\pasted-64.png" alt="upload successful"></p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>第一，数列是函数，这一点启发很大。所谓离散和连续，只不过是定义域的不同。离散函数的定义域为整数集合，连续函数的定义域为实数域。等差数列其实就是直线函数取整数点集合，等比数列其实就是指数函数取整数点集合。  </p>
+<p>第二，对数形结合有了更深刻的认识。<br>数形结合的正确思路应该是：</p>
+<ul>
+<li>第一步从常见图形（如直线、抛物线）出发，写出方程并研究方程性质。</li>
+<li>第二步从方程出发，对方程进行拓展，并试图还原拓展后方程的图形模样。</li>
+</ul>
+<p>整个过程是循环往复的，这和我一开始所想象的一次性转换有所不同。  </p>
+<p>第三，是用基础图像的组合来拟合复杂图像的思路。<br>所谓基础函数，基础图像就是常见的。而复杂函数复杂图像则是不常见的。<br>因为我们把基础函数和基础图像都研究得很清楚了，所以在研究复杂函数和复杂图形时，往往倾向于将其近似为基础函数、基础图像的组合。如此可以直接应用许多研究好的性质，而不需要全部从头论证。<br>其实这个思路在代数上也是类似的，比如泰勒级数，就是用基础代数来拟合复杂代数。  </p>
+<p>总而言之，这一章内容非常丰富，但知识点之间的相互联系没有之前那么紧密和明显了，也许需要结合Algebra II一起看，才能较好地梳理出整个知识架构。  </p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Khan</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Khan系列（五）：代数基础</title>
+    <url>/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>这是Khan系列的第五章节，这部分讲Algebra Basic代数基础。<br>这部分很多内容和第四章Pre-Algebra有所重复，就不再赘述。<br><a id="more"></a></p>
+<h1 id="2-笔记"><a href="#2-笔记" class="headerlink" title="2. 笔记"></a>2. 笔记</h1><h2 id="1-基础、代数表达式、线性等式和不等式、指数与科学计数法"><a href="#1-基础、代数表达式、线性等式和不等式、指数与科学计数法" class="headerlink" title="(1) 基础、代数表达式、线性等式和不等式、指数与科学计数法"></a>(1) 基础、代数表达式、线性等式和不等式、指数与科学计数法</h2><p><img src="\images\pasted-45.png" alt="upload successful"></p>
+<h2 id="2-数形结合：直角坐标系下的直线方程"><a href="#2-数形结合：直角坐标系下的直线方程" class="headerlink" title="(2) 数形结合：直角坐标系下的直线方程"></a>(2) 数形结合：直角坐标系下的直线方程</h2><p><img src="\images\pasted-43.png" alt="upload successful"></p>
+<h2 id="3-二元一次方程组"><a href="#3-二元一次方程组" class="headerlink" title="(3) 二元一次方程组"></a>(3) 二元一次方程组</h2><p><img src="\images\pasted-46.png" alt="upload successful"></p>
+<h2 id="4-二次方和多项式"><a href="#4-二次方和多项式" class="headerlink" title="(4) 二次方和多项式"></a>(4) 二次方和多项式</h2><p><img src="\images\pasted-47.png" alt="upload successful"></p>
+<p><img src="\images\pasted-48.png" alt="upload successful"></p>
+<h2 id="5-方程与几何"><a href="#5-方程与几何" class="headerlink" title="(5) 方程与几何"></a>(5) 方程与几何</h2><p><img src="\images\pasted-49.png" alt="upload successful"></p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>Algebra Basic是对Pre-Algebra的补充，添加了一下内容：  </p>
+<ul>
+<li>不等式的运算</li>
+<li>直线的方程与求解</li>
+<li>二次方程的因式分解</li>
+<li>三角形的全等于相似</li>
+</ul>
+<p>就现有的知识点来看，概念和运算方法都很原始。不过对我最有启发的是数形结合部分。即不同纬度物体的代数方程式与相应解决方法。这对应着实际问题的建模与解决方案，Khan讲得非常透彻。  </p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Khan</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Khan系列（四）：预备代数</title>
+    <url>/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E9%A2%84%E5%A4%87%E4%BB%A3%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>这是Khan系列的第四章节，这部分讲Pre-Algebra预备代数。<br><a id="more"></a></p>
+<h1 id="2-笔记"><a href="#2-笔记" class="headerlink" title="2. 笔记"></a>2. 笔记</h1><h2 id="1-算数属性"><a href="#1-算数属性" class="headerlink" title="(1) 算数属性"></a>(1) 算数属性</h2><p><img src="\images\pasted-33.png" alt="upload successful"></p>
+<h2 id="2-因子与乘积"><a href="#2-因子与乘积" class="headerlink" title="(2) 因子与乘积"></a>(2) 因子与乘积</h2><p><img src="\images\pasted-34.png" alt="upload successful"></p>
+<h2 id="3-图表"><a href="#3-图表" class="headerlink" title="(3) 图表"></a>(3) 图表</h2><p><img src="\images\pasted-35.png" alt="upload successful"></p>
+<h2 id="4-几何"><a href="#4-几何" class="headerlink" title="(4) 几何"></a>(4) 几何</h2><p><img src="\images\pasted-36.png" alt="upload successful"></p>
+<h2 id="5-分数与小数"><a href="#5-分数与小数" class="headerlink" title="(5) 分数与小数"></a>(5) 分数与小数</h2><p><img src="\images\pasted-37.png" alt="upload successful"></p>
+<h2 id="6-负数与坐标轴"><a href="#6-负数与坐标轴" class="headerlink" title="(6) 负数与坐标轴"></a>(6) 负数与坐标轴</h2><p><img src="\images\pasted-38.png" alt="upload successful"></p>
+<h2 id="7-比、比率、比例"><a href="#7-比、比率、比例" class="headerlink" title="(7) 比、比率、比例"></a>(7) 比、比率、比例</h2><p><img src="\images\pasted-39.png" alt="upload successful"></p>
+<h2 id="8-方程、表达式、不等式"><a href="#8-方程、表达式、不等式" class="headerlink" title="(8) 方程、表达式、不等式"></a>(8) 方程、表达式、不等式</h2><p><img src="\images\pasted-40.png" alt="upload successful"></p>
+<h2 id="9-指数、激进分子、科学计数法"><a href="#9-指数、激进分子、科学计数法" class="headerlink" title="(9) 指数、激进分子、科学计数法"></a>(9) 指数、激进分子、科学计数法</h2><p><img src="\images\pasted-41.png" alt="upload successful"></p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>这部分主要讲Algebra的基础部分，但之前Arithmetic和Basic Geometry在这里都有涉猎，是对之前内容的进<br>一步探索。<br>倒是没有出现我预想的，重复学习的情况。之前学习过的内容，即使在新的subject中重新出现，也会直接显<br>示已学习。<br>知识体系更加庞大了一些，估计下两章Algebra Ⅰ和Ⅱ也是继续对现有知识体系的拓展，这样的循序渐进的知<br>识路径很不错。  </p>
+<p>这一章主要围绕三个点在讲。<br>第一是数。包括正数与负数、有理数和无理数、正数与小数/分数/百分数、质数（素数）与合数、科学计数<br>等。<br>第二是运算。包括加减、乘除、指数与开放，以及其运算顺序。<br>第三是方程。包括比率、方程、不等方程、因变量与自变量、方程的解等。<br>其他涉及到的概念还有因式分解、图表、几何等。  </p>
+<p>值得注意的是，这一章中对于图只进行了简单的介绍。但在介绍过程中，更多的在讲intuition。从而导致课 程中提到的图，不太符合严格定义的标准，如直方图。<br>从图表这部分内容更像是数轴，坐标系的拓展。是一种对数据集的描述性统计，用于帮助对数据集的理解。 </p>
+<p>虽然知识和内容还是相对简单，不过过这么一遍，熟悉了很多数学术语的英文表达，为以后看英文的教程和资料打下一定基础。  </p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Khan</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Khan系列（三）：基本几何</title>
+    <url>/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%87%A0%E4%BD%95/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>这是Khan系列的第三章节，这部分讲Basic Geometry基本几何。<br><a id="more"></a></p>
+<h1 id="2-笔记"><a href="#2-笔记" class="headerlink" title="2. 笔记"></a>2. 笔记</h1><h2 id="1-线"><a href="#1-线" class="headerlink" title="(1) 线"></a>(1) 线</h2><p><img src="\images\pasted-24.png" alt="upload successful"></p>
+<h2 id="2-角度"><a href="#2-角度" class="headerlink" title="(2) 角度"></a>(2) 角度</h2><p><img src="\images\pasted-25.png" alt="upload successful"></p>
+<h2 id="3-形状"><a href="#3-形状" class="headerlink" title="(3) 形状"></a>(3) 形状</h2><p><img src="\images\pasted-26.png" alt="upload successful"></p>
+<h2 id="4-坐标平面"><a href="#4-坐标平面" class="headerlink" title="(4) 坐标平面"></a>(4) 坐标平面</h2><p><img src="\images\pasted-27.png" alt="upload successful"></p>
+<h2 id="5-面积与周长"><a href="#5-面积与周长" class="headerlink" title="(5) 面积与周长"></a>(5) 面积与周长</h2><p><img src="\images\pasted-28.png" alt="upload successful"></p>
+<h2 id="6-体积与表面积"><a href="#6-体积与表面积" class="headerlink" title="(6) 体积与表面积"></a>(6) 体积与表面积</h2><p><img src="\images\pasted-29.png" alt="upload successful"></p>
+<h2 id="7-毕达哥拉斯定理（勾股定理）"><a href="#7-毕达哥拉斯定理（勾股定理）" class="headerlink" title="(7) 毕达哥拉斯定理（勾股定理）"></a>(7) 毕达哥拉斯定理（勾股定理）</h2><p><img src="\images\pasted-31.png" alt="upload successful"></p>
+<h2 id="8-变形、全等与相似"><a href="#8-变形、全等与相似" class="headerlink" title="(8) 变形、全等与相似"></a>(8) 变形、全等与相似</h2><p><img src="\images\pasted-32.png" alt="upload successful"></p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>从这部分开始，内容逐渐开始变多了。<br>从引入坐标系开始，数形结合的思想开始初见端倪。有了坐标系，即可把代数的公式，转化为坐标系内的图形。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Khan</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Khan系列（二）：基本算数</title>
+    <url>/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%AE%97%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>这是Khan系列的第二章节，这部分讲Arithmetic基本算术。<br><a id="more"></a></p>
+<h1 id="2-笔记"><a href="#2-笔记" class="headerlink" title="2. 笔记"></a>2. 笔记</h1><ul>
+<li>概念<ul>
+<li>正数与负数</li>
+<li>分数: equally divide pieces</li>
+<li>小数：place value that represent fraction (1/10, 1/100 …)</li>
+</ul>
+</li>
+<li>运算<ul>
+<li>比较大小</li>
+<li>加减：break and regroup</li>
+<li>乘除：equal groups of</li>
+</ul>
+</li>
+<li>理解工具<ul>
+<li>数轴</li>
+<li>矩形分块：group and regroup</li>
+<li>place value</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><ul>
+<li>课程本身的体系架构非常清晰，以分章节的形式安排内容，并附加练习。</li>
+<li>概念理解的清晰程度令人赞叹。不是纯粹的应用型，每一个新的概念都是基于原有内容的推导，理解起来十<br>分清晰直观。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Khan</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Khan系列（一）：早期数学</title>
+    <url>/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E6%97%A9%E6%9C%9F%E6%95%B0%E5%AD%A6/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>原定计划是在<span class="exturl" data-url="aHR0cHM6Ly93d3cua2hhbmFjYWRlbXkub3JnLw==" title="https://www.khanacademy.org/">Khan Academy<i class="fa fa-external-link"></i></span>上，从最基础的Early Math，一直学到头，补完微积分和线性代数。<br>然而，我显然高估了自己的空余时间和效率。最后的结果是，在Khan Academy上补完了高中数学之前的所有内容，后续的微积分、线性代数等内容是通过其他学习途径补完的。<br><a id="more"></a><br>学习一圈体验下来，Khan的讲解感觉是最仔细的，辅以习题，可以将知识点掌握得很牢固。不过相应，也更耗时。<br>这里记录一下Khan Academy上，高中数学之前的学习笔记。就从第一章Early Math开始。  </p>
+<h1 id="2-笔记"><a href="#2-笔记" class="headerlink" title="2. 笔记"></a>2. 笔记</h1><p>Early math部分，主要是在启蒙。其内容包括了基本的代数和图表知识。</p>
+<h2 id="1-代数基础"><a href="#1-代数基础" class="headerlink" title="(1) 代数基础"></a>(1) 代数基础</h2><p>代数部分的知识内容包括以下部分：</p>
+<ul>
+<li>counting 数数</li>
+<li>add and subtract 加法与减法<ul>
+<li>place value 位数（个位数、十位数、百位数等）</li>
+<li>break and regroup （借位）</li>
+</ul>
+</li>
+<li>measurement and compare 衡量与比较</li>
+</ul>
+<h2 id="2-图表基础"><a href="#2-图表基础" class="headerlink" title="(2) 图表基础"></a>(2) 图表基础</h2><ul>
+<li>plot 画图</li>
+<li>basic shape 基础形状</li>
+</ul>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>总的来说知识非常简单和基础，比较适合幼儿园和学前班的孩子学习。<br>亮点在于：讲解非常具有逻辑性和趣味性，练习题很丰富，循序渐进的主题以及联系脉络。  </p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Khan</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Latex学习笔记</title>
     <url>/2020/01/02/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>Latex是一种排版系统，对数学公式有着良好的支持。<br>在<a href="https://yehansharp.github.io/2019/12/29/Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHexo%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/">Hexo博客系列（二）：Hexo进阶配置</a>中提及过如何开启数学公式支持。Latex配合Markdown，能够基本实现博客内较为方便地展现公式。<br>这里介绍Latex语法中的数学公式部分。其他高级内容如排版、宏等因为不受Markdown扩展支持，这里不多做介绍。<br><a id="more"></a></p>
