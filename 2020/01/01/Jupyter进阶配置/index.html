@@ -57,8 +57,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yehansharp.github.io/images/pasted-10.png">
 <meta property="og:image" content="https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/_images/demo-py.gif">
+<meta property="og:image" content="https://pic1.zhimg.com/50/v2-af8775b777cb3233225467b7db89939c_hd.webp">
 <meta property="article:published_time" content="2020-01-01T14:41:00.000Z">
-<meta property="article:modified_time" content="2020-01-01T11:46:11.137Z">
+<meta property="article:modified_time" content="2020-01-14T13:23:43.016Z">
 <meta property="article:author" content="YEHan">
 <meta property="article:tag" content="jupyter notebook">
 <meta property="article:tag" content="配置">
@@ -252,10 +253,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-01-01 22:41:00 / 修改时间：19:46:11" itemprop="dateCreated datePublished" datetime="2020-01-01T22:41:00+08:00">2020-01-01</time>
+              <time title="创建时间：2020-01-01 22:41:00" itemprop="dateCreated datePublished" datetime="2020-01-01T22:41:00+08:00">2020-01-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-14 21:23:43" itemprop="dateModified" datetime="2020-01-14T21:23:43+08:00">2020-01-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -288,14 +295,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>989</span>
+              <span>2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -320,6 +327,26 @@
 <h2 id="6-Runtools"><a href="#6-Runtools" class="headerlink" title="(6) Runtools"></a>(6) Runtools</h2><p>此插件提供更为先进的运行工具。如运行此cell之前所有代码、运行此cell之后所有代码等。</p>
 <h2 id="7-Table-of-Contents-2"><a href="#7-Table-of-Contents-2" class="headerlink" title="(7) Table of Contents (2)"></a>(7) Table of Contents (2)</h2><p>此插件能够根据文件Markdown内容，自动生成目录。</p>
 <h2 id="8-Variable-Inspector"><a href="#8-Variable-Inspector" class="headerlink" title="(8) Variable Inspector"></a>(8) Variable Inspector</h2><p>此插件能够像R studio一样，实时展示当前命名空间内所有变量。</p>
+<h1 id="4-Jupyter另存为"><a href="#4-Jupyter另存为" class="headerlink" title="4. Jupyter另存为"></a>4. Jupyter另存为</h1><p>Jupyter可以很方便地对文本内容和代码进行组织。此外，还可以将Jupyter转为html或Powerpoint形式，方便展示。</p>
+<h2 id="1-ipynb转html"><a href="#1-ipynb转html" class="headerlink" title="(1) ipynb转html"></a>(1) ipynb转html</h2><p>打开terminal -&gt; 进入ipynb文件当前路径 -&gt; 运行命令 <code>jupyter-nbconvert &lt;file name&gt;.ipynb</code></p>
+<h2 id="2-ipynb转Powerpoint"><a href="#2-ipynb转Powerpoint" class="headerlink" title="(2) ipynb转Powerpoint"></a>(2) ipynb转Powerpoint</h2><p><strong>Powerpoint内容组织</strong><br>在将ipynb文件转为Powerpoint形式之前，需要对页面内容进行组织。方法如下：</p>
+<ul>
+<li>切换至slides视图: view -&gt; Cell Toolbar -&gt; Slideshow</li>
+<li>选择要加入Powerpoint中的Cell: 在要加入Powerpoint的Cell，slice type中选择slice或sub-slice。<ul>
+<li>slides之间是左右切换</li>
+<li>sub-slice之间是上下切换</li>
+</ul>
+</li>
+</ul>
+<p>slides和sub-slice之间的区别如下所示：<br><img src="https://pic1.zhimg.com/50/v2-af8775b777cb3233225467b7db89939c_hd.webp" alt="upload successful"></p>
+<p><strong>Powerpoint格式转化</strong><br>在完成对Powerpoint的内容组织之后，具体格式转化有两种办法。  </p>
+<p>其一：打开terminal -&gt; 进入ipynb文件当前路径 -&gt; 运行命令 <code>jupyter-nbconvert --to slides &lt;file name&gt;.ipynb --post serve</code><br>此时，在浏览器中打开<code>127.0.0.1:8000</code>，即可显示Powerpoint文件。<br>此类方法的弊端是，Powerpoint生成之后，无法编辑和修改。  </p>
+<p>其二：安装RISE插件，命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda install -c damianavila82 rise</span><br><span class="line">jupyter-nbextension install rise --py --sys-prefix</span><br><span class="line">jupyter-nbextension enable rise --py --sys-prefix</span><br></pre></td></tr></table></figure><br>安装完成后，即可在Jupyter界面找到RISE插件的按钮，点击后即可实时展示Powerpoint，支持随时的进入和退出，且能够一边演示一边编辑。  </p>
+<h1 id="5-Jupyter-SVG图片显示问题"><a href="#5-Jupyter-SVG图片显示问题" class="headerlink" title="5. Jupyter SVG图片显示问题"></a>5. Jupyter SVG图片显示问题</h1><p>当打开别人的ipynb文件时，有时会出现SVG图片显示不出来的问题。<br>这和打开doc文档默认是只读模式一样，需要进一步授权信任文件。<br>Jupyter中，有两种授权模式：</p>
+<ul>
+<li>打开文件 -&gt; file -&gt; trust notebook</li>
+<li>打开terminal -&gt; 进入ipynb文件当前路径 -&gt; 运行命令 <code>jupyter trust &lt;file name&gt;.ipynb</code></li>
+</ul>
 
     </div>
 
@@ -432,7 +459,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-前言"><span class="nav-text">1. 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Jupyter扩展安装"><span class="nav-text">2. Jupyter扩展安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Jupyter扩展推荐"><span class="nav-text">3. Jupyter扩展推荐</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-AutoSaveTime"><span class="nav-text">(1) AutoSaveTime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Code-prettify"><span class="nav-text">(2) Code prettify</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Codefolding"><span class="nav-text">(3) Codefolding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-ExecuteTime"><span class="nav-text">(4) ExecuteTime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-highlighter"><span class="nav-text">(5) highlighter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Runtools"><span class="nav-text">(6) Runtools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Table-of-Contents-2"><span class="nav-text">(7) Table of Contents (2)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Variable-Inspector"><span class="nav-text">(8) Variable Inspector</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-前言"><span class="nav-text">1. 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Jupyter扩展安装"><span class="nav-text">2. Jupyter扩展安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Jupyter扩展推荐"><span class="nav-text">3. Jupyter扩展推荐</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-AutoSaveTime"><span class="nav-text">(1) AutoSaveTime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Code-prettify"><span class="nav-text">(2) Code prettify</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Codefolding"><span class="nav-text">(3) Codefolding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-ExecuteTime"><span class="nav-text">(4) ExecuteTime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-highlighter"><span class="nav-text">(5) highlighter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Runtools"><span class="nav-text">(6) Runtools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Table-of-Contents-2"><span class="nav-text">(7) Table of Contents (2)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Variable-Inspector"><span class="nav-text">(8) Variable Inspector</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Jupyter另存为"><span class="nav-text">4. Jupyter另存为</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ipynb转html"><span class="nav-text">(1) ipynb转html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ipynb转Powerpoint"><span class="nav-text">(2) ipynb转Powerpoint</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Jupyter-SVG图片显示问题"><span class="nav-text">5. Jupyter SVG图片显示问题</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -448,7 +475,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -461,7 +488,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -495,12 +522,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">45k</span>
+    <span title="站点总字数">72k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">41 分钟</span>
+    <span title="站点阅读时长">1:05</span>
 </div>
 
         
