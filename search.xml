@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>幸福课（一）</title>
+    <url>/2020/10/09/%E5%B9%B8%E7%A6%8F%E8%AF%BE%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>重上一遍幸福课第一节，收获良多。<br>对比之前，学习的状态和效果都有了很大的进步。<br>之前是囫囵吞枣，只想着做笔记，却没有真正体会和领悟。现如今，带着困难和问题来听，才有了更深的理解，发现课程内容对我目前的状况有着很大的改进作用。<br>所以，其实不是好课程就需要听。做一个课程的仓鼠，实际的效果可能并不是很好。也许，分析自己的状况-&gt;提出个人诉求，然后再有针对性地寻找课程，才更有效。</p>
+<h1 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h1><h2 id="认知"><a href="#认知" class="headerlink" title="认知"></a>认知</h2><p>首先是认知方面的两个感触：</p>
+<ol>
+<li>什么是happy？<br>首先，happy不是由外界因素直接定义的，所以不需要将happy与金钱、成绩的因素直接相关。其更加看重的是内在体验。<br>其次，在空间维度，happy不是非此即彼的，不是说当前状态要么是unhappy要么是happy，而是一种连续性的心情尺度。在时间维度，心情状态也是会随时间不断波动的，有高有低，有起有伏。所以happy其实是终生追求。  真正的happy应该是在长期都能保持着一种积极高昂的心理状态。<br>这说明我之前想着通过娱乐的方法来逃避工作，刺激自己，希望借此让自己更加happy的做法是错误的。因为从更长的尺度上来看，其并没有解决问题，反而会导致拖延，造成负面影响。从长期的尺度上来看，对心情值有着抑制作用。  </li>
+<li>思维转换<br>同样是“目标前三，结果第八”，可以从两个不同的维度进行理解。一个是自己是失败者，灰心丧气。另一个是自己仍有不足，需要更加努力，从而变得更有动力。<br>解读的不同，会非常显著地影响自己的精神状态和心情值。<br>对于我来说，之前长期存在的一个误区，是对自己的很多失误耿耿于怀，容易陷入“认知到自己失误 -&gt; 灰心丧气、颓废 -&gt; 认知到颓废期间的失误”这样一个恶性循环。<br>现在看来，可能是陷入了认知障碍。现实生活有起有伏的，包括了起起落落，痛苦与再次振作，失败与再次奋斗的。状态低谷时，不需要过度贬低自己，从而陷入认知障碍。只要认识到自己有可以改进的空间，然后继续努力，变得更有动力就好。happy是终生追求。  </li>
+</ol>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>其次是如何实践，来让自己happy。  </p>
+<ol>
+<li>改变需要在行为、认知、情绪三方面达成同步。<br>行为改变是非常困难的，而且经常失败。为了让其更加顺利，需要在行为改变的同时，引入认知上和情绪上的改变。<br>对应我的情况，行为上直接强迫自己自律是非常困难的。为了让其更加顺利，需要self-motivated，让自己在认知上意识到行为的必要性，情绪上充满动力，才能更加可行。  </li>
+<li>劳逸结合与番茄钟<br>真正的学习阶段，发生在经历之后，进行安静的自省时。<br>对应我的情况，首先是证明了IChat的重要性，自我总结其实就是一种自省的过程，这个过程中应该尽量保持自己的平静与坦诚，享受而不是抗拒。其次，是使用番茄钟来进行劳逸结合。休息的10分钟，用来自省，可以更好地提高学习效率。  </li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>幸福</tag>
+        <tag>心理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python（一）：基础篇</title>
     <url>/2020/01/09/Python%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/</url>
     <content><![CDATA[<h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><h2 id="1-起源"><a href="#1-起源" class="headerlink" title="1. 起源"></a>1. 起源</h2><p>在写爬虫的时候，需要了解python多进程和多线程的知识。借此机会，也了解了一下相关的python高级知识。<br>之前进行基础python学习的时候，主要依靠的是<span class="exturl" data-url="aHR0cDovL3d3dy5weXRob25kb2MuY29tL3B5dGhvbnR1dG9yaWFsMy9pbmRleC5odG1s" title="http://www.pythondoc.com/pythontutorial3/index.html">python官方白皮书<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly93ZWIuaXR1LmVkdS50ci9odWx5YXlhbGNpbi9NQUsyMzBFX1B5dGhvblByb2dyYW1taW5nLyU1QjIwMTQlNUQlNUJTaGF3JTVETEVBUk5QWVRIT05USEUlMjBIQVJEV0FZLnBkZg==" title="https://web.itu.edu.tr/hulyayalcin/MAK230E_PythonProgramming/%5B2014%5D%5BShaw%5DLEARNPYTHONTHE%20HARDWAY.pdf">笨办法学python<i class="fa fa-external-link"></i></span>。两本材料都相对基础，对于高级知识如迭代器、生成器等涉及不深。<br>刚好借此机会，进行一下相关知识的补遗，并对整个python体系进行简单的梳理。 </p>
@@ -1286,6 +1309,35 @@ x, x>a
       </tags>
   </entry>
   <entry>
+    <title>Linux&amp;docker系列（二）：jupyter_docker配置</title>
+    <url>/2020/01/01/Linux-docker%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9Ajupyter-docker%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h1 id="一-前言"><a href="#一-前言" class="headerlink" title="一. 前言"></a>一. 前言</h1><p>基本的<span class="exturl" data-url="aHR0cHM6Ly9odWIuZG9ja2VyLmNvbS9fL3VidW50dQ==" title="https://hub.docker.com/_/ubuntu">Ubuntu<i class="fa fa-external-link"></i></span>以及深度学习<span class="exturl" data-url="aHR0cHM6Ly9odWIuZG9ja2VyLmNvbS9yL252aWRpYS9jdWRh" title="https://hub.docker.com/r/nvidia/cuda">CUDA<i class="fa fa-external-link"></i></span>的Docker配置，都相对简单。<br>然而，之后在尝试构建jupyter notebook的Docker版本时，发现流程较为复杂，此处记录一下，以供参考。<br><a id="more"></a></p>
+<h1 id="二、配置流程"><a href="#二、配置流程" class="headerlink" title="二、配置流程"></a>二、配置流程</h1><h2 id="1-建立container"><a href="#1-建立container" class="headerlink" title="1. 建立container"></a>1. 建立container</h2><p>命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --gpus all -it --name notebook-server -p 7777:8888 -v &#x2F;home&#x2F;g13:&#x2F;g13 --restart&#x3D;always nvidia-docker  &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure><br>命令详解</p>
+<ul>
+<li><code>docker run nvidia-docker</code>。运行名为nvidia-docker的镜像生成容器。</li>
+<li><code>--gpus all</code>。允许容器使用主机所有GPU。</li>
+<li><code>--name notebook-server</code>。将容器命名为”notebook-server”。</li>
+<li><code>-p 7777:8888</code>。将容器的8888端口，映射到主机的7777端口。</li>
+<li><code>-v /home/g13:/g13</code>。将主机的”/home/g13”路径，映射到容器的”/g13”路径。如此即可在容器上访问对应主机路径。</li>
+<li><code>-it /bin/bash</code>。生成容器终端，让容器终端接收主机输入，命令结束后直接进入容器终端。</li>
+<li><code>--restart=always</code>。开机后自动启动该容器。</li>
+</ul>
+<h2 id="2-安装conda环境"><a href="#2-安装conda环境" class="headerlink" title="2. 安装conda环境"></a>2. 安装conda环境</h2><p>进入容器终端后，在容器内，安装conda环境，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get upgrade</span><br><span class="line">apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6</span><br><span class="line">apt-get install vim</span><br><span class="line"># 官网下载安装包到路径&#x2F;g13&#x2F;Downloads&#x2F;</span><br><span class="line">bash &#x2F;g13&#x2F;Downloads&#x2F;Anaconda3-2019.07-Linux-x86_64.sh</span><br><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-配置jupyter-notebook"><a href="#3-配置jupyter-notebook" class="headerlink" title="3. 配置jupyter notebook"></a>3. 配置jupyter notebook</h2><p>首先生成配置文件，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure><br>然后修改配置文件，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.jupyter&#x2F;jupyter-notebook-config.py</span><br></pre></td></tr></table></figure><br>修改以下内容<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 允许root启动</span><br><span class="line">c.NotebookApp.allow_root &#x3D; True</span><br><span class="line"># 允许远程访问</span><br><span class="line">c.NotebookApp.ip &#x3D; &#39;127.0.0.1&#39;</span><br><span class="line"># 设置远程访问密码</span><br><span class="line">c.NotebookApp.token &#x3D; u&#39;&lt;password hash&gt;&#39;</span><br></pre></td></tr></table></figure><br>密码可根据以下命令生成<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter notebook password</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-运行jupyter-notebook，并退出容器"><a href="#4-运行jupyter-notebook，并退出容器" class="headerlink" title="4. 运行jupyter notebook，并退出容器"></a>4. 运行jupyter notebook，并退出容器</h2><p>配置完毕后，即可在容器中运行jupyter notebook，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter notebook --ip 127.0.0.1 --no-browser --allow-root &amp;</span><br></pre></td></tr></table></figure><br>随后可通过<code>ctrl + p + q</code>按键退出但不关闭容器，返回主机。</p>
+<h2 id="5-远程访问jupyter服务"><a href="#5-远程访问jupyter服务" class="headerlink" title="5. 远程访问jupyter服务"></a>5. 远程访问jupyter服务</h2><p>随后，在主机上访问链接<code>http://127.0.0.1:7777/tree</code>，即可访问jupyter服务。<br>在主机以外的机器上，通过访问链接<code>http://&lt;主机ip&gt;:7777/tree</code>，也可访问jupyter服务。<br>自此，实现了jupyter的docker封装和远程访问。</p>
+]]></content>
+      <categories>
+        <category>项目实践</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+        <tag>Linux</tag>
+        <tag>docker</tag>
+        <tag>Jupyter notebook</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux&amp;docker系列（三）：transmission_docker配置</title>
     <url>/2020/01/01/Linux-docker%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9Atransmission-docker%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>在jupyter notebook之后，另一个docker化的服务是transmission。<br>transmission是Linux下的下载软件，支持多种下载方式，并且提供web UI。<br>与juypter notebook一样，有了web UI，就有着远程访问的潜力。在配置完成后，我们可以很方便地在远程向服务器发送下载任务。  </p>
@@ -1313,35 +1365,6 @@ x, x>a
         <tag>Linux</tag>
         <tag>docker</tag>
         <tag>transmission</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux&amp;docker系列（二）：jupyter_docker配置</title>
-    <url>/2020/01/01/Linux-docker%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9Ajupyter-docker%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h1 id="一-前言"><a href="#一-前言" class="headerlink" title="一. 前言"></a>一. 前言</h1><p>基本的<span class="exturl" data-url="aHR0cHM6Ly9odWIuZG9ja2VyLmNvbS9fL3VidW50dQ==" title="https://hub.docker.com/_/ubuntu">Ubuntu<i class="fa fa-external-link"></i></span>以及深度学习<span class="exturl" data-url="aHR0cHM6Ly9odWIuZG9ja2VyLmNvbS9yL252aWRpYS9jdWRh" title="https://hub.docker.com/r/nvidia/cuda">CUDA<i class="fa fa-external-link"></i></span>的Docker配置，都相对简单。<br>然而，之后在尝试构建jupyter notebook的Docker版本时，发现流程较为复杂，此处记录一下，以供参考。<br><a id="more"></a></p>
-<h1 id="二、配置流程"><a href="#二、配置流程" class="headerlink" title="二、配置流程"></a>二、配置流程</h1><h2 id="1-建立container"><a href="#1-建立container" class="headerlink" title="1. 建立container"></a>1. 建立container</h2><p>命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --gpus all -it --name notebook-server -p 7777:8888 -v &#x2F;home&#x2F;g13:&#x2F;g13 --restart&#x3D;always nvidia-docker  &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure><br>命令详解</p>
-<ul>
-<li><code>docker run nvidia-docker</code>。运行名为nvidia-docker的镜像生成容器。</li>
-<li><code>--gpus all</code>。允许容器使用主机所有GPU。</li>
-<li><code>--name notebook-server</code>。将容器命名为”notebook-server”。</li>
-<li><code>-p 7777:8888</code>。将容器的8888端口，映射到主机的7777端口。</li>
-<li><code>-v /home/g13:/g13</code>。将主机的”/home/g13”路径，映射到容器的”/g13”路径。如此即可在容器上访问对应主机路径。</li>
-<li><code>-it /bin/bash</code>。生成容器终端，让容器终端接收主机输入，命令结束后直接进入容器终端。</li>
-<li><code>--restart=always</code>。开机后自动启动该容器。</li>
-</ul>
-<h2 id="2-安装conda环境"><a href="#2-安装conda环境" class="headerlink" title="2. 安装conda环境"></a>2. 安装conda环境</h2><p>进入容器终端后，在容器内，安装conda环境，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get upgrade</span><br><span class="line">apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6</span><br><span class="line">apt-get install vim</span><br><span class="line"># 官网下载安装包到路径&#x2F;g13&#x2F;Downloads&#x2F;</span><br><span class="line">bash &#x2F;g13&#x2F;Downloads&#x2F;Anaconda3-2019.07-Linux-x86_64.sh</span><br><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-配置jupyter-notebook"><a href="#3-配置jupyter-notebook" class="headerlink" title="3. 配置jupyter notebook"></a>3. 配置jupyter notebook</h2><p>首先生成配置文件，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure><br>然后修改配置文件，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.jupyter&#x2F;jupyter-notebook-config.py</span><br></pre></td></tr></table></figure><br>修改以下内容<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 允许root启动</span><br><span class="line">c.NotebookApp.allow_root &#x3D; True</span><br><span class="line"># 允许远程访问</span><br><span class="line">c.NotebookApp.ip &#x3D; &#39;127.0.0.1&#39;</span><br><span class="line"># 设置远程访问密码</span><br><span class="line">c.NotebookApp.token &#x3D; u&#39;&lt;password hash&gt;&#39;</span><br></pre></td></tr></table></figure><br>密码可根据以下命令生成<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter notebook password</span><br></pre></td></tr></table></figure></p>
-<h2 id="4-运行jupyter-notebook，并退出容器"><a href="#4-运行jupyter-notebook，并退出容器" class="headerlink" title="4. 运行jupyter notebook，并退出容器"></a>4. 运行jupyter notebook，并退出容器</h2><p>配置完毕后，即可在容器中运行jupyter notebook，命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter notebook --ip 127.0.0.1 --no-browser --allow-root &amp;</span><br></pre></td></tr></table></figure><br>随后可通过<code>ctrl + p + q</code>按键退出但不关闭容器，返回主机。</p>
-<h2 id="5-远程访问jupyter服务"><a href="#5-远程访问jupyter服务" class="headerlink" title="5. 远程访问jupyter服务"></a>5. 远程访问jupyter服务</h2><p>随后，在主机上访问链接<code>http://127.0.0.1:7777/tree</code>，即可访问jupyter服务。<br>在主机以外的机器上，通过访问链接<code>http://&lt;主机ip&gt;:7777/tree</code>，也可访问jupyter服务。<br>自此，实现了jupyter的docker封装和远程访问。</p>
-]]></content>
-      <categories>
-        <category>项目实践</category>
-      </categories>
-      <tags>
-        <tag>配置</tag>
-        <tag>Linux</tag>
-        <tag>docker</tag>
-        <tag>Jupyter notebook</tag>
       </tags>
   </entry>
   <entry>
@@ -1539,8 +1562,8 @@ x, x>a
       <tags>
         <tag>配置</tag>
         <tag>Linux</tag>
-        <tag>Python</tag>
         <tag>Conda</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -2073,7 +2096,7 @@ x, x>a
     <title>学习路径</title>
     <url>/2019/12/22/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/</url>
     <content><![CDATA[<h1 id="一-数学基础"><a href="#一-数学基础" class="headerlink" title="一. 数学基础"></a>一. 数学基础</h1><h2 id="1-基本知识"><a href="#1-基本知识" class="headerlink" title="(1) 基本知识"></a>(1) 基本知识</h2><p><a href="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E6%97%A9%E6%9C%9F%E6%95%B0%E5%AD%A6/">Khan系列（一）：早期数学</a><br><a href="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%AE%97%E6%95%B0/">Khan系列（二）：基本算数</a><br><a href="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%87%A0%E4%BD%95/">Khan系列（三）：基本几何</a><br><a href="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E9%A2%84%E5%A4%87%E4%BB%A3%E6%95%B0/">Khan系列（四）：预备代数</a><br><a href="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/">Khan系列（五）：代数基础</a><br><a href="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E4%BB%A3%E6%95%B0I/">Khan系列（六）：代数I</a><br><a href="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E9%AB%98%E4%B8%AD%E5%87%A0%E4%BD%95/">Khan系列（七）：高中几何</a><br><a href="https://yehansharp.github.io/2020/01/04/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E5%85%AB%EF%BC%89%EF%BC%9A%E4%BB%A3%E6%95%B0II/">Khan系列（八）：代数II</a><br><a href="https://yehansharp.github.io/2020/01/04/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E5%AE%8C%E7%BB%93%E6%80%BB%E7%BB%93/">Khan系列（九）：完结总结</a><br> <a id="more"></a></p>
-<h1 id="二-编程基础"><a href="#二-编程基础" class="headerlink" title="二. 编程基础"></a>二. 编程基础</h1><h1 id="三-其他"><a href="#三-其他" class="headerlink" title="三. 其他"></a>三. 其他</h1><p><a href="https://yehansharp.github.io/2019/12/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">git</a><br><a href="https://yehansharp.github.io/2020/01/02/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Latex</a></p>
+<h1 id="二、编程基础"><a href="#二、编程基础" class="headerlink" title="二、编程基础"></a>二、编程基础</h1><h1 id="三、心理学"><a href="#三、心理学" class="headerlink" title="三、心理学"></a>三、心理学</h1><h1 id="四、其他"><a href="#四、其他" class="headerlink" title="四、其他"></a>四、其他</h1><p><a href="https://yehansharp.github.io/2019/12/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">git</a><br><a href="https://yehansharp.github.io/2020/01/02/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Latex</a></p>
 ]]></content>
       <categories>
         <category>学习笔记</category>
