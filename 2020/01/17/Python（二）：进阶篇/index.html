@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="Nd8WSOuLF04A5twvq1fwZI1cAGAb4rSc40vYkMbbVdw">
+  <meta name="baidu-site-verification" content="SoaFKXc822">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hanye6.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: true,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="一、前言二、进阶篇anaconda环境管理Jupyter notebook：Python解释器 1. Jupyter notebook">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python（二）：进阶篇">
+<meta property="og:url" content="https://hanye6.github.io/2020/01/17/Python%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%BF%9B%E9%98%B6%E7%AF%87/index.html">
+<meta property="og:site_name" content="树洞">
+<meta property="og:description" content="一、前言二、进阶篇anaconda环境管理Jupyter notebook：Python解释器 1. Jupyter notebook">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-17T11:35:01.000Z">
+<meta property="article:modified_time" content="2021-11-01T08:14:20.233Z">
+<meta property="article:author" content="hanye6">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="anaconda">
+<meta property="article:tag" content="Jupyter notebook">
+<meta property="article:tag" content="推导式">
+<meta property="article:tag" content="迭代器">
+<meta property="article:tag" content="生成器">
+<meta property="article:tag" content="装饰器">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hanye6.github.io/2020/01/17/Python%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%BF%9B%E9%98%B6%E7%AF%87/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Python（二）：进阶篇 | 树洞</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155095915-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155095915-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f1abb388db5e4757ffe6310147a6b6f8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">树洞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hanye6.github.io/2020/01/17/Python%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%BF%9B%E9%98%B6%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="hanye6">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="树洞">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Python（二）：进阶篇
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-17 19:35:01" itemprop="dateCreated datePublished" datetime="2020-01-17T19:35:01+08:00">2020-01-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-01 16:14:20" itemprop="dateModified" datetime="2021-11-01T16:14:20+08:00">2021-11-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/01/17/Python%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%BF%9B%E9%98%B6%E7%AF%87/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/01/17/Python（二）：进阶篇/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><h1 id="二、进阶篇"><a href="#二、进阶篇" class="headerlink" title="二、进阶篇"></a>二、进阶篇</h1><p>anaconda环境管理<br>Jupyter notebook：Python解释器</p>
+<h2 id="1-Jupyter-notebook"><a href="#1-Jupyter-notebook" class="headerlink" title="1. Jupyter notebook"></a>1. Jupyter notebook</h2><a id="more"></a>
+<h2 id="1-高级特性"><a href="#1-高级特性" class="headerlink" title="1. 高级特性"></a>1. 高级特性</h2><h3 id="1-推导式"><a href="#1-推导式" class="headerlink" title="(1) 推导式"></a>(1) 推导式</h3><p>推导式是一种代码简化的写法，且推导式可嵌套。  </p>
+<h4 id="a-列表推导式"><a href="#a-列表推导式" class="headerlink" title="a. 列表推导式"></a>a. 列表推导式</h4><p>形式如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[expression for val in collection if condition]</span><br></pre></td></tr></table></figure><br>相当于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">result &#x3D; []</span><br><span class="line">for val in collection:</span><br><span class="line">	if condition:</span><br><span class="line">       result.append(expression)</span><br></pre></td></tr></table></figure></p>
+<h4 id="b-字典推导式"><a href="#b-字典推导式" class="headerlink" title="b. 字典推导式"></a>b. 字典推导式</h4><p>形式如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;key_expr: value_expr for value in collection if condition&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="c-集合推导式"><a href="#c-集合推导式" class="headerlink" title="c. 集合推导式"></a>c. 集合推导式</h4><p>形式如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;expression for val in collection if condition&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-迭代器"><a href="#2-迭代器" class="headerlink" title="(2) 迭代器"></a>(2) 迭代器</h3><p>可迭代，<strong>init</strong>返回迭代器object<br>迭代器，拥有<strong>next</strong>，记得当前state，通过next寻找下一个value,直到stopIteration<br>工作原理如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s &#x3D; &#39;abc&#39;</span><br><span class="line">&gt;&gt;&gt; it &#x3D; iter(s)</span><br><span class="line">&gt;&gt;&gt; it</span><br><span class="line">&lt;iterator object at 0x00A1DB50&gt;</span><br><span class="line">&gt;&gt;&gt; next(it)</span><br><span class="line">&#39;a&#39;</span><br><span class="line">&gt;&gt;&gt; next(it)</span><br><span class="line">&#39;b&#39;</span><br><span class="line">&gt;&gt;&gt; next(it)</span><br><span class="line">&#39;c&#39;</span><br><span class="line">&gt;&gt;&gt; next(it)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in ?</span><br><span class="line">    next(it)</span><br><span class="line">StopIteration</span><br></pre></td></tr></table></figure><br>四种可能：可迭代非迭代器，可迭代迭代器。不可迭代非迭代器，不可迭代迭代器</p>
+<p>for iterator的实质，是返回一个迭代器，一直next，直到stopIteration，然后将指针还原到最开始</p>
+<p>itertools</p>
+<p>list(iterator) 返回整个list<br>比如list(zip())</p>
+<p>了解了迭代器协议的后台机制，就可以很容易的给自己的类添加迭代器行为。定义一个 <strong>iter</strong>() 方法，使其返回一个带有 <strong>next</strong>() 方法的对象。如果这个类已经定义了 <strong>next</strong>() ，那么 <strong>iter</strong>() 只需要返回 self<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Reverse:</span><br><span class="line">    &quot;&quot;&quot;Iterator for looping over a sequence backwards.&quot;&quot;&quot;</span><br><span class="line">    def __init__(self, data):</span><br><span class="line">        self.data &#x3D; data</span><br><span class="line">        self.index &#x3D; len(data)</span><br><span class="line">    def __iter__(self):</span><br><span class="line">        return self</span><br><span class="line">    def __next__(self):</span><br><span class="line">        if self.index &#x3D;&#x3D; 0:</span><br><span class="line">            raise StopIteration</span><br><span class="line">        self.index &#x3D; self.index - 1</span><br><span class="line">        return self.data[self.index]</span><br><span class="line">        </span><br><span class="line">&gt;&gt;&gt; rev &#x3D; Reverse(&#39;spam&#39;)</span><br><span class="line">&gt;&gt;&gt; iter(rev)</span><br><span class="line">&lt;__main__.Reverse object at 0x00A1DB50&gt;</span><br><span class="line">&gt;&gt;&gt; for char in rev:</span><br><span class="line">...     print(char)</span><br><span class="line">...</span><br><span class="line">m</span><br><span class="line">a</span><br><span class="line">p</span><br><span class="line">s</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-生成器"><a href="#3-生成器" class="headerlink" title="(3) 生成器"></a>(3) 生成器</h3><p>生成器是一种特殊的迭代器，其中自动内置了<strong>init</strong>和<strong>next</strong><br>它记忆语句最后一次执行的位置和所有的数据值</p>
+<p>节省空间：全部叫进房间，然后用到的时候抓住你。事先在门外排好队，一个一个进来。<br>优雅简介：推导式形式<br>无限长度，不需要结束</p>
+<p>生成器表达式：将列表表达式的[]换为()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; sum(i*i for i in range(10))                 # sum of squares</span><br><span class="line">285</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; xvec &#x3D; [10, 20, 30]</span><br><span class="line">&gt;&gt;&gt; yvec &#x3D; [7, 5, 3]</span><br><span class="line">&gt;&gt;&gt; sum(x*y for x,y in zip(xvec, yvec))         # dot product</span><br><span class="line">260</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; from math import pi, sin</span><br><span class="line">&gt;&gt;&gt; sine_table &#x3D; &#123;x: sin(x*pi&#x2F;180) for x in range(0, 91)&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; unique_words &#x3D; set(word  for line in page  for word in line.split())</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; valedictorian &#x3D; max((student.gpa, student.name) for student in graduates)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; data &#x3D; &#39;golf&#39;</span><br><span class="line">&gt;&gt;&gt; list(data[i] for i in range(len(data)-1, -1, -1))</span><br><span class="line">[&#39;f&#39;, &#39;l&#39;, &#39;o&#39;, &#39;g&#39;]</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-装饰器"><a href="#4-装饰器" class="headerlink" title="(4) 装饰器"></a>(4) 装饰器</h3><h2 id="2-函数的高级应用"><a href="#2-函数的高级应用" class="headerlink" title="2. 函数的高级应用"></a>2. 函数的高级应用</h2><h3 id="1-函数的参数传递"><a href="#1-函数的参数传递" class="headerlink" title="(1) 函数的参数传递"></a>(1) 函数的参数传递</h3><p>在基础篇中提到过，函数参数默认按<strong>位置传递</strong>，且可以设置<strong>默认参数</strong>。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def para(p1&#x3D;&quot;p1&quot;, p2&#x3D;&quot;p2&quot;):</span><br><span class="line">...     print(&quot;the parameter 1 is &#123;&#125;, the parameter 2 is &#123;&#125;&quot;.format(p1,p2))</span><br><span class="line">&gt;&gt;&gt; para()</span><br><span class="line">the parameter 1 is p1, the parameter 2 is p2</span><br><span class="line">&gt;&gt;&gt; para(&quot;a1&quot;)</span><br><span class="line">the parameter 1 is a1, the parameter 2 is p2</span><br><span class="line">&gt;&gt;&gt; para(&quot;a1&quot;,&quot;a2&quot;)</span><br><span class="line">the parameter 1 is a1, the parameter 2 is a2</span><br><span class="line">&gt;&gt;&gt; para(&quot;a2&quot;,&quot;a1&quot;)</span><br><span class="line">the parameter 1 is a2, the parameter 2 is a1</span><br></pre></td></tr></table></figure></p>
+<p><strong>关键字传递</strong><br>除了位置传递外，函数的参数还可以按照关键字传递。<br>这种方式需要明确声明所需要传递的形参名称和实参内容，因此，可以不遵守位置顺序。<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def para(p1&#x3D;&quot;p1&quot;, p2&#x3D;&quot;p2&quot;):</span><br><span class="line">...     print(&quot;the parameter 1 is &#123;&#125;, the parameter 2 is &#123;&#125;&quot;.format(p1,p2))</span><br><span class="line">&gt;&gt;&gt; para(&quot;a1&quot;,&quot;a2&quot;) # 按位置传递</span><br><span class="line">the parameter 1 is a1, the parameter 2 is a2</span><br><span class="line">&gt;&gt;&gt; para(&quot;a2&quot;,&quot;a1&quot;)  # 按位置传递</span><br><span class="line">the parameter 1 is a2, the parameter 2 is a1</span><br><span class="line">&gt;&gt;&gt; para(p2 &#x3D; &quot;a2&quot;,p1 &#x3D; &quot;a1&quot;) # 按关键字传递</span><br><span class="line">the parameter 1 is a1, the parameter 2 is a2</span><br></pre></td></tr></table></figure><br>在上述代码中，如果按位置传递，那么<code>a1</code>和<code>a2</code>的位置一旦变动，其输出的结果就会变动。<br>然而，如果改为按关键字传递，就可以随意调换位置，也能保证参数传递的准确。  </p>
+<p><strong>按位置传递和按关键字传递</strong><br>在参数传递的过程中，还可以同时使用按位置传递和按关键字传递。但这种时候，按位置传递的参数，必须放在关键字传递之前。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def para(p1, p2&#x3D;&quot;p2&quot;, p3&#x3D;&quot;p3&quot;, p4&#x3D; &quot;p3&quot;):</span><br><span class="line">...     print(&quot;the parameter 1 is &#123;&#125;, the parameter 2 is &#123;&#125;, the parameter 3 is &#123;&#125;, the  parameter 4 is &#123;&#125;&quot;.format(p1,p2,p3,p4))</span><br><span class="line">&gt;&gt;&gt; para(&quot;a1&quot;,&quot;a2&quot;, p4 &#x3D; &quot;a4&quot;, p3 &#x3D; &quot;a3&quot;)</span><br><span class="line">the parameter 1 is a1, the parameter 2 is a2, the parameter 3 is a3, the parameter 4 is a4</span><br></pre></td></tr></table></figure><br>在上述代码中，前两个参数我们按位置传递，所以<code>a1</code>和<code>a2</code>的位置不能打乱。后两个参数我们通过关键字传递，所以<code>p4 = &quot;a4&quot;</code>和<code>p3 = &quot;a3&quot;</code>的顺序是任意的，不会影响最终结果。然而，所有按位置传递的参数，必须放在关键字传递的参数之前。  </p>
+<p>以下几种调用是无效的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def para(p1, p2&#x3D;&quot;p2&quot;, p3&#x3D;&quot;p3&quot;, p4&#x3D; &quot;p3&quot;):</span><br><span class="line">     print(&quot;the parameter 1 is &#123;&#125;, the parameter 2 is &#123;&#125;, the parameter 3 is &#123;&#125;, the parameter 4 is &#123;&#125;&quot;.format(p1,p2,p3,p4))</span><br><span class="line">para(&quot;a1&quot;,p1 &#x3D; &quot;a1&quot;)  # 通过位置参数和关键字参数，同时给p1赋值，导致赋值重复。</span><br><span class="line">para()                # p1 无默认参数，必须赋值。缺少必要的参数赋值。</span><br><span class="line">para(p2&#x3D;&quot;a2&quot;, &quot;a1&quot;)   # 关键字参数放在了位置参数之前。</span><br><span class="line">para(p5&#x3D;&quot;a5&quot;)         # 未定义的参数p5</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-可变参数"><a href="#2-可变参数" class="headerlink" title="(2) 可变参数"></a>(2) 可变参数</h3><p><code>*argv</code><br>一般来说，函数的参数数量都是固定的。但Python中还可定义可变参数，顾名思义，这类参数的数量是任意可变的。<br>比如，我们希望有一个函数，能够接收任意数量的浮点数作为参数，并输出所有浮点数的总和。这样一个函数，其参数的数量是不固定的，我们需要通过可变参数来进行定义。<br>可变参数通过<code>*argv</code>定义，其本质是将传入的参数放入一个tuple中进行使用。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def argsFunc(a, *args):</span><br><span class="line">	print a</span><br><span class="line">	print args</span><br><span class="line">	</span><br><span class="line">&gt;&gt;&gt; argsFunc(1, 2, 3, 4)</span><br><span class="line">1</span><br><span class="line">(2, 3, 4)</span><br></pre></td></tr></table></figure><br>通过利用可变参数，我们可以定义上述所述的求和函数。如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def argsSum(*numbers):</span><br><span class="line">    sum &#x3D; 0</span><br><span class="line">    for n in numbers:</span><br><span class="line">        sum &#x3D; sum + n </span><br><span class="line">    return sum</span><br><span class="line">&gt;&gt;&gt; argsSum()</span><br><span class="line">0</span><br><span class="line">&gt;&gt;&gt; argsSum(1, 2)</span><br><span class="line">3</span><br><span class="line">&gt;&gt;&gt; argsSum(1, 2, 3)</span><br><span class="line">6</span><br></pre></td></tr></table></figure><br>注意：<code>*</code>后可以跟任何名称表示可变参数，如<code>def argsFunc(a, *b)</code>，但一般约定俗成写为<code>*argv</code>。  </p>
+<p><code>**kwargs</code><br>除了<code>*argv</code>之外，<code>**kwargs</code>也可表示可变参数。<br>不同之处在于，<code>*argv</code>传入的是tuple，相当于按位置传递tuple中的每一个位置参数。<code>**kwargs</code>传入的是dict，相当于按关键字传递dict中的每个关键字参数。kw即代表keywords关键字。如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def kwargsFunc(**kwargs):</span><br><span class="line">	print kwargs</span><br><span class="line">	</span><br><span class="line">&gt;&gt;&gt; kwargsFunc(x&#x3D;1,y&#x3D;2,z&#x3D;3)</span><br><span class="line">&#123;&#39;y&#39;: 2, &#39;x&#39;: 1, &#39;z&#39;: 3&#125; #键值对形式存放在字典中</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-参数列表-字典的拆分传递"><a href="#3-参数列表-字典的拆分传递" class="headerlink" title="(3) 参数列表/字典的拆分传递"></a>(3) 参数列表/字典的拆分传递</h3><p>可变参数<code>*args</code>和<code>**kwargs</code>是将传入的一系列参数转化为tuple/dict，然后按位置/关键字传递。<br>我们可以将其反着用，即预先将参数封装为tuple/dict，然后在前方加入<code>*</code>或<code>**</code>，然后传递给函数。<br>常见的应用如通过Python连接mysql数据库，每次连接需要输入很多数据库的参数。我们可以预先将参数封装为dict，然后每次连接直接通过<code>**</code>直接传递这个dict即可。这样就有效避免了每次都手动输入一个个参数。示例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector  </span><br><span class="line"></span><br><span class="line">db_conf &#x3D; &#123;</span><br><span class="line">	user&#x3D;&#39;xx&#39;,</span><br><span class="line">	password&#x3D;&#39;yy&#39;, </span><br><span class="line">	host&#x3D;&#39;xxx.xxx.xxx.xxx&#39;,</span><br><span class="line">	database&#x3D;&#39;zz&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">cnx &#x3D; mysql.connector.connect(**db_conf)</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-函数作为作为参数"><a href="#4-函数作为作为参数" class="headerlink" title="(4) 函数作为作为参数"></a>(4) 函数作为作为参数</h3><p>基本<br>map, reduce<br>filter<br>sorted  </p>
+<h3 id="5-函数作为返回值"><a href="#5-函数作为返回值" class="headerlink" title="(5) 函数作为返回值"></a>(5) 函数作为返回值</h3><h3 id="6-匿名函数"><a href="#6-匿名函数" class="headerlink" title="(6) 匿名函数"></a>(6) 匿名函数</h3><h2 id="3-广播broadcasting"><a href="#3-广播broadcasting" class="headerlink" title="3. 广播broadcasting"></a>3. 广播broadcasting</h2><h2 id="4-常用自建库"><a href="#4-常用自建库" class="headerlink" title="4. 常用自建库"></a>4. 常用自建库</h2><ul>
+<li>os: 操作系统接口</li>
+<li>sys: 解释器接口</li>
+<li>re: 正则表达式</li>
+<li>math: 数学运算</li>
+<li>urllib.request: 互联网访问</li>
+<li>zlib， gzip， bz2， lzma， zipfile, tarfile: 数据压缩</li>
+<li>threading: 多线程</li>
+<li>multiprocessing: 多进程</li>
+</ul>
+<h2 id="5-常用第三方库"><a href="#5-常用第三方库" class="headerlink" title="5. 常用第三方库"></a>5. 常用第三方库</h2><ul>
+<li>NumPy: 矩阵操作；NumPy arrays数据类型</li>
+<li>pandas: dataframe数据类型；timeseries数据类型；对SQL操作的支持</li>
+<li>matplotlib: 画图</li>
+<li>Ipython and Jupyter: 交互型解释器</li>
+<li>SciPy: 数学标准计算，包括线性代数、矩阵计算、概率计算和其他常用标准函数</li>
+<li>scikit-learn: 机器学习库(preprocessing, classification, regression, clustering, dimension reduction, model selection)</li>
+<li>statsmodels: 数据分析库(regression, ANOVA, time series, nonparameters methods)</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="hanye6 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="hanye6 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/anaconda/" rel="tag"># anaconda</a>
+              <a href="/tags/Jupyter-notebook/" rel="tag"># Jupyter notebook</a>
+              <a href="/tags/%E6%8E%A8%E5%AF%BC%E5%BC%8F/" rel="tag"># 推导式</a>
+              <a href="/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/" rel="tag"># 迭代器</a>
+              <a href="/tags/%E7%94%9F%E6%88%90%E5%99%A8/" rel="tag"># 生成器</a>
+              <a href="/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/" rel="tag"># 装饰器</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/09/Python%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/" rel="prev" title="Python（一）：基础篇">
+      <i class="fa fa-chevron-left"></i> Python（一）：基础篇
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/11/01/Win%E5%A6%82%E4%BD%95%E5%B0%86-bat%E6%96%87%E4%BB%B6%E5%9B%BA%E5%AE%9A%E5%88%B0%E5%BC%80%E5%A7%8B%E5%B1%8F%E5%B9%95/" rel="next" title="Win如何将.bat文件固定到开始屏幕">
+      Win如何将.bat文件固定到开始屏幕 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、前言"><span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、进阶篇"><span class="nav-text">二、进阶篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Jupyter-notebook"><span class="nav-text">1. Jupyter notebook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-高级特性"><span class="nav-text">1. 高级特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-推导式"><span class="nav-text">(1) 推导式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#a-列表推导式"><span class="nav-text">a. 列表推导式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b-字典推导式"><span class="nav-text">b. 字典推导式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c-集合推导式"><span class="nav-text">c. 集合推导式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-迭代器"><span class="nav-text">(2) 迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-生成器"><span class="nav-text">(3) 生成器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-装饰器"><span class="nav-text">(4) 装饰器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-函数的高级应用"><span class="nav-text">2. 函数的高级应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-函数的参数传递"><span class="nav-text">(1) 函数的参数传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-可变参数"><span class="nav-text">(2) 可变参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-参数列表-字典的拆分传递"><span class="nav-text">(3) 参数列表&#x2F;字典的拆分传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-函数作为作为参数"><span class="nav-text">(4) 函数作为作为参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-函数作为返回值"><span class="nav-text">(5) 函数作为返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-匿名函数"><span class="nav-text">(6) 匿名函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-广播broadcasting"><span class="nav-text">3. 广播broadcasting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-常用自建库"><span class="nav-text">4. 常用自建库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-常用第三方库"><span class="nav-text">5. 常用第三方库</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hanye6"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">hanye6</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hanye6</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">66k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:01</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+	<script>
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+	</script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://YEHan.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://hanye6.github.io/2020/01/17/Python%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%BF%9B%E9%98%B6%E7%AF%87/",
+            identifier: "2020/01/17/Python（二）：进阶篇/",
+            title: "Python（二）：进阶篇"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://YEHan.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
