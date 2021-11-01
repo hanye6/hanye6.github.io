@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="Nd8WSOuLF04A5twvq1fwZI1cAGAb4rSc40vYkMbbVdw">
+  <meta name="baidu-site-verification" content="SoaFKXc822">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hanye6.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: true,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="1. 前言我们知道，Chrome本身提供了多种拓展，大大增强了Chrome浏览器的功能丰富性。但除此之外，其实我们还可以在Chrome浏览器上安装脚本，进一步增强其易用性。此处就简单介绍几种个人常用的Chrome拓展和脚本，供大家参考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chrome上的拓展及脚本安装">
+<meta property="og:url" content="https://hanye6.github.io/2019/12/30/Chrome%E4%B8%8A%E7%9A%84%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="树洞">
+<meta property="og:description" content="1. 前言我们知道，Chrome本身提供了多种拓展，大大增强了Chrome浏览器的功能丰富性。但除此之外，其实我们还可以在Chrome浏览器上安装脚本，进一步增强其易用性。此处就简单介绍几种个人常用的Chrome拓展和脚本，供大家参考。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hanye6.github.io/images/pasted-8.png">
+<meta property="article:published_time" content="2019-12-30T13:05:00.000Z">
+<meta property="article:modified_time" content="2020-01-01T11:37:31.000Z">
+<meta property="article:author" content="hanye6">
+<meta property="article:tag" content="Chrome">
+<meta property="article:tag" content="扩展">
+<meta property="article:tag" content="脚本">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hanye6.github.io/images/pasted-8.png">
+
+<link rel="canonical" href="https://hanye6.github.io/2019/12/30/Chrome%E4%B8%8A%E7%9A%84%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Chrome上的拓展及脚本安装 | 树洞</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155095915-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-155095915-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f1abb388db5e4757ffe6310147a6b6f8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">树洞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hanye6.github.io/2019/12/30/Chrome%E4%B8%8A%E7%9A%84%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="hanye6">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="树洞">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Chrome上的拓展及脚本安装
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-30 21:05:00" itemprop="dateCreated datePublished" datetime="2019-12-30T21:05:00+08:00">2019-12-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-01 19:37:31" itemprop="dateModified" datetime="2020-01-01T19:37:31+08:00">2020-01-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index">
+                    <span itemprop="name">杂项</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/12/30/Chrome%E4%B8%8A%E7%9A%84%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/30/Chrome上的脚本安装/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>我们知道，Chrome本身提供了多种拓展，大大增强了Chrome浏览器的功能丰富性。<br>但除此之外，其实我们还可以在Chrome浏览器上安装脚本，进一步增强其易用性。<br>此处就简单介绍几种个人常用的Chrome拓展和脚本，供大家参考。  </p>
+<a id="more"></a>
+<h1 id="2-Chrome拓展"><a href="#2-Chrome拓展" class="headerlink" title="2. Chrome拓展"></a>2. Chrome拓展</h1><h2 id="1-AdBlock-—-最佳广告拦截工具"><a href="#1-AdBlock-—-最佳广告拦截工具" class="headerlink" title="(1) AdBlock — 最佳广告拦截工具"></a>(1) AdBlock — 最佳广告拦截工具</h2><p>AdBlock是Chrome上最受欢迎的拓展之一，其功能便是拦截烦人的广告，并且免费，非常良心。</p>
+<h2 id="2-LastPass"><a href="#2-LastPass" class="headerlink" title="(2) LastPass"></a>(2) LastPass</h2><p>LastPass是著名的密码管理工具，用它而不用Chrome自带的密码管理，是看重了其跨平台的能力。<br>LastPass免费版能够支持两台设备，跨越多个应用和浏览器使用，非常方便。 </p>
+<h2 id="3-捕捉网页截图"><a href="#3-捕捉网页截图" class="headerlink" title="(3) 捕捉网页截图"></a>(3) 捕捉网页截图</h2><p>捕捉网页截图用于在页面上进行截图，最重要的是其支持长截图，即让页面滚动进行长距离截图，非常有用。</p>
+<h2 id="4-Video-Downloader-Plus"><a href="#4-Video-Downloader-Plus" class="headerlink" title="(4) Video Downloader Plus"></a>(4) Video Downloader Plus</h2><p>Video Downloader Plus能够让你下载页面中的视频。<br>其实IDM(Internet Download Manager)功能更加强大，是Windows平台下的最强下载软件，并且提供Chrome插件。然而需要付费。<br>Video Downloader Plus为免费插件，并且基础功能也勉强够用。具体可酌情选择。 </p>
+<h2 id="5-Grammar-and-Spelling-checker-by-Ginger"><a href="#5-Grammar-and-Spelling-checker-by-Ginger" class="headerlink" title="(5) Grammar and Spelling checker by Ginger"></a>(5) Grammar and Spelling checker by Ginger</h2><p>Ginger能够自动实现英文拼写和语法纠错，英语读写苦手必备。  </p>
+<h2 id="6-Kopernio"><a href="#6-Kopernio" class="headerlink" title="(6) Kopernio"></a>(6) Kopernio</h2><p>Kopernio是一个文献全文数据库，能够让用户绕开文献数据库(如web of science)的封锁，下载文献全文，科研党必备。</p>
+<h2 id="7-Momentum"><a href="#7-Momentum" class="headerlink" title="(7)Momentum"></a>(7)Momentum</h2><p>Momentum是一个Chrome美化插件，主要用于美化Chrome的tab页面。<br>原始的Chrome tab页面会列出谷歌搜索和常用网页。<br>Momentum则会每天更新一张风景图，一则英文谚语，并且支持更多的功能定制，其效果如下所示。  </p>
+<p><img src="\images\pasted-8.png" alt="upload successful"></p>
+<h2 id="8-阅读模式"><a href="#8-阅读模式" class="headerlink" title="(8) 阅读模式"></a>(8) 阅读模式</h2><p>阅读模式是仿照<code>Safari浏览器阅读模式</code>的一个插件，作用在于去除页面中的杂乱信息，提供一个清晰干净的阅读页面。</p>
+<h2 id="9-专注看图"><a href="#9-专注看图" class="headerlink" title="(9) 专注看图"></a>(9) 专注看图</h2><p>与阅读模式类似，专注看图也是一款阅读体验优化的软件。<br>只不过阅读模式侧重文字的提取和体验优化。专注看图则是专注于网页中图片的提取，适合看图党。  </p>
+<h1 id="2-Chrome脚本"><a href="#2-Chrome脚本" class="headerlink" title="2. Chrome脚本"></a>2. Chrome脚本</h1><p>脚本比插件更强大，因为其更加自由，支持更多的自定义。<br>要安装脚本，首先需要安装脚本的管理器，即油猴(Tamperonkey)插件。<br>在Chrome线上应用程序商店中，安装完Tamperonkey，即可安装插件了。<br><span class="exturl" data-url="aHR0cHM6Ly93d3cudGFtcGVybW9ua2V5Lm5ldC9zY3JpcHRzLnBocA==" title="https://www.tampermonkey.net/scripts.php">Tamperonkey主页<i class="fa fa-external-link"></i></span>列出来几个脚本来源网站，都支持脚本的一键安装，非常方便。并且Tamperonkey还支持插件的管理以及云同步，便于跨机器使用。<br>这里推荐几个个人常用的脚本，抛砖引玉。 </p>
+<h2 id="1-Youtube系列"><a href="#1-Youtube系列" class="headerlink" title="(1) Youtube系列"></a>(1) Youtube系列</h2><h3 id="Youtube"><a href="#Youtube" class="headerlink" title="Youtube+"></a>Youtube+</h3><p>youtube播放效果增强，功能十分强大，广受好评。<br>不过只支持旧版布局的Youtube，所以往往需要和<code>Youtube - Restore Classic</code>搭配使用。</p>
+<h3 id="Youtube-Restore-Classic"><a href="#Youtube-Restore-Classic" class="headerlink" title="Youtube - Restore Classic"></a>Youtube - Restore Classic</h3><p>如其标题中表达的一样，此脚本的作用是自动将youtube布局修改为旧版(经典模式)。<br>适合需要使用<code>Youtube+</code>或者喜欢经典布局的用户使用。  </p>
+<h3 id="Youtube-Best-Video-Downloader-2"><a href="#Youtube-Best-Video-Downloader-2" class="headerlink" title="Youtube Best Video Downloader 2"></a>Youtube Best Video Downloader 2</h3><p>用于youtube视频下载，不能与Youtube+一起使用。</p>
+<h3 id="EasyVideoDownload"><a href="#EasyVideoDownload" class="headerlink" title="EasyVideoDownload"></a>EasyVideoDownload</h3><p>同样用于youtube视频下载，可与Youtube+兼容。</p>
+<h2 id="2-bilibili系列"><a href="#2-bilibili系列" class="headerlink" title="(2) bilibili系列"></a>(2) bilibili系列</h2><h3 id="bilibili-merged-flv-mp4-ass-enhance"><a href="#bilibili-merged-flv-mp4-ass-enhance" class="headerlink" title="bilibili merged flv+mp4+ass+enhance"></a>bilibili merged flv+mp4+ass+enhance</h3><p>bilibili播放效果增强，并且支持视频下载</p>
+<h3 id="解除B站区域限制"><a href="#解除B站区域限制" class="headerlink" title="解除B站区域限制"></a>解除B站区域限制</h3><p>bilibili某些番剧，限定了只支持某些地区能够观看。<br>此脚本可以解除区域限制，让用户自由观看所有番剧。  </p>
+<h2 id="3-百度系列"><a href="#3-百度系列" class="headerlink" title="(3)百度系列"></a>(3)百度系列</h2><h3 id="百度网盘直接下载助手"><a href="#百度网盘直接下载助手" class="headerlink" title="百度网盘直接下载助手"></a>百度网盘直接下载助手</h3><p>破解百度网盘下载链接，从而可以使用其他下载工具对文件进行下载，跳过百度网盘的限速。</p>
+<h3 id="百度文库文字复制及原格式下载"><a href="#百度文库文字复制及原格式下载" class="headerlink" title="百度文库文字复制及原格式下载"></a>百度文库文字复制及原格式下载</h3><p>功能如标题，能够绕开百度文库限制，实现文库中文章文字的复制及原格式下载。</p>
+<h2 id="4-豆瓣系列"><a href="#4-豆瓣系列" class="headerlink" title="(4) 豆瓣系列"></a>(4) 豆瓣系列</h2><h3 id="MoreMovieRatings"><a href="#MoreMovieRatings" class="headerlink" title="MoreMovieRatings"></a>MoreMovieRatings</h3><p>在豆瓣电影中，除豆瓣评分外，还显示IMDb评分。  </p>
+<h3 id="豆瓣资源下载大师：1秒搞定豆瓣电影-音乐-图书下载"><a href="#豆瓣资源下载大师：1秒搞定豆瓣电影-音乐-图书下载" class="headerlink" title="豆瓣资源下载大师：1秒搞定豆瓣电影|音乐|图书下载"></a>豆瓣资源下载大师：1秒搞定豆瓣电影|音乐|图书下载</h3><p>在豆瓣电影|音乐|图书的具体页面右侧，显示全网能够找到的下载链接。（含直链|FTP|BT|磁力|ED2K|NZB|迅雷|百度盘|115盘等）<br>省了自己一个个搜索下载链接的功夫，直接在页面右侧点击对应下载链接即可。  </p>
+<h2 id="5-其他"><a href="#5-其他" class="headerlink" title="(5) 其他"></a>(5) 其他</h2><h3 id="破解VIP会员视频集合"><a href="#破解VIP会员视频集合" class="headerlink" title="破解VIP会员视频集合"></a>破解VIP会员视频集合</h3><p>VIP会员破解，适用于爱奇艺，优酷等多个平台。<br>可以实现VIP会员视频的免费观看。  </p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="hanye6 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="hanye6 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Chrome/" rel="tag"># Chrome</a>
+              <a href="/tags/%E6%89%A9%E5%B1%95/" rel="tag"># 扩展</a>
+              <a href="/tags/%E8%84%9A%E6%9C%AC/" rel="tag"># 脚本</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/30/Linux%E5%A4%87%E4%BB%BD%E6%96%B9%E6%B3%95/" rel="prev" title="Linux备份方法">
+      <i class="fa fa-chevron-left"></i> Linux备份方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/30/Mac%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%96%B9%E6%B3%95/" rel="next" title="Mac批量创建文件夹的方法">
+      Mac批量创建文件夹的方法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-前言"><span class="nav-text">1. 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Chrome拓展"><span class="nav-text">2. Chrome拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-AdBlock-—-最佳广告拦截工具"><span class="nav-text">(1) AdBlock — 最佳广告拦截工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-LastPass"><span class="nav-text">(2) LastPass</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-捕捉网页截图"><span class="nav-text">(3) 捕捉网页截图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Video-Downloader-Plus"><span class="nav-text">(4) Video Downloader Plus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Grammar-and-Spelling-checker-by-Ginger"><span class="nav-text">(5) Grammar and Spelling checker by Ginger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Kopernio"><span class="nav-text">(6) Kopernio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Momentum"><span class="nav-text">(7)Momentum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-阅读模式"><span class="nav-text">(8) 阅读模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-专注看图"><span class="nav-text">(9) 专注看图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Chrome脚本"><span class="nav-text">2. Chrome脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Youtube系列"><span class="nav-text">(1) Youtube系列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Youtube"><span class="nav-text">Youtube+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Youtube-Restore-Classic"><span class="nav-text">Youtube - Restore Classic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Youtube-Best-Video-Downloader-2"><span class="nav-text">Youtube Best Video Downloader 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EasyVideoDownload"><span class="nav-text">EasyVideoDownload</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-bilibili系列"><span class="nav-text">(2) bilibili系列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bilibili-merged-flv-mp4-ass-enhance"><span class="nav-text">bilibili merged flv+mp4+ass+enhance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解除B站区域限制"><span class="nav-text">解除B站区域限制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-百度系列"><span class="nav-text">(3)百度系列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#百度网盘直接下载助手"><span class="nav-text">百度网盘直接下载助手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#百度文库文字复制及原格式下载"><span class="nav-text">百度文库文字复制及原格式下载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-豆瓣系列"><span class="nav-text">(4) 豆瓣系列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MoreMovieRatings"><span class="nav-text">MoreMovieRatings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#豆瓣资源下载大师：1秒搞定豆瓣电影-音乐-图书下载"><span class="nav-text">豆瓣资源下载大师：1秒搞定豆瓣电影|音乐|图书下载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-其他"><span class="nav-text">(5) 其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#破解VIP会员视频集合"><span class="nav-text">破解VIP会员视频集合</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hanye6"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">hanye6</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hanye6</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">60k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">54 分钟</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+	<script>
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+	</script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://YEHan.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://hanye6.github.io/2019/12/30/Chrome%E4%B8%8A%E7%9A%84%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/",
+            identifier: "2019/12/30/Chrome上的脚本安装/",
+            title: "Chrome上的拓展及脚本安装"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://YEHan.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

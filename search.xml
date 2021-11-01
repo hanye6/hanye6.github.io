@@ -1,6 +1,1441 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python（一）：基础篇</title>
+    <url>/2020/01/09/Python%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/</url>
+    <content><![CDATA[<h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><h2 id="1-起源"><a href="#1-起源" class="headerlink" title="1. 起源"></a>1. 起源</h2><p>在写爬虫的时候，需要了解python多进程和多线程的知识。借此机会，也了解了一下相关的python高级知识。<br>之前进行基础python学习的时候，主要依靠的是<span class="exturl" data-url="aHR0cDovL3d3dy5weXRob25kb2MuY29tL3B5dGhvbnR1dG9yaWFsMy9pbmRleC5odG1s" title="http://www.pythondoc.com/pythontutorial3/index.html">python官方白皮书<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly93ZWIuaXR1LmVkdS50ci9odWx5YXlhbGNpbi9NQUsyMzBFX1B5dGhvblByb2dyYW1taW5nLyU1QjIwMTQlNUQlNUJTaGF3JTVETEVBUk5QWVRIT05USEUlMjBIQVJEV0FZLnBkZg==" title="https://web.itu.edu.tr/hulyayalcin/MAK230E_PythonProgramming/%5B2014%5D%5BShaw%5DLEARNPYTHONTHE%20HARDWAY.pdf">笨办法学python<i class="fa fa-external-link"></i></span>。两本材料都相对基础，对于高级知识如迭代器、生成器等涉及不深。<br>刚好借此机会，进行一下相关知识的补遗，并对整个python体系进行简单的梳理。 </p>
+<h2 id="2-Python简介"><a href="#2-Python简介" class="headerlink" title="2. Python简介"></a>2. Python简介</h2><h3 id="1-高级语言-high-level-programming-language"><a href="#1-高级语言-high-level-programming-language" class="headerlink" title="(1) 高级语言(high-level programming language)"></a>(1) 高级语言(high-level programming language)</h3><p>在计算机领域，按照编程语言抽象程度不同，将其分为<code>高级语言</code>和<code>低级语言</code>。<br><a id="more"></a></p>
+<ul>
+<li>低级语言如二进制01代码、汇编语言，对计算机来说易于理解，执行效率高。但对人来说理解困难，编写效率低。  </li>
+<li>高级语言如C、C++、Python、Java等，正相反，通过对低级语言的抽象，将其整合为人类可以理解的语句，增加代码可读性，提升了编写效率。但反之，也降低了运行效率。  </li>
+</ul>
+<p>Python在高级语言中，也算是抽象程度较高的一种。因此，其代码可读性很强，编写效率很高。往往可以通过十几行代码，实现其他语言几百行的效果，对于新手非常友好。有着“简单、易读、优雅”等特点。<br>与此同时，Python也因为抽象程度高，所以代码的实际运行效率不可避免地会相对降低。  </p>
+<p>因此，Python语言不适合开发对于CPU计算性能要求非常高的程序。如游戏开发，芯片开发等。这类程序对于程序计算量大，CPU长期处于繁忙状态，程序对反应时间非常敏感。比如游戏，卡一下就会在祖安痛失双亲。<br>反之，Python适合开发对CPU计算性能相对较低的程序，如爬虫，网站构建等。这类程序的IO任务较多，如网络通讯，输入输出等。CPU大部分时间处于等待状态，需要等到IO任务结束后才能进行下一步运算。因此，这类任务对反应时间不敏感。例如，在IO时间长达1-3秒的情况下，CPU计算时间是0.1秒还是0.001秒，这其中差距很难被用户感知。</p>
+<h3 id="2-脚本语言-解释型语言"><a href="#2-脚本语言-解释型语言" class="headerlink" title="(2) 脚本语言(解释型语言)"></a>(2) 脚本语言(解释型语言)</h3><p>如上所述，人类开发使用的大多是高级语言。因此，为了能够计算机能够理解我们的代码，需要将其翻译成低级语言。根据翻译的方法不同，我们又将这些高级语言分为<code>编译型语言</code>和<code>解释型语言</code>。</p>
+<p>编译型语言的翻译流程为:<br>“源代码（高级语言） -&gt; 编译器 -&gt; 目标代码（低级语言） -&gt; 执行器 -&gt; 计算机输出”。<br>解释型语言的翻译流程为<br>“源代码 -&gt; 解释器 -&gt; 计算机输出”</p>
+<p>两种语言的对比如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>运行效率</th>
+<th>保密性</th>
+<th>可修改性</th>
+<th>可移植性</th>
+<th>典型代表</th>
+<th>适用开发场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>编译型语言</td>
+<td>编译一次后，每次运行目标语言即可<br>运行效率高</td>
+<td>可直接发布编译后的目标代码（如exe），源代码不可破译<br>保密性高</td>
+<td>编译后不可修改。需修改源代码后重新编译<br>灵活性较差</td>
+<td>代码需要经过编译，只能在兼容的系统上运行<br>可移植性差</td>
+<td>C、C++、Pascal</td>
+<td>操作系统开发、大型应用程序开发、图像处理、数据库等</td>
+</tr>
+<tr>
+<td>解释型语言</td>
+<td>每次运行都要逐行解释<br>运行效率低</td>
+<td>需要直接发布源代码<br>保密性低</td>
+<td>随时可修改源代码<br>灵活性较高</td>
+<td>只要安装解释器即可运行<br>可移植性高</td>
+<td>Python、Matlab</td>
+<td>网页脚本，服务器脚本、跨平台服务等</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-流行语言"><a href="#3-流行语言" class="headerlink" title="(3) 流行语言"></a>(3) 流行语言</h3><p>Python是目前世界上非常受欢迎的语言，因此有着非常丰富的基础代码库和第三方库。<br>这些库，一方面进一步简化了开发工作，通过直接调用别人开发好的接口，能够大大提升开发效率。另一方面也一定程度上弥补了Python语言的自身缺陷。如著名的Numpy库，其底层逻辑大部分通过C实现，能够让开发者用Python编写出的程序也能够拥有极高的运行效率，同时保障了开发效率和运行效率。</p>
+<h3 id="4-其他"><a href="#4-其他" class="headerlink" title="(4) 其他"></a>(4) 其他</h3><p>Python是一门<code>大小写敏感</code>的语言。<br>Python使用<code>缩进</code>分割和组织代码块，这一点与其他语言使用<code>{}</code>有所不同。缩进一般通过<code>Tab</code>或者<code>四个空格</code>实现。示例代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a &#x3D; 100</span><br><span class="line">if a &gt;&#x3D; 0:</span><br><span class="line">    print(a)</span><br><span class="line">else:</span><br><span class="line">    print(-a)</span><br></pre></td></tr></table></figure>
+<p>Python通过<code>#</code>表示注释。<br>Python能够自动进行内存管理，这与C有明显区别，也进一步提高了编程的效率。  </p>
+<h1 id="二、基础篇"><a href="#二、基础篇" class="headerlink" title="二、基础篇"></a>二、基础篇</h1><h2 id="1-命令行模式与交互模式"><a href="#1-命令行模式与交互模式" class="headerlink" title="1. 命令行模式与交互模式"></a>1. 命令行模式与交互模式</h2><p>Python有两种运行方式：命令行模式与交互模式。</p>
+<p><strong>命令行模式</strong><br>打开terminal，即进入命令行模式。<br>此模式下，可通过<code>python &lt;file name&gt;.py</code>命令运行py脚本。脚本中的所有命令会被逐行依次执行。  </p>
+<p><strong>交互模式</strong><br>在命令行中，输入<code>python</code>，回车，即可进入交互模式。<br>在Python交互模式下输入<code>exit()</code>并回车,即可退出交互模式，返回命令行模式。<br>交互模式以<code>&gt;&gt;&gt;</code>作为提示符（prompt），告诉你可以输入指令。指令输入后，按回车，即可立即得到结果。效果如下所示  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; 1*6</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<p>如果需要输入多行结构，则会显示<code>...</code>作为从属提示符，效果如下所示：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; 1</span><br><span class="line">&gt;&gt;&gt; if a&#x3D;&#x3D;1:</span><br><span class="line">...     print(&quot;a is equal to 1&quot;)</span><br><span class="line">a is equal to 1</span><br></pre></td></tr></table></figure><br>但即使如此，交互模式下也不适合输入过长的代码。<br>交互模式的优点在于，会打印出每一条语句的结果，实时的反馈方便进行代码调试。缺点在于复用性差，退出交互模式后，当前所有内容都会丢失。  </p>
+<p><em>一般来说，编程人员会在交互模式下打磨代码。在代码较为稳定后，会封装为py脚本，通过命令行模式多次复用脚本。</em>  </p>
+<p><strong>Jupyter notebook</strong><br>Jupyter notebook是一个强化版的Python解释器，它综合了命令行模式和交互模式的优点。既能够实时显示每一行命令的结果，又能够把所有输入和输出记录到文件中，便于之后复用。<br>我们会在进阶篇对Jupyter进行介绍。  </p>
+<h2 id="2-数据类型"><a href="#2-数据类型" class="headerlink" title="2. 数据类型"></a>2. 数据类型</h2><h3 id="1-数字：整数-int，浮点数-float"><a href="#1-数字：整数-int，浮点数-float" class="headerlink" title="(1) 数字：整数 int，浮点数 float"></a>(1) 数字：整数 int，浮点数 float</h3><p>Python中的数字类型分为整数和浮点数。浮点数相比整数，多了小数的部分。<br>整数和浮点数，在交互模式下可以直接进行运算。如下所示：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; 2 + 2</span><br><span class="line">4</span><br><span class="line">&gt;&gt;&gt; 50 - 5*6</span><br><span class="line">20</span><br><span class="line">&gt;&gt;&gt; (50 - 5*6) &#x2F; 4</span><br><span class="line">5.0</span><br><span class="line">&gt;&gt;&gt; 8 &#x2F; 5   # division always returns a floating point number</span><br><span class="line">1.6</span><br><span class="line">&gt;&gt;&gt; 17 &#x2F; 3  # classic division returns a float</span><br><span class="line">5.666666666666667</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&gt;&gt;&gt; 17 &#x2F;&#x2F; 3  # floor division discards the fractional part</span><br><span class="line">5</span><br><span class="line">&gt;&gt;&gt; 17 % 3  # the % operator returns the remainder of the division</span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt; 5 * 3 + 2  # result * divisor + remainder</span><br><span class="line">17</span><br><span class="line">&gt;&gt;&gt; 5 ** 2  # 5 squared</span><br><span class="line">25</span><br><span class="line">&gt;&gt;&gt; 2 ** 7  # 2 to the power of 7</span><br><span class="line">128</span><br></pre></td></tr></table></figure><br>注意：在同时涉及浮点数和整数的运算中，整数会被转化为浮点数。如<code>5</code>被转化为<code>5.0</code>，以此来保证兼容性。<br>注意：由于计算机是通过二进制存储浮点数，所以浮点数的小数位数有限。浮点数运算在末尾位可能会因四舍五入有误差。而整数的运算结果总是精确的。  </p>
+<h3 id="2-字符串-string"><a href="#2-字符串-string" class="headerlink" title="(2) 字符串 string"></a>(2) 字符串 string</h3><p><strong>引号</strong><br>字符串需要用单引号或者双引号括起来。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; str &#x3D; &quot;This is string&quot;</span><br></pre></td></tr></table></figure><br><strong>格式化</strong><br>字符串可通过format函数实现格式化。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; &quot;&#123;&#125; &#123;&#125;&quot;.format(&quot;hello&quot;, &quot;world&quot;)    # 不设置指定位置，按默认顺序，按位置传递</span><br><span class="line">&#39;hello world&#39;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; &quot;&#123;0&#125; &#123;1&#125;&quot;.format(&quot;hello&quot;, &quot;world&quot;)  # 设置指定位置，按位置传递</span><br><span class="line">&#39;hello world&#39;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; &quot;&#123;1&#125; &#123;0&#125; &#123;1&#125;&quot;.format(&quot;hello&quot;, &quot;world&quot;)  # 设置指定位置，按位置传递</span><br><span class="line">&#39;world hello world&#39;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; print(&#39;This &#123;food&#125; is &#123;adjective&#125;.&#39;.format(</span><br><span class="line">...       food&#x3D;&#39;spam&#39;, adjective&#x3D;&#39;absolutely horrible&#39;))  # 设置关键词，按关键词传递</span><br><span class="line">This spam is absolutely horrible.</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; print(&#39;The story of &#123;0&#125;, &#123;1&#125;, and &#123;other&#125;.&#39;.format(&#39;Bill&#39;, &#39;Manfred&#39;, other&#x3D;&#39;Georg&#39;)) # 组合运用位置参数和关键词参数</span><br><span class="line">The story of Bill, Manfred, and Georg.</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; print(&#39;The value of PI is approximately &#123;0:.3f&#125;.&#39;.format(math.pi)) # 对参数的格式进行控制。&quot;.3f&quot;表示参数必须是float型，且保留三位小数。</span><br><span class="line">The value of PI is approximately 3.142.</span><br></pre></td></tr></table></figure></p>
+<p><strong>字符编码</strong><br>字符串可通过encode/decode实现编码转换。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;中文&#39;.encode(&#39;utf-8&#39;)</span><br><span class="line">b&#39;\xe4\xb8\xad\xe6\x96\x87&#39;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; b&#39;\xe4\xb8\xad\xe6\x96\x87&#39;.decode(&#39;utf-8&#39;)</span><br><span class="line">&#39;中文&#39;</span><br></pre></td></tr></table></figure><br><strong>转义</strong><br>在输入特殊字符时，需要进行转义。如<code>\n</code>代表换行，<code>\t</code>代表横向制表符等。<br>而在字符串中直接回车想表示换行是无效的，必须通过转义实现。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; print(&#39;hi\nthere&#39;)</span><br><span class="line">hi</span><br><span class="line">there</span><br></pre></td></tr></table></figure><br>有时我们并不想让转义字符生效，我们只想显示字符串原来的意思，这就要用r来定义原始字符串。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; print(&#39;C:\some\name&#39;)  # here \n means newline!</span><br><span class="line">C:\some</span><br><span class="line">ame</span><br><span class="line">&gt;&gt;&gt; print(r&#39;C:\some\name&#39;)  # note the r before the quote</span><br><span class="line">C:\some\name</span><br></pre></td></tr></table></figure><br>如果想直接复制大段文字，而不想手打多个换行符，可以通过三引号（triple quotes）。三引号会给每个行尾自动添加换行符。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; str &#x3D; &quot;This is first line.</span><br><span class="line">&gt;&gt;&gt; This is second line.</span><br><span class="line">&gt;&gt;&gt; This is third line.&quot;</span><br><span class="line">&gt;&gt;&gt; print(str)</span><br><span class="line">SyntaxError: EOL while scanning string literal</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; str &#x3D; &quot;&quot;&quot;This is first line.</span><br><span class="line">&gt;&gt;&gt; This is second line.</span><br><span class="line">&gt;&gt;&gt; This is third line.&quot;&quot;&quot;</span><br><span class="line">&gt;&gt;&gt; print(str)</span><br><span class="line">This is first line.</span><br><span class="line">This is second line.</span><br><span class="line">This is third line.</span><br></pre></td></tr></table></figure><br><em>最后，可以结合<code>r</code>原始字符串和三引号，来直接引用大段的内容，并使其不转义。</em></p>
+<p><strong>连接</strong><br>两段字符串，可以直接通过<code>+</code>连接在一起，如下所示：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;app&#39; + &#39;le&#39;</span><br><span class="line">apple</span><br></pre></td></tr></table></figure><br><strong>切片</strong><br>字符串可以赋值给变量，然后进行切片。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; str &#x3D; &quot;apple&quot;</span><br><span class="line">&gt;&gt;&gt; str[0]</span><br><span class="line">&#39;a&#39;</span><br><span class="line">&gt;&gt;&gt; str[-1]</span><br><span class="line">&#39;e&#39;</span><br><span class="line">&gt;&gt;&gt; str[0:2]</span><br><span class="line">&#39;ap&#39;</span><br></pre></td></tr></table></figure></p>
+<p><strong>操作</strong><br>字符串支持大量的方法，用于进行增删查改等操作。借助这些方法，可以对字符串进行复杂而精细的操作。<br>详情请查看<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnB5dGhvbi5vcmcvMy9saWJyYXJ5L3N0ZHR5cGVzLmh0bWwjc3RyaW5nLW1ldGhvZHM=" title="https://docs.python.org/3/library/stdtypes.html#string-methods">string method<i class="fa fa-external-link"></i></span>  </p>
+<h3 id="3-二进制数据-bytes"><a href="#3-二进制数据-bytes" class="headerlink" title="(3) 二进制数据 bytes"></a>(3) 二进制数据 bytes</h3><p>bytes就是二进制流。在Python3中，默认使用Unicode编码。<br>encode()/decode()方法就是string和bytes类型的相互转换，并制定编码解码类型。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; s &#x3D; &quot;中文&quot;</span><br><span class="line">&gt;&gt;&gt; type(s)</span><br><span class="line">&lt;class &#39;str&#39;&gt;</span><br><span class="line">&gt;&gt;&gt; b &#x3D; bytes(s, encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">b&#39;\xe4\xb8\xad\xe6\x96\x87&#39;   </span><br><span class="line">&gt;&gt;&gt; type(b)</span><br><span class="line">&lt;class &#39;bytes&#39;&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-布尔值-bool"><a href="#4-布尔值-bool" class="headerlink" title="(4) 布尔值 bool"></a>(4) 布尔值 bool</h3><p>布尔值取值<code>True</code>或<code>False</code>。<br>布尔值可进行<code>and</code>,<code>or</code>,<code>not</code>运算。  </p>
+<h3 id="5-空值-None"><a href="#5-空值-None" class="headerlink" title="(5) 空值 None"></a>(5) 空值 None</h3><p>注意，空值<code>None</code>不等于整数<code>0</code>。</p>
+<h3 id="6-变量"><a href="#6-变量" class="headerlink" title="(6) 变量"></a>(6) 变量</h3><p>注意，Python为动态语言，其变量本身类型不固定。所以先后为其赋值不同类型的数据不会报错。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Python code</span><br><span class="line">a &#x3D; &quot;this is string&quot;</span><br><span class="line">a &#x3D; 10</span><br></pre></td></tr></table></figure><br>而静态语言如C，在创造变量时必须实现制定变量类型，赋值错误的数据类型会报错。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># C code</span><br><span class="line">int a &#x3D; 123; &#x2F;&#x2F; a是整数类型变量</span><br><span class="line">a &#x3D; &quot;ABC&quot;; &#x2F;&#x2F; 错误：不能把字符串赋给整型变量</span><br></pre></td></tr></table></figure><br>相比于静态语言，动态语言更加灵活。这也是Python的抽象程度比C更高的一个佐证。  </p>
+<p>注意，变量本身必须赋值后再使用，否则会报错，如下所示：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># try to access an undefined variable</span><br><span class="line">&gt;&gt;&gt; n</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">NameError: name &#39;n&#39; is not defined</span><br></pre></td></tr></table></figure></p>
+<p>注意：在Python中，等号<code>=</code>表示赋值。而数学的等号用<code>==</code>表示。  </p>
+<h3 id="7-日期类型"><a href="#7-日期类型" class="headerlink" title="(7) 日期类型"></a>(7) 日期类型</h3><p>Python内置的<code>datatime</code>模块提供了三种日期类型：<code>datetime</code>,<code>date</code>,<code>time</code>。其中<code>datetime</code>类型是其他两种的结合。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; from datetime import datetime, date, time</span><br><span class="line">&gt;&gt;&gt; dt &#x3D; datetime(2011, 10, 29, 20, 30, 21)</span><br><span class="line">&gt;&gt;&gt; dt.day</span><br><span class="line">29</span><br><span class="line">&gt;&gt;&gt; dt.minute</span><br><span class="line">30</span><br></pre></td></tr></table></figure><br>两个datetime类型相减，得到<code>timedelta</code>时间差类型。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; datetime(2011,1,7) - datetime(2008,6,24,8,15)</span><br><span class="line">datetime.timedelta(days&#x3D;926, seconds&#x3D;56700)</span><br></pre></td></tr></table></figure><br>strftime()/strptime()可以实现字符串和日期类型的相互转换。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; stamp &#x3D; datetime(2011,1,3)</span><br><span class="line">&gt;&gt;&gt; print(str(stamp)) # 直接输出</span><br><span class="line">2011-01-03 00:00:00</span><br><span class="line">&gt;&gt;&gt; print(stamp.strftime(&#39;%Y-%m-%d&#39;)) # 格式化输出</span><br><span class="line">2011-01-03</span><br><span class="line">&gt;&gt;&gt; datetime.strptime(&#39;20091031&#39;, &#39;%Y%m%d&#39;)</span><br><span class="line">datetime.datetime(2009, 10, 31, 0, 0)</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-数据结构"><a href="#3-数据结构" class="headerlink" title="3. 数据结构"></a>3. 数据结构</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="(1) 概述"></a>(1) 概述</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>符号</th>
+<th>特点</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>列表 list</td>
+<td>[]</td>
+<td>长度可变；内容可改；有序；可嵌套</td>
+<td>l = [‘Apple’, 123, True, [345, ‘oriange’, false]]</td>
+</tr>
+<tr>
+<td>元祖 tuple</td>
+<td>()</td>
+<td>长度固定；不可更改；有序；可嵌套</td>
+<td>t = (‘a’, ‘b’, [‘A’, ‘B’])</td>
+</tr>
+<tr>
+<td>字典(键值对) dic</td>
+<td>{}</td>
+<td>长度不固定；键可更改、值不可更改；无序；可嵌套；键不重复</td>
+<td>d = {‘Michael’: 95, ‘Bob’: 75, ‘Tracy’: 85}</td>
+</tr>
+<tr>
+<td>集合 set</td>
+<td>{}</td>
+<td>相当于字典的键；长度不固定；可更改；无序；不重复</td>
+<td>s = {1, 2, 3, 4}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>不可变对象与可变对象</strong><br>通过上述表格，我们知道，有些数据结构是可变的，有些数据结构是不可变的。  </p>
+<ul>
+<li>可变对象：list dict set</li>
+<li>不可变对象： tuple string int float bool</li>
+</ul>
+<p>对于可变对象，其变量传递是<code>按引用传递</code>的。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; [1,2,3]</span><br><span class="line">&gt;&gt;&gt; b &#x3D; a</span><br><span class="line">&gt;&gt;&gt; a.append(4)</span><br><span class="line">&gt;&gt;&gt; print(a)</span><br><span class="line">[1, 2, 3, 4]</span><br><span class="line">&gt;&gt;&gt; print(b)</span><br><span class="line">[1, 2, 3, 4]</span><br></pre></td></tr></table></figure><br>在上述的例子中，我们改变了a，b也随之改变。这是因为a本身是列表，是可变对象。所以我们在令<code>b=a</code>时，实际上是令b的指针，指向了和a相同的内容。所以当a的内容改变时，b的内容也随之改变。  </p>
+<p><img src="\images\pasted-94.png" alt="upload successful"></p>
+<p>所以如果需要复制可变对象的当前内容，而不是按引用传递，需要进行<code>copy()</code>操作。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; [1,2,3]</span><br><span class="line">&gt;&gt;&gt; b &#x3D; a.copy()</span><br><span class="line">&gt;&gt;&gt; a.append(4)</span><br><span class="line">&gt;&gt;&gt; print(a)</span><br><span class="line">[1, 2, 3, 4]</span><br><span class="line">&gt;&gt;&gt; print(b)</span><br><span class="line">[1, 2, 3]</span><br></pre></td></tr></table></figure><br>而，非可变对象，由于其本身不可变，所以在赋值时实际上已经经过了<code>copy()</code>操作，是把当前对象复制一份再传递给新的变量。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; &#39;abc&#39;</span><br><span class="line">&gt;&gt;&gt; b &#x3D; a.replace(&#39;a&#39;, &#39;A&#39;)</span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">&#39;Abc&#39;</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">&#39;abc&#39;</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\pasted-95.png" alt="upload successful"></p>
+<p>可以通过<code>is</code>命令，来判断两个变量是否引用同一个对象，示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; [1,2,3]</span><br><span class="line">&gt;&gt;&gt; b &#x3D; a</span><br><span class="line">&gt;&gt;&gt; a is b</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; c &#x3D; a.copy()</span><br><span class="line">&gt;&gt;&gt; a is c</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; d &#x3D; &#39;abc&#39;</span><br><span class="line">&gt;&gt;&gt; e &#x3D; d.replace(&#39;a&#39;, &#39;A&#39;)</span><br><span class="line">&gt;&gt;&gt; d is e</span><br><span class="line">False</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-列表-List"><a href="#2-列表-List" class="headerlink" title="(2) 列表 List"></a>(2) 列表 List</h3><p><strong>切片与连接</strong><br>如同String一样，List可以被切片，也支持<code>+</code>连接。如下所示：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; squares &#x3D; [1, 4, 9, 16, 25]</span><br><span class="line">&gt;&gt;&gt; squares[0]  # indexing returns the item</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; squares[-1]</span><br><span class="line">25</span><br><span class="line">&gt;&gt;&gt; squares[:2]</span><br><span class="line">[1, 4]</span><br><span class="line">&gt;&gt;&gt; squares + [36, 49, 64, 81, 100]</span><br><span class="line">[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span><br></pre></td></tr></table></figure><br><strong>元素赋值</strong><br>注意，由于string是不可变对象，所以是不可以对其元素进行改变的。如需改变，需要重新创造变量进行赋值，如下所示：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; str &#x3D; &quot;I like Apple&quot;</span><br><span class="line">&gt;&gt;&gt; str[-5:]</span><br><span class="line">&#39;Apple&#39;</span><br><span class="line">&gt;&gt;&gt; str[-5:] &#x3D; &#39;grape&#39;</span><br><span class="line">TypeError: &#39;str&#39; object does not support item assignment</span><br><span class="line">&gt;&gt;&gt; str2 &#x3D; str[:-5] + &#39;grape&#39;</span><br><span class="line">&gt;&gt;&gt; str2</span><br><span class="line">&#39;I like grape&#39;</span><br></pre></td></tr></table></figure><br>而List是可变对象，所以可以直接对其元素进行赋值改变，如下所示：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; cubes &#x3D; [1, 8, 27, 65, 125]</span><br><span class="line">&gt;&gt;&gt; cubes[3] &#x3D; 64</span><br><span class="line">&gt;&gt;&gt; cubes</span><br><span class="line">[1, 8, 27, 64, 125]</span><br></pre></td></tr></table></figure></p>
+<p><strong>列表长度</strong><br>len()方法可以用于测量列表长度，即列表中元素个数。示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; letters &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]</span><br><span class="line">&gt;&gt;&gt; len(letters)</span><br><span class="line">4</span><br></pre></td></tr></table></figure></p>
+<p><strong>列表嵌套</strong><br>列表里面也可以嵌套列表，形成多维数组，比如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; s &#x3D; [&#39;python&#39;, &#39;java&#39;, [&#39;asp&#39;, &#39;php&#39;], &#39;scheme&#39;]</span><br><span class="line">&gt;&gt;&gt; len(s)</span><br><span class="line">4</span><br><span class="line">&gt;&gt;&gt; s[2][1]</span><br><span class="line">&#39;php&#39;</span><br></pre></td></tr></table></figure></p>
+<p><strong>常见方法</strong><br>这里列出一些列表的常见方法：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list.append(x)</td>
+<td>把一个元素添加到列表的结尾</td>
+</tr>
+<tr>
+<td>list.extend(L)</td>
+<td>将一个给定列表中的所有元素都添加到另一个列表中</td>
+</tr>
+<tr>
+<td>list.insert(i, x)</td>
+<td>在指定位置插入一个元素</td>
+</tr>
+<tr>
+<td>list.remove(x)</td>
+<td>删除列表中值为 x 的第一个元素。如果没有这样的元素，就会返回一个错误</td>
+</tr>
+<tr>
+<td>list.pop([i])</td>
+<td>从列表的指定位置删除元素，并将其返回</td>
+</tr>
+<tr>
+<td>list.clear()</td>
+<td>从列表中删除所有元素</td>
+</tr>
+<tr>
+<td>list.index(x)</td>
+<td>返回列表中第一个值为 x 的元素的索引。如果没有匹配的元素就会返回一个错误</td>
+</tr>
+<tr>
+<td>list.count(x)</td>
+<td>返回 x 在列表中出现的次数</td>
+</tr>
+<tr>
+<td>list.sort()</td>
+<td>对列表中的元素就地进行排序</td>
+</tr>
+<tr>
+<td>list.reverse()</td>
+<td>就地倒排列表中的元素</td>
+</tr>
+<tr>
+<td>list.copy()</td>
+<td>返回列表的一个浅拷贝</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; [66.25, 333, 333, 1, 1234.5]</span><br><span class="line">&gt;&gt;&gt; print(a.count(333), a.count(66.25), a.count(&#39;x&#39;))</span><br><span class="line">2 1 0</span><br><span class="line">&gt;&gt;&gt; a.insert(2, -1)</span><br><span class="line">&gt;&gt;&gt; a.append(333)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[66.25, 333, -1, 333, 1, 1234.5, 333]</span><br><span class="line">&gt;&gt;&gt; a.index(333)</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; a.remove(333)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[66.25, -1, 333, 1, 1234.5, 333]</span><br><span class="line">&gt;&gt;&gt; a.reverse()</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[333, 1234.5, 1, 333, -1, 66.25]</span><br><span class="line">&gt;&gt;&gt; a.sort()</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[-1, 1, 66.25, 333, 333, 1234.5]</span><br><span class="line">&gt;&gt;&gt; a.pop()</span><br><span class="line">1234.5</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[-1, 1, 66.25, 333, 333]</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-元组-tuple"><a href="#3-元组-tuple" class="headerlink" title="(3) 元组 tuple"></a>(3) 元组 tuple</h3><p>元组的大部分操作与列表类似。<br>但由于元组是不可变对象，一旦创建不可改变。所以没有append()，insert()这样的方法。<br>元组由于其不可变，生成后不可修改特征，安全性上要比list高出不少。所以一般用于存储变化率较低，安全需求较高的内容。</p>
+<p><strong>定义一个元素的元组</strong><br>元组通过<code>()</code>进行定义，但注意，在定义只有一个元素的元组时，如果单纯使用<code>()</code>，则会失效。比如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; t &#x3D; (1)</span><br><span class="line">&gt;&gt;&gt; t</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; type(t)</span><br><span class="line">int</span><br></pre></td></tr></table></figure><br>这是由于，此处的<code>()</code>被认为是数学运算中的小括号，而不是元组符号。<br>所以，定义一个元素的元组时，要在唯一一个元素后面加一个<code>,</code>，以便于Python进行区分，如下所示：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; t &#x3D; (1,)</span><br><span class="line">&gt;&gt;&gt; t</span><br><span class="line">(1,)</span><br><span class="line">&gt;&gt;&gt; type(t)</span><br><span class="line">tuple</span><br></pre></td></tr></table></figure></p>
+<p><strong>元组的可变性</strong><br>之前我们提到过，元组是不可变对象，所以对其进行一些元素变动操作，会报错。比如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; t &#x3D; (1,2,3,4,5)</span><br><span class="line">&gt;&gt;&gt; t</span><br><span class="line">&gt;&gt;&gt; t[0] &#x3D; 3</span><br><span class="line">TypeError: &#39;tuple&#39; object does not support item assignment</span><br></pre></td></tr></table></figure><br>但tuple中可存储列表，列表本身的内容是可变的。比如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; t &#x3D; (&#39;a&#39;, &#39;b&#39;, [&#39;A&#39;, &#39;B&#39;])</span><br><span class="line">&gt;&gt;&gt; t[2][0] &#x3D; &#39;X&#39;</span><br><span class="line">&gt;&gt;&gt; t[2][1] &#x3D; &#39;Y&#39;</span><br><span class="line">&gt;&gt;&gt; t</span><br><span class="line">(&#39;a&#39;, &#39;b&#39;, [&#39;X&#39;, &#39;Y&#39;])</span><br></pre></td></tr></table></figure><br>这是由于，tuple中存储的，是list这个对象。而上述代码中，list本身并没有变化，tuple一开始指向的list并没有改成别的list。真正改变的是list的元素，而list本身是可变对象，支持这种操作。<br>所以，tuple所谓的“不变”是说，tuple的每个元素，指向永远不变。即指向’a’，就不能改成指向’b’，指向一个list，就不能改成指向其他对象，但指向的这个list本身是可变的。<br>若要真正使得元组不可变，保证其安全性，最好不要在其中嵌套可变对象。  </p>
+<h3 id="4-集合-set"><a href="#4-集合-set" class="headerlink" title="(4) 集合 set"></a>(4) 集合 set</h3><p>集合是一个无序不重复元素的集。通常用于消除重复元素、关系检测等。<br>元素和集合之间可以通过<code>in</code>来检测是否存在包含关系。不同集合之间支持交集、差集、并集等操作。<br>示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; basket &#x3D; &#123;&#39;apple&#39;, &#39;orange&#39;, &#39;apple&#39;, &#39;pear&#39;, &#39;orange&#39;, &#39;banana&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; print(basket)                      # show that duplicates have been removed</span><br><span class="line">&#123;&#39;orange&#39;, &#39;banana&#39;, &#39;pear&#39;, &#39;apple&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; &#39;orange&#39; in basket                 # fast membership testing</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; &#39;crabgrass&#39; in basket</span><br><span class="line">False</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; # Demonstrate set operations on unique letters from two words</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; a &#x3D; set(&#39;abracadabra&#39;)</span><br><span class="line">&gt;&gt;&gt; b &#x3D; set(&#39;alacazam&#39;)</span><br><span class="line">&gt;&gt;&gt; a                                  # unique letters in a</span><br><span class="line">&#123;&#39;a&#39;, &#39;r&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; a - b                              # letters in a but not in b</span><br><span class="line">&#123;&#39;r&#39;, &#39;d&#39;, &#39;b&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; a | b                              # letters in either a or b</span><br><span class="line">&#123;&#39;a&#39;, &#39;c&#39;, &#39;r&#39;, &#39;d&#39;, &#39;b&#39;, &#39;m&#39;, &#39;z&#39;, &#39;l&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; a &amp; b                              # letters in both a and b</span><br><span class="line">&#123;&#39;a&#39;, &#39;c&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; a ^ b                              # letters in a or b but not both</span><br><span class="line">&#123;&#39;r&#39;, &#39;d&#39;, &#39;b&#39;, &#39;m&#39;, &#39;z&#39;, &#39;l&#39;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-字典-dict"><a href="#5-字典-dict" class="headerlink" title="(5) 字典 dict"></a>(5) 字典 dict</h3><p>字典是无序的键值对集合。键必须互不相同，不可重复。<br>字典主要通过键，来寻找值，并对值进行复制、更改等操作。<br>这里列出一些字典的常见方法：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>del dict(key)</td>
+<td>删除dict中的某一键值对</td>
+</tr>
+<tr>
+<td>dict.keys()</td>
+<td>返回一个字典中所有关键字</td>
+</tr>
+<tr>
+<td>dict.values()</td>
+<td>返回一个字典中所有值</td>
+</tr>
+<tr>
+<td>dict.items()</td>
+<td>返回一个字典中所有键值对</td>
+</tr>
+<tr>
+<td>key in dict</td>
+<td>检查字典中是否存在某个关键字</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>循环技巧</strong><br>可以通过dict.item()，结合多重赋值，直接成对取出字典中的关键字和值。比如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; knights &#x3D; &#123;&#39;gallahad&#39;: &#39;the pure&#39;, &#39;robin&#39;: &#39;the brave&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; for k, v in knights.items():</span><br><span class="line">...     print(k, v)</span><br><span class="line">...</span><br><span class="line">gallahad the pure</span><br><span class="line">robin the brave</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-流程控制"><a href="#4-流程控制" class="headerlink" title="4. 流程控制"></a>4. 流程控制</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>if, else, elif</td>
+<td>条件判断</td>
+</tr>
+<tr>
+<td>for, while</td>
+<td>循环</td>
+</tr>
+<tr>
+<td>break, continue</td>
+<td>跳出循环</td>
+</tr>
+<tr>
+<td>pass</td>
+<td>占位，防止报错</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>绝大部分语言的流程控制命令都相似，这里不再赘述。<br>新手可以查看Python白皮书中的教程：<br><span class="exturl" data-url="aHR0cDovL3d3dy5weXRob25kb2MuY29tL3B5dGhvbnR1dG9yaWFsMy9jb250cm9sZmxvdy5odG1s" title="http://www.pythondoc.com/pythontutorial3/controlflow.html">流程控制<i class="fa fa-external-link"></i></span>  </p>
+<p>与其他语言不同的一点是，在Python中，循环通过迭代器<code>iterator</code>实现。所以，Python往往使用<code>for i in range(0,100)</code>的形式进行循环。<br><code>range</code>函数返回一个迭代器，迭代器会yields一系列连续值。因此，不需要再for循环内部进行<code>i+=1</code>这样的操作。<br>我们会在进阶篇对迭代器等内容进行详解。  </p>
+<h2 id="5-函数"><a href="#5-函数" class="headerlink" title="5. 函数"></a>5. 函数</h2><p>在写代码的过程中，如果有一部分<code>代码块</code>需要被多次重复利用，为了提升效率，我们可以把这部分代码封装为<code>函数</code>，每次使用时直接调用函数即可。<br>通过这种对函数的封装，能够降低代码之间的耦合性，提高代码稳定性。每个函数只负责自己的输入和输出，内部流程对外屏蔽，降低了debug的难度。  </p>
+<h3 id="1-内建函数"><a href="#1-内建函数" class="headerlink" title="(1) 内建函数"></a>(1) 内建函数</h3><p>Python内部本身有很多自建函数，可以直接使用，示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; abs(-100) #求绝对值</span><br><span class="line">100</span><br><span class="line">&gt;&gt;&gt; max(-1, -5) # 求最大值</span><br><span class="line">-1</span><br></pre></td></tr></table></figure><br>这里推荐几个在日常工作中，比较好用的几个内建函数。  </p>
+<p><strong>enumerate</strong><br>enumerate通常用来把一个list中的位置和值映射到一个dict字典里。字典的值为列表内容，字典的键为当前内容所在位置。<br>其示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; list &#x3D; [&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]</span><br><span class="line">&gt;&gt;&gt; dict &#x3D; &#123;&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; for i, v in enumerate(list):</span><br><span class="line">&gt;&gt;&gt;     dict[i] &#x3D; v</span><br><span class="line">&gt;&gt;&gt; dict</span><br><span class="line">&#123;0: &#39;foo&#39;, 1: &#39;bar&#39;, 2: &#39;baz&#39;&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>zip</strong><br>zip可以将两个list配对，返回带有多个tuple的list。常用于对多个list的迭代循环。其示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; list1 &#x3D; [&#39;Adam&#39;, &#39;Tom&#39;, &#39;Jerry&#39;]</span><br><span class="line">&gt;&gt;&gt; list2 &#x3D; [95,84,89]</span><br><span class="line">&gt;&gt;&gt; zipped &#x3D; zip(list1, list2)</span><br><span class="line">&gt;&gt;&gt; zipped</span><br><span class="line">&lt;zip at 0x7fb227f18c88&gt;</span><br><span class="line">&gt;&gt;&gt; list(zipped)</span><br><span class="line">[(&#39;Adam&#39;, 95), (&#39;Tom&#39;, 84), (&#39;Jerry&#39;, 89)]</span><br><span class="line">&gt;&gt;&gt; for name, grade in zip(list1, list2):</span><br><span class="line">&gt;&gt;&gt;     print(name, grade)</span><br><span class="line">Adam 95</span><br><span class="line">Tom 84</span><br><span class="line">Jerry 89</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-自建函数"><a href="#2-自建函数" class="headerlink" title="(2) 自建函数"></a>(2) 自建函数</h3><p>除了内建函数外，我们还可以自己通过<code>def</code>关键字定义函数，其格式如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def add(parameter1, parameter2):</span><br><span class="line">	added &#x3D; parameter1 + parameter2</span><br><span class="line">   return added</span><br></pre></td></tr></table></figure><br>使用的时候，直接调用即可，其形式如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; add(5,6)</span><br><span class="line">11</span><br></pre></td></tr></table></figure></p>
+<p><strong>位置参数</strong><br>注意，函数调用时，参数默认为按位置传递。因此，上述代码中的<code>add(1,2)</code>，5对应parameter1，6对应parameter2</p>
+<p><strong>默认参数</strong><br>函数可设置默认参数。通过给参数设置默认值，可以使得我们在调用函数时，输入更少的参数。<br>当我们不输入参数时，参数会取值默认参数。当我们输入参数时，参数会以我们的输入为准。例如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 默认参数为2和3</span><br><span class="line">&gt;&gt;&gt; def add(parameter1&#x3D;2, parameter2&#x3D;3):</span><br><span class="line">... 	added &#x3D; parameter1 + parameter2</span><br><span class="line">...    return added</span><br><span class="line">&gt;&gt;&gt; add() # 不输入参数，默认parameter1&#x3D;2, parameter2&#x3D;3</span><br><span class="line">5</span><br><span class="line">&gt;&gt;&gt; add(1) # 输入一个参数，parameter1&#x3D;1。parameter2取默认值，为3</span><br><span class="line">4</span><br><span class="line">&gt;&gt;&gt; add(7,9) # 输入两个参数，parameter1&#x3D;7。parameter2&#x3D;9</span><br><span class="line">16</span><br></pre></td></tr></table></figure></p>
+<p>注意，默认参数只会被赋值一次，所以如果默认参数为可变对象时，可能会导致其默认值发生变化，如下所示：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; def f(a, L&#x3D;[]):</span><br><span class="line">...     L.append(a)</span><br><span class="line">...     return L</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; f(1)</span><br><span class="line">[1]</span><br><span class="line">&gt;&gt;&gt; f(2)</span><br><span class="line">[1, 2]</span><br><span class="line">&gt;&gt;&gt; f(3)</span><br><span class="line">[1, 2, 3]</span><br></pre></td></tr></table></figure><br>因此，默认参数最好为不可变对象。  </p>
+<p><strong>函数的返回</strong><br>函数通过<code>return</code>关键字返回结果。<br>注意，返回不是必须的，如果没有<code>return</code>关键字，默认返回<code>None</code>。如下函数中，即没有返回值：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def hello():</span><br><span class="line">	print(&quot;hello world&quot;)</span><br></pre></td></tr></table></figure><br>注意，函数可以返回不止一个值。此时，多个返回值会组成一个tuple一起返回。如下所示：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 实现复数加法：(a+bi)+(c+di) &#x3D; (a+b)+(c+d)i</span><br><span class="line">def Complex_addition(real_1, imaginary_1, real_2, imaginary_2):</span><br><span class="line">	real &#x3D; real_1 + real_2</span><br><span class="line">	imaginary &#x3D; imaginary_1 + imaginary_2</span><br><span class="line">	return real, imaginary</span><br><span class="line">    </span><br><span class="line">&gt;&gt;&gt; result &#x3D; Complex_addition(1,2,3,4)</span><br><span class="line">&gt;&gt;&gt; result</span><br><span class="line">(4, 6)</span><br></pre></td></tr></table></figure><br>我们可以直接将多个返回值unpacking，赋值给多个变量，如下所示：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; real, imaginary &#x3D; Complex_addition(1,2,3,4)</span><br><span class="line">&gt;&gt;&gt; print(&quot;the result is &quot;+string(real)+&quot;+&quot;+&quot;string(imaginary)&quot;+&quot;i&quot; )</span><br><span class="line">the result is 4+6i</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-命名空间与作用域"><a href="#3-命名空间与作用域" class="headerlink" title="(3) 命名空间与作用域"></a>(3) 命名空间与作用域</h3><p>命名空间namespace用来描述变量的作用域scope。<br>在Python中，变量有三种作用域：内置作用域build-in，全局作用域global和本地作用域local。<br>三者之间是包含关系：local $\in$ global $\in$ build-in  </p>
+<p><strong>命名空间的作用</strong><br>命名空间的存在，是为了解决变量名冲突问题。在同一个命名空间不可有重名的变量，但不同的命名空间可以由重名的变量。<br>一个相似的例子是计算机系统中的文件命名。同一个文件夹下不可以有同名的文件（不能存在两个<code>C:\a.txt</code>），但不同的文件夹下可以有同名的文件（可以存在<code>C:\a.txt</code>和<code>D:\a.txt</code>）。<br>通过这种方式，我们就没必要为每一个单独的文件进行单独的命名。允许不同命名空间下的变量重名，大大增加了一些简单变量的复用性。  </p>
+<p><strong>函数的命名空间</strong><br>当调用一个函数的时候，会自动创建一个本地作用域，用来存放函数内的变量。一旦函数结束，本地作用域会被自动废弃掉。<br>因此，不同函数内部，可以使用重名的变量。但函数内部的变量，不能被全局作用域访问。<br>参考一下代码：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; def func_1():</span><br><span class="line">...     a &#x3D; []</span><br><span class="line">...     for i in range(5):</span><br><span class="line">...         a.append(i)     </span><br><span class="line">&gt;&gt;&gt; def func_2():</span><br><span class="line">...     a &#x3D; []</span><br><span class="line">...     for i in range(10):</span><br><span class="line">...         a.append(i)</span><br><span class="line">&gt;&gt;&gt; func_1()</span><br><span class="line">[0, 1, 2, 3, 4]</span><br><span class="line">&gt;&gt;&gt; func_2()</span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">&gt;&gt;&gt; a  </span><br><span class="line">NameError: name &#39;a&#39; is not defined</span><br></pre></td></tr></table></figure><br>在上述代码中：</p>
+<ol>
+<li>我们定义了两个函数：<code>func_1</code>和<code>func_2</code>。  二者内部都使用了名为<code>a</code>的变量，但并不冲突两个函数都能正常调用，并返回结果。这是因为不同函数有着各自不同的命名空间，相互之间可以使用重名的变量。  </li>
+<li>我们在最后调用<code>a</code>，显示<code>NameError</code>。这是因为一旦函数结束，本地命名空间会被自动废弃掉。命名空间里的变量也就不复存在，所以我们不能在全局作用域调用变量<code>a</code>。这避免了命名空间之间的相互干扰。</li>
+</ol>
+<p><strong>命名空间的搜索顺序</strong><br>当调用一个变量时，会按照以下顺序在命名空间中搜索进行变量搜索：<br>local -&gt; global -&gt; build-in<br>如果再build-in中还未找到该变量，则会报错<code>NameError</code>。  </p>
+<p><strong>修改变量的作用域</strong><br>我们可以通过<code>global</code>和<code>nonlocal</code>关键字来修改变量的作用域。示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; def func_1():</span><br><span class="line">...     global a</span><br><span class="line">...     a &#x3D; []</span><br><span class="line">...     for i in range(5):</span><br><span class="line">...         a.append(i)  </span><br><span class="line">&gt;&gt;&gt; func_1()</span><br><span class="line">[0, 1, 2, 3, 4]</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[0, 1, 2, 3, 4]</span><br></pre></td></tr></table></figure><br>不过一般不推荐这种用法，如果需要使用很多全局变量，推荐使用<code>类class</code>。  </p>
+<h2 id="6-模块"><a href="#6-模块" class="headerlink" title="6. 模块"></a>6. 模块</h2><h3 id="1-作用"><a href="#1-作用" class="headerlink" title="(1) 作用"></a>(1) 作用</h3><p>之前我们提到过，对于需要复用的小段代码块，可以将其封装为函数。<br>将函数的概念拓展，我们可以将一个主要功能拆解为很多模块，每个模块又包含多个函数。<br>其示例如下：  </p>
+<p><img src="\images\pasted-96.png" alt="upload successful"></p>
+<p>通过这种”功能-&gt;模块-&gt;函数”金字塔形的代码组织结构，保证了代码的高内聚低耦合，提高了代码的可维护性。<br>同时，也大大提升了代码的复用性。在退出Python解释器后，之前的内容会全部丢失。因此，将代码打包封装为模块化的<code>**.py</code>文件，可以显著提高代码的可复用性。<br>不止可以把自己的代码组织成这种形式，还可以直接把别人封装好的模块拿来用。如上图中的注册登录模块，可以直接使用第三方模块，作者自己只需确定模块的输入和输出即可。如此，极大地提升了代码的写作效率。  </p>
+<h3 id="2-使用"><a href="#2-使用" class="headerlink" title="(2) 使用"></a>(2) 使用</h3><p>Python本身内置了很多模块，这些模块是在安装Python时也一并安装的。所以可以直接使用，不需要额外的安装操作。<br>以内置的<code>sys</code>模块为例，其本质是一个名为<code>sys.py</code>的文件，存放在python目录之下。<br>在python的脚本中，可以直接对其进行使用，示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 导入sys.py中的所有内容，包括定义的类和函数</span><br><span class="line">&gt;&gt;&gt; import sys</span><br><span class="line"># 显示sys.py中，名为copyright变量的内容</span><br><span class="line">&gt;&gt;&gt; sys.copyright</span><br><span class="line">&#39;Copyright (c) 2001-2019 Python Software Foundation.\nAll Rights Reserved.\n\nCopyright (c) 2000 BeOpen.com.\nAll Rights Reserved.\n\nCopyright (c) 1995-2001 Corporation for National Research Initiatives.\nAll Rights Reserved.\n\nCopyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.\nAll Rights Reserved.&#39;</span><br><span class="line"></span><br><span class="line"># 只导入sys.py中的一个函数，名为getdefaultencoding</span><br><span class="line">&gt;&gt;&gt; from sys import getdefaultencoding</span><br><span class="line"># 运行sys.py中的getdefaultencoding函数，查看默认字符编码</span><br><span class="line">&gt;&gt;&gt; sys.getdefaultencoding()</span><br><span class="line">&#39;utf-8&#39;</span><br></pre></td></tr></table></figure><br>上述两种方式，分别介绍了导入整个模块，或导入模块中某一个特定函数、对象、变量的方法。  </p>
+<p><strong>模块前缀</strong><br>注意，在使用模块中的函数、对象、变量时，要加入模块名前缀。如上述中的<code>sys.copyright</code>和<code>sys.getdefaultencoding()</code>。这是为了避免各个模块中出现相同的变量名或函数名，产生冲突。  </p>
+<p><strong>模块命名</strong><br>注意，若是将自己代码封装为模块，需要为其命名为<code>**.py</code>。此<code>.py</code>前方内容即为模块名。此模块名不能与Python中已有的内置模块，或已安装的第三方模块冲突。且需要遵守Python的命名规范。  </p>
+<p><strong>主模块</strong><br>可以通过<code>__name__</code>参数获得各个模块的名称。如下所示：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; sys.__name__</span><br><span class="line">sys</span><br><span class="line">&gt;&gt;&gt; __name__</span><br><span class="line">main</span><br></pre></td></tr></table></figure><br>上述代码表明，当前解释器所在的模块，名为<code>main</code>，也就是主模块。<br>在很多代码中，我们常常会看见以下内容：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">	# do something</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure><br>这段代码的意思是，若是当前<code>**.py</code>文件是作为主模块运行，则运行下方代码。而若是<code>**.py</code>文件是作为模块被导入<code>import</code>到其他地方，则不运行下方代码。  </p>
+<h3 id="3-安装第三方模块"><a href="#3-安装第三方模块" class="headerlink" title="(3) 安装第三方模块"></a>(3) 安装第三方模块</h3><p>除了Python的内置模块外，我们还可以安装第三方模块。<br>第三方模块的安装，主要通过名为<code>pip</code>的软件包管理系统完成。具体使用方法如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 进入terminal，运行以下命令</span><br><span class="line">pip install &lt;package name&gt;</span><br></pre></td></tr></table></figure><br>安装完成后，即可在主模块通过<code>import</code>命令使用第三方模块。  </p>
+<p><strong>搜索路径</strong><br>第三方模块的安装，其本质是将第三方模块的<code>**.py</code>文件下载到本地，并存放到制定目录中。<br>在运行import命令时，解释器会在本地寻找名为<code>**.py</code>的文件，其搜索路径如下：</p>
+<ul>
+<li>输入脚本的目录（当前目录）。</li>
+<li>环境变量<code>PYTHONPATH</code> 的目录列表</li>
+<li>Python 默认安装路径中搜索。</li>
+</ul>
+<p>若是在三个路径中都未找到指定的模块，则会报错。  </p>
+<h3 id="4-模块封装与引用"><a href="#4-模块封装与引用" class="headerlink" title="(4) 模块封装与引用"></a>(4) 模块封装与引用</h3><p>除了引入第三方模块，还可以把自己写的代码封装成模块，以便后续复用。<br>比如，在当前目录下分别创建名为<code>a.py</code>和<code>b.py</code>的脚本，其内容为：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># a.py</span><br><span class="line">def hello():</span><br><span class="line">	print(&quot;this is a.py&quot;)</span><br></pre></td></tr></table></figure><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># b.py</span><br><span class="line">import a</span><br><span class="line">a.hello()</span><br></pre></td></tr></table></figure><br>通过这种方式，我们在<code>b.py</code>中，实现了对<code>a.py</code>中代码的复用。  </p>
+<p>当然，实际情况中，模块本身代码内容会更复杂。且模块之间还可以相互组合，形成模块集（包）。<br>假设你想设计一个进行四则运算的模块集（包），其目录结构，一般如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">calculation&#x2F;                  # package name</span><br><span class="line">	__init.py__</span><br><span class="line">   add&#x2F;                       # subpackage </span><br><span class="line">   	__init.py__</span><br><span class="line">   	init_add.py                   # module</span><br><span class="line">   	float_add.py                  # module</span><br><span class="line">   	plural_add.py                 # module</span><br><span class="line">   minus&#x2F;                     # subpackage </span><br><span class="line">   	__init.py__</span><br><span class="line">   	init_minus.py                 # module</span><br><span class="line">   	float_minus.py                # module</span><br><span class="line">   	plural_minus.py               # module</span><br><span class="line">   multiple&#x2F;                   # subpackage </span><br><span class="line">   	__init.py__</span><br><span class="line">   	init_multiple.py                # module</span><br><span class="line">   	float_multiple.py               # module</span><br><span class="line">   	plural_multiple.py              # module</span><br><span class="line">   devide&#x2F;                      # subpackage   </span><br><span class="line">   	__init.py__</span><br><span class="line">   	init_devide.py                 # module</span><br><span class="line">   	float_devide.py                # module</span><br><span class="line">   	plural_devide.py               # module</span><br></pre></td></tr></table></figure></p>
+<p><strong><strong>init</strong>.py</strong><br>注意，包文件夹下的每个叶子目录，都必须包含一个名为<code>__init__.py</code>的文件夹。此文件夹可以内容为空，其作用是让Python解释器将此文件夹识别为一个包，而不是一个普通的内容文件夹。  </p>
+<h2 id="7-输入与输出"><a href="#7-输入与输出" class="headerlink" title="7. 输入与输出"></a>7. 输入与输出</h2><h3 id="1-输出"><a href="#1-输出" class="headerlink" title="(1) 输出"></a>(1) 输出</h3><p><code>print()</code>方法用于输出，示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 输出字符串</span><br><span class="line">&gt;&gt;&gt; print(&#39;hello, world&#39;)</span><br><span class="line">&#39;hello, world&#39;</span><br><span class="line"># 输出整数</span><br><span class="line">&gt;&gt;&gt; print(5+2)</span><br><span class="line">7</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-输入"><a href="#2-输入" class="headerlink" title="(2) 输入"></a>(2) 输入</h3><p><code>input()</code>方法用于收集输入，示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; name &#x3D; input()</span><br></pre></td></tr></table></figure><br>在交互模式下，一旦输入上述命令并回车，解释器就会进入等待状态，等待用户的键盘输入。<br>用户可输入任意内容，再回车，完成整个输入过程。用户键盘输入的内容，竟会被赋值给变量name。<br>完成输入后，解释器会回到<code>&gt;&gt;&gt;</code>状态，此时再查看name的内容，应该会和之前的输入一致。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 假设之前输入yh并回车</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">yh</span><br></pre></td></tr></table></figure></p>
+<h2 id="8-文件读写"><a href="#8-文件读写" class="headerlink" title="8. 文件读写"></a>8. 文件读写</h2><h3 id="1-文件打开与关闭"><a href="#1-文件打开与关闭" class="headerlink" title="(1) 文件打开与关闭"></a>(1) 文件打开与关闭</h3><p><strong>open(), close()</strong><br><code>open()</code>函数用于打开一个文件。<code>close()</code>函数用于关闭一个文件。二者成对出现。在打开一个文件，并进行操作后，必须在结尾将文件关闭并释放其占用的所有系统资源。常见结构如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 前提：当前目录下有一个名为test.txt的文件</span><br><span class="line">f &#x3D; open(&quot;test.txt&quot;, &quot;w&quot;)</span><br><span class="line"># some processing</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure><br><code>close()</code>函数一般不带参数。<br><code>open()</code>函数一般带两个参数，第一个为文件路径，第二个为文件打开的mode。二者都必须是字符串。<br>mode分为以下几种</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>只读，只是读取文件中的内容 <br> r为默认参数</td>
+</tr>
+<tr>
+<td>w</td>
+<td>写入，新建文件并允许写入内容<br> 如果当前路径已经存在同名文件，则会将其删除并重新创建，从零开始写入内容</td>
+</tr>
+<tr>
+<td>a</td>
+<td>追加写入，新建文件并允许写入内容<br> 与w不同之处在于，如果当前路径已经存在同名文件，a则会在文件的末尾处继续追加写入，而不会像w一样删除已有内容</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>读取和写入</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>with</strong><br>如果觉得每次都需要<code>f.close()</code>很烦人，也可以使用<code>with</code>关键字，其形式如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with open(&quot;test.txt&quot;, &#39;a&#39;) as f:</span><br><span class="line">	# some processing</span><br><span class="line">	pass</span><br></pre></td></tr></table></figure><br>具体的文件操作放在with语句之内，而with语句执行完毕后，会自动关闭文件并释放资源。  </p>
+<h3 id="2-文件操作"><a href="#2-文件操作" class="headerlink" title="(2) 文件操作"></a>(2) 文件操作</h3><p>在文件打开和关闭之间，亦或者在with语句之内，可以对文件内容进行增删查改等操作。<br>这里列出一些常见操作，默认所有操作都是在<code>with open(&quot;test.txt&quot;, &#39;a&#39;) as f:</code>语句内执行。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f.read(size)</td>
+<td>从文件中读取若干数据，默认f.read()读取所有数据</td>
+<td>size表示字符串长度</td>
+</tr>
+<tr>
+<td>f.readline()</td>
+<td>从文件中读取一行，并将指针移动到下一行<br> 行之间以<code>\n</code>间隔</td>
+<td>无</td>
+</tr>
+<tr>
+<td>f.write(string)</td>
+<td>将string内容写入到文件中</td>
+<td>string为要写入的字符串内容</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="9-错误与异常处理"><a href="#9-错误与异常处理" class="headerlink" title="9. 错误与异常处理"></a>9. 错误与异常处理</h2><p>无论是在命令行环境还是交互环境下，如果代码运行遇到错误，当前代码会被中断，并且打印出错误。<br>Python提供了一系列错误与异常处理的代码，可以让我们自定义发生错误时应该采取什么行动，而不是一刀切地都中断代码。  </p>
+<p><strong>try, except</strong><br>try except命令时最基本的错误和异常处理命令。其基本结构如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try:</span><br><span class="line">	# do processing a</span><br><span class="line">except:</span><br><span class="line">	# do processing b</span><br></pre></td></tr></table></figure><br>其工作方式为：  </p>
+<ul>
+<li>首先尝试执行try子句</li>
+<li>如果try子句全部执行完，没有异常，则except语句被忽略</li>
+<li>如果try子句执行过程中遭遇异常，则中断try子句的执行，转而执行except子句</li>
+</ul>
+<p>示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; try:</span><br><span class="line">...     str &#x3D; &quot;blablabla&quot;</span><br><span class="line">...     print(str)</span><br><span class="line">...     str[0] &#x3D; &quot;a&quot;</span><br><span class="line">...     str2 &#x3D; &quot;lalalala&quot;</span><br><span class="line">...     print(str2)</span><br><span class="line">... except:</span><br><span class="line">...     str &#x3D; &quot;Error&quot;</span><br><span class="line">...     print(str)</span><br><span class="line">blablabla</span><br><span class="line">Error</span><br></pre></td></tr></table></figure><br>其工作流程为：</p>
+<ul>
+<li>首先执行try子句，直至<code>print(str)</code>，打印出<code>blablabla</code>。</li>
+<li>然后继续执行<code>str[0] = &quot;a&quot;</code>，由于string是不可变类型，此语句出错。停止执行try子句，转而开始执行except子句</li>
+<li>在except子句中，str被重新赋值，并打印出<code>Error</code></li>
+</ul>
+<p>在except后方，如果像上述一样什么都不加，那么无论遭遇什么类型的错误，都会转到except子句。<br>在此基础上，我们还可以在except后方，制定错误类型。从而指定遇到不同的错误类型，进行不同的操作。<br>示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    f &#x3D; open(&#39;myfile.txt&#39;)</span><br><span class="line">    s &#x3D; f.readline()</span><br><span class="line">    i &#x3D; int(s.strip())</span><br><span class="line">except OSError as err:</span><br><span class="line">    print(&quot;OS error: &#123;0&#125;&quot;.format(err))</span><br><span class="line">except ValueError:</span><br><span class="line">    print(&quot;Could not convert data to an integer.&quot;)</span><br></pre></td></tr></table></figure><br>在上述代码中，我们让except捕获OSError和ValueError两种错误类型，并分别采取不同操作。<br>注意，由于我们制定了错误类型，except不再能够捕获所有错误，而是只能捕获我们指定的错误。<br>所以，如果try子句中，出现了OSError和ValueError之外的错误，就会像默认一样终止所有代码，并打印出错误类型。此时except无效。<br>如果我们并不想手动为每一种错误制定处理规则，则可在后续加入再加入一个<code>except:</code>子句，处理其他类型的错误。示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    f &#x3D; open(&#39;myfile.txt&#39;)</span><br><span class="line">    s &#x3D; f.readline()</span><br><span class="line">    i &#x3D; int(s.strip())</span><br><span class="line">except OSError as err:</span><br><span class="line">    print(&quot;OS error: &#123;0&#125;&quot;.format(err))</span><br><span class="line">except ValueError:</span><br><span class="line">    print(&quot;Could not convert data to an integer.&quot;)</span><br><span class="line">except:</span><br><span class="line">    print(&quot;Other errors except OSError and ValueError&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><strong>try, except, else</strong><br><code>try, except</code>语句之后可以带有一个else子句，该子句只能出现在所有 except 子句之后。<br>当 try 语句没有抛出异常时，需要执行一些代码，可以使用这个子句。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for arg in sys.argv[1:]:</span><br><span class="line">    try:</span><br><span class="line">        f &#x3D; open(arg, &#39;r&#39;)</span><br><span class="line">    except IOError:</span><br><span class="line">        print(&#39;cannot open&#39;, arg)</span><br><span class="line">    except:</span><br><span class="line">        print(&#39;Error&#39;)</span><br><span class="line">    else:</span><br><span class="line">        print(arg, &#39;has&#39;, len(f.readlines()), &#39;lines&#39;)</span><br><span class="line">        f.close()</span><br></pre></td></tr></table></figure><br>通过else，我们可以确保else子句中的内容，只有在没有捕获到错误的情况下才会执行。  </p>
+<p><strong>try, except, else, finally</strong><br><code>try, except</code>语句还可跟finally子句。该子句必须放在最后。<br>finally子句中的内容，无论如何都会执行。其目的在于定义在任何情况下都一定要执行的功能。<br>示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for arg in sys.argv[1:]:</span><br><span class="line">    try:</span><br><span class="line">        print(&quot;hello world&quot;)</span><br><span class="line">        f &#x3D; open(arg, &#39;r&#39;)</span><br><span class="line">    except IOError:</span><br><span class="line">        print(&#39;cannot open&#39;, arg)</span><br><span class="line">    except:</span><br><span class="line">        print(&#39;Error&#39;)</span><br><span class="line">    else:</span><br><span class="line">        print(arg, &#39;has&#39;, len(f.readlines()), &#39;lines&#39;)</span><br><span class="line">        f.close()</span><br><span class="line">    finally:</span><br><span class="line">        print(&quot;goodbye world&quot;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="10-面对对象-object-oriented-与类-class"><a href="#10-面对对象-object-oriented-与类-class" class="headerlink" title="10. 面对对象(object-oriented)与类(class)"></a>10. 面对对象(object-oriented)与类(class)</h2><p>除了面向过程之外，Python同样支持面向对象编程。<br>面向对象的基本概念与其他语言类似，这里不再赘述。  </p>
+<h3 id="1-类的定义"><a href="#1-类的定义" class="headerlink" title="(1) 类的定义"></a>(1) 类的定义</h3><p>在Python中，可以通过<code>class</code>关键字来定义类。其形式如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class ClassName:</span><br><span class="line">	# some statement</span><br></pre></td></tr></table></figure><br>注意，类和函数一样，必须先定义再使用（实例化）。  </p>
+<p>和其他语言一样，类的内部，主要是变量和函数的定义。比如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class MyClass_1:</span><br><span class="line">    &quot;&quot;&quot;A incorrect example class&quot;&quot;&quot;</span><br><span class="line">    i &#x3D; 12345</span><br><span class="line">    def f():</span><br><span class="line">        return &#39;hello world&#39;</span><br></pre></td></tr></table></figure><br>上述类中，定义了一个变量<code>i</code>和一个函数<code>f</code>。在类定义后，可以分别通过<code>MyClass_1.i</code>和<code>MyClass_1.f()</code>进行调用。  </p>
+<p>然而，我们一般不希望类中的变量和函数被直接调用。按照面向对象的理念，我们应该先将类实例化，再调用实例的变量和方法。<br>这个时候，就设计到类的初始化和实例化。</p>
+<h3 id="2-类的初始化和实例化"><a href="#2-类的初始化和实例化" class="headerlink" title="(2) 类的初始化和实例化"></a>(2) 类的初始化和实例化</h3><p><strong>初始化</strong><br>通过在类的内部定义<code>__init__()</code>方法，可以设置类的初始化。<br>类在实例化时，会自动调用<code>__init__()</code>方法。因此，通过在<code>__init__()</code>方法进行变量定义，可以避免上述中，非实例的变量调用。比如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class MyClass_2:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.i &#x3D; 12345</span><br><span class="line">    def f(self):</span><br><span class="line">        return &#39;hello world&#39;</span><br></pre></td></tr></table></figure><br>上述代码在<code>__init__()</code>方法内部对变量进行赋值。于是在类的每次实例化时，实例都会得到一个属性i。<br>而在外部是没法通过<code>MyClass.i</code>来进行调用虚类的变量，因为此时并未实例化，<code>__init__()</code>方法并未运行，<code>self.i = 12345</code>也就并未进行声明。  </p>
+<p><strong>实例化</strong><br>在定义了虚类之后，只需要在主模块进行赋值，即可实现实例化，创造一个新的实例。比如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x &#x3D; MyClass_2()</span><br></pre></td></tr></table></figure><br>在生成实例之后，即可对实例的方法进行调用。比如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; x.f()</span><br><span class="line">hello world</span><br><span class="line">&gt;&gt;&gt; x.p</span><br><span class="line">12345</span><br></pre></td></tr></table></figure></p>
+<p>函数<code>isinstance(instance , class)</code>用于检测实例化关系。如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; isinstance(x, MyClass_2)</span><br><span class="line">True</span><br></pre></td></tr></table></figure><br>证明x是MyClass_2的一个实例。  </p>
+<p><strong>变量与函数，属性与方法</strong><br>注意，<code>MyClass_1.i</code>与<code>x.i</code>，<code>MyClass_1.f()</code>与<code>x.f()</code>之间，有着显著不同。<br>注：<code>x = MyClass_2()</code>  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>items</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MyClass_1.i</td>
+<td>这是从一个虚类中调用一个<strong>变量</strong></td>
+</tr>
+<tr>
+<td>x.i</td>
+<td>这是从一个实例中调用一个实例的<strong>属性</strong></td>
+</tr>
+<tr>
+<td>MyClass_1.f</td>
+<td>这是从一个虚类中调用一个<strong>函数</strong></td>
+</tr>
+<tr>
+<td>x.f</td>
+<td>这是从一个实例中调用一个实例的<strong>方法</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>上述中的，变量与函数，属性与方法，在Python属于不同对象，不可混为一谈。<br>方法的其中一个特别之处就在于，它总是以<code>self</code>，自身实例对象自身作为第一个参数。所以在虚类中方法的定义中，所有方法的都至少有一个<code>self</code>参数，且必须放在第一位。<br>可以简单地将方法理解为，以自身实例对象作为第一个参数的函数。<br>通过这种方式，外部也没有办法直接调用虚类内部的方法了。因为直接调用时，虚类并未实例化，<code>self</code>参数不存在，会报错。  </p>
+<p>自此，我们通过<code>__inti__</code>将变量转化为属性，通过<code>self</code>参数将函数转化为方法，杜绝了外部直接调用虚类的风险。保证了虚类必须实例化之后，内部内容才可被调用。<br>具体效果如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># MyClass_1虚类中，定义了变量和函数，可以被直接调用</span><br><span class="line">&gt;&gt;&gt; class MyClass_1:</span><br><span class="line">...     &quot;&quot;&quot;A incorrect example class&quot;&quot;&quot;</span><br><span class="line">...     i &#x3D; 12345</span><br><span class="line">...     def f():</span><br><span class="line">...         return &#39;hello world&#39;</span><br><span class="line">&gt;&gt;&gt; MyClass_1.i</span><br><span class="line">12345</span><br><span class="line">&gt;&gt;&gt; MyClass_1.f()</span><br><span class="line">&#39;hello world&#39;</span><br><span class="line"># MyClass_2虚类中，定义了属性和方法，不可以被直接调用</span><br><span class="line">&gt;&gt;&gt; class MyClass_2:</span><br><span class="line">...     def __init__(self):</span><br><span class="line">...         self.i &#x3D; 12345</span><br><span class="line">...     def f(self):</span><br><span class="line">...         return &#39;hello world&#39;</span><br><span class="line">&gt;&gt;&gt; MyClass_2.i</span><br><span class="line">AttributeError: type object &#39;MyClass_2&#39; has no attribute &#39;i&#39;</span><br><span class="line">&gt;&gt;&gt; MyClass_2.f()</span><br><span class="line">TypeError: f() missing 1 required positional argument: &#39;self&#39;</span><br><span class="line"># MyClass_2实例化后，属性和方法才可以被调用</span><br><span class="line">&gt;&gt;&gt; x &#x3D; MyClass_2()</span><br><span class="line">&gt;&gt;&gt; x.i</span><br><span class="line">12345</span><br><span class="line">&gt;&gt;&gt; x.f()</span><br><span class="line">&#39;hello world&#39;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-类的继承"><a href="#3-类的继承" class="headerlink" title="(3) 类的继承"></a>(3) 类的继承</h3><p><strong>继承定义</strong><br>如果类只是对变量和方法的打包，那么跟模块也没什么太大区别。然而，面对对象编程的精髓就在于，类的多态和继承。这里我们首先来谈继承。<br>继承类的定义如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class SubClassName(BaseClassName):</span><br><span class="line">	# some statement</span><br></pre></td></tr></table></figure><br>继承类的定义也使用<code>class</code>关键字，唯一不同的是，在子类的后面，需要加上括号，指明父类的名称。<br>子类会继承父类的一切属性和方法，并且支持子类中的重写和覆盖。这与其他语言并无不同。示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; class BaseClassCase():</span><br><span class="line">...     def __init__(self):</span><br><span class="line">...         self.i &#x3D; 12345</span><br><span class="line">...     def hi(self):</span><br><span class="line">...         print(&#39;hi from base class&#39;)</span><br><span class="line">&gt;&gt;&gt; class SubClassCase(BaseClass):</span><br><span class="line">...     def hi(self):</span><br><span class="line">...         print(&quot;Hi from SubClass&quot;)        </span><br><span class="line">&gt;&gt;&gt; x &#x3D; SubClassCase()        </span><br><span class="line">&gt;&gt;&gt; x.i # x作为子类实例，继承了父类对属性i的定义</span><br><span class="line">12345</span><br><span class="line">&gt;&gt;&gt; x.hi() # x作为子类实例，覆盖了父类对方法hi()的定义</span><br><span class="line">Hi from SubClass</span><br></pre></td></tr></table></figure><br><strong>继承关系检测</strong><br>函数<code>issubclass(subclass , baseclass)</code>用于继承关系。如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; issubclass(SubClassCase, BaseClassCase)</span><br><span class="line">True</span><br></pre></td></tr></table></figure><br>证明SubClassCase是BaseClassCase的一个子类。<br><strong>多继承</strong><br>Python同样支持多继承，即一个子类可以有多个父类。<br>具体定义形式即在括号中依次列出父类的名称，示例如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class SubClassName(BaseClassName_1, BaseClassName_2, BaseClassName_3):</span><br><span class="line">	# some statement</span><br></pre></td></tr></table></figure><br>继承优先的顺序为自左到右依次递减。即若<code>BaseClassName_1</code>和<code>BaseClassName_2</code>中存在相同名称的属性或方法，子类会优先继承<code>BaseClassName_1</code>中的属性或方法。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>数据类型</tag>
+        <tag>数据结构</tag>
+        <tag>流程控制</tag>
+        <tag>函数</tag>
+        <tag>面向对象</tag>
+        <tag>类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Latex学习笔记</title>
+    <url>/2020/01/02/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>Latex是一种排版系统，对数学公式有着良好的支持。<br>在<span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDE5LzEyLzI5L0hleG8lRTUlOEQlOUElRTUlQUUlQTIlRTclQjMlQkIlRTUlODglOTclRUYlQkMlODglRTQlQkElOEMlRUYlQkMlODklRUYlQkMlOUFIZXhvJUU4JUJGJTlCJUU5JTk4JUI2JUU5JTg1JThEJUU3JUJEJUFFLw==" title="https://yehansharp.github.io/2019/12/29/Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHexo%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/">Hexo博客系列（二）：Hexo进阶配置<i class="fa fa-external-link"></i></span>中提及过如何开启数学公式支持。Latex配合Markdown，能够基本实现博客内较为方便地展现公式。<br>这里介绍Latex语法中的数学公式部分。其他高级内容如排版、宏等因为不受Markdown扩展支持，这里不多做介绍。<br><a id="more"></a></p>
+<h1 id="二、数学模式"><a href="#二、数学模式" class="headerlink" title="二、数学模式"></a>二、数学模式</h1><p>LaTeX的数学模式有两种形式：行间 (inline) 模式和独立 (display) 模式。  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>行间模式</th>
+<th>独立模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>简介</td>
+<td>行间模式中，Latex语句会嵌入到正文中，成为正文的一部分</td>
+<td>独立模式下，公式独立成行，且自动居中</td>
+</tr>
+<tr>
+<td>命令</td>
+<td><code>$&lt;Latex语句&gt;$</code></td>
+<td><code>$$&lt;Latex语句&gt;$$</code></td>
+</tr>
+<tr>
+<td>示例语句</td>
+<td><code>行间模式中的一个公式: $x+1$</code></td>
+<td><code>独立模式中的一个公式: $$x+1$$</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>行间模式示例效果如下：<br>行间模式中的一个公式: $x+1$</p>
+<p>独立模式效果如下：<br>独立模式中的一个公式: </p>
+<script type="math/tex; mode=display">x+1</script><h1 id="三、基本元素"><a href="#三、基本元素" class="headerlink" title="三、基本元素"></a>三、基本元素</h1><p>$符号是Latex语句起始和结束的标签。其中间，即为Latex语句。<br>如很多语言一样，在Latex中，常见的数学字符有自己的编码形式。这里介绍几种常见的基本元素。  </p>
+<h2 id="1-希腊字母"><a href="#1-希腊字母" class="headerlink" title="(1) 希腊字母"></a>(1) 希腊字母</h2><p><img src="\images\pasted-12.png" alt="upload successful"></p>
+<h2 id="2-上下标与根号"><a href="#2-上下标与根号" class="headerlink" title="(2) 上下标与根号"></a>(2) 上下标与根号</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>上标（指数）</th>
+<th>下标</th>
+<th>根号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>命令</td>
+<td><code>^</code></td>
+<td><code>_</code></td>
+<td><code>\sqrt</code></td>
+</tr>
+<tr>
+<td>示例语句</td>
+<td><code>$x^2$</code></td>
+<td><code>$x_2$</code></td>
+<td><code>$\sqrt{x}$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$x^2$</td>
+<td>$x_2$</td>
+<td>$\sqrt{x}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS1</strong>：<br>上下标内容如果是一个字母或符号，可以直接使用，如 <code>$x^2$</code>，效果为：$x^2$<br>如上下标内容多于一个字母或符号，比如是一个公式{x+1}，则需要将其用一对 {} 括起来。如<code>$x^{n+1}$</code> ，效果为：$x^{n+1}$  </p>
+<p><strong>PS2</strong>:<br>上下标可以叠加，如上标的上标。如<code>$ x^{a^n} $</code> ，效果为：$x^{a^n}$<br>更多例子如下：</p>
+<p><img src="\images\pasted-13.png" alt="upload successful"></p>
+<h2 id="3-分数"><a href="#3-分数" class="headerlink" title="(3) 分数"></a>(3) 分数</h2><p>命令格式：<br>分数用<code>\frac{}{}</code>命令表示，后跟两对{}，前面一对里面填分子，后面一对里面填分母。</p>
+<p>示例：<br>如<code>$\frac{3}{5}$</code>，效果为：$\frac{3}{5}$</p>
+<p><strong>PS</strong>:<br>分数会根据环境自动调整字号，比如在行间公式中小一点，在独立公式中则大一点。<br>若希望在行间公式中，分数的大小，仍然能够扩大到独立公式中一般，则可使用<code>\dfrac</code>命令。<br>下方为<code>\frac</code>命令，与<code>\dfrac</code>命令的对比。  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>\frac</code></th>
+<th><code>\dfrac</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>示例语句</td>
+<td><code>\frac命令下的分式： $\frac{3}{5}$</code></td>
+<td><code>\dfrac命令下的分式： $\dfrac{3}{5}$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>\frac命令下的分式： $\frac{3}{5}$</td>
+<td>\dfrac命令下的分式： $\dfrac{3}{5}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="4-三角函数与对数函数"><a href="#4-三角函数与对数函数" class="headerlink" title="(4) 三角函数与对数函数"></a>(4) 三角函数与对数函数</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>sin</code></th>
+<th><code>cos</code></th>
+<th><code>tan</code></th>
+<th><code>log</code></th>
+<th><code>ln</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>命令</td>
+<td><code>$\sin$</code></td>
+<td><code>$\cos$</code></td>
+<td><code>$\tan$</code></td>
+<td><code>$\log$</code></td>
+<td><code>$\ln$</code></td>
+</tr>
+<tr>
+<td>示例语句</td>
+<td><code>$\sin(x)$</code></td>
+<td><code>$\cos(x)$</code></td>
+<td><code>$\tan(x)$</code></td>
+<td><code>$\log_2 (x)$</code></td>
+<td><code>$\ln(x)$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\sin(x)$</td>
+<td>$\cos(x)$</td>
+<td>$\tan(x)$</td>
+<td>$\log_2 (x)$</td>
+<td>$\ln(x)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS</strong>:<br><code>\log</code>函数后，先跟下标与底，再跟括号与被取对数的函数。<br>如<code>$\log_5(x)$</code> ，效果为$\log_5(x)$  </p>
+<h2 id="5-常见关系符与运算符"><a href="#5-常见关系符与运算符" class="headerlink" title="(5) 常见关系符与运算符"></a>(5) 常见关系符与运算符</h2><p>部分运算可以直接输入，如<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>=</code> 等。另一些则需要特殊的命令。<br>常见的二元关系符如下：  </p>
+<p><img src="\images\pasted-15.png" alt="upload successful"><br>常见的二元运算符如下：  </p>
+<p><img src="\images\pasted-16.png" alt="upload successful"></p>
+<h2 id="6-常见微积分运算符"><a href="#6-常见微积分运算符" class="headerlink" title="(6) 常见微积分运算符"></a>(6) 常见微积分运算符</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>求和运算符</th>
+<th>求积运算符</th>
+<th>极限符号</th>
+<th>积分符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>命令</td>
+<td><code>\sum</code></td>
+<td><code>\prod</code></td>
+<td><code>$\tan$</code></td>
+<td><code>\lim</code></td>
+</tr>
+<tr>
+<td>示例语句</td>
+<td><code>$\sum_{i=1}^n f(x)$</code></td>
+<td><code>$\prod_{i=1}^n f(x)$</code></td>
+<td><code>$\lim_{i=1}^n f(x)$</code></td>
+<td><code>$\int_{i=1}^n f(x) dx$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\sum_{i=1}^n f(x)$</td>
+<td>$\prod_{i=1}^n f(x)$</td>
+<td>$\lim_{i=1}^n f(x)$</td>
+<td>$\int_{i=1}^n f(x) dx$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS1</strong>:<br>几个命令，都有着相似的格式。<br>命令后，先接下标符号与下标内容，再接上标符号^与上标内容，空格后接被运算函数 </p>
+<p><strong>PS2</strong>:<br>注意，上述运算符的上标与下标，都位于运算符的右边，这在LaTeX叫做不压缩上标，为默认选项。<br>若是希望将上下标分别移动到运算符的上方与下方，则可以在运算符后追加<code>\limits</code>显示指定。<br>下方为压缩上标和不压缩上标的对比：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>压缩上标</th>
+<th>不压缩上标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>示例语句</td>
+<td><code>$\sum_{i=1}^n f(x)$</code> <br> <code>$\prod_{i=1}^n f(x)$</code> <br> <code>$\lim_{i=1}^n f(x)$</code> <br> <code>$\int_{i=1}^n f(x) dx$</code></td>
+<td><code>$\sum \limits_{i=1}^n f(x)$</code> <br> <code>$\prod \limits_{i=1}^n f(x)$</code> <br> <code>$\lim \limits_{i=1}^n f(x)$</code> <br> <code>$\int \limits_{i=1}^n f(x) dx$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\sum_{i=1}^n f(x)$</td>
+<td>$\sum \limits_{i=1}^n f(x)$</td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\prod_{i=1}^n f(x)$</td>
+<td>$\prod \limits_{i=1}^n f(x)$</td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\lim_{i=1}^n f(x)$</td>
+<td>$\lim \limits_{i=1}^n f(x)$</td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\int_{i=1}^n f(x) dx$</td>
+<td>$\int \limits_{i=1}^n f(x) dx$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS3</strong>:<br>注意，在积分中，积分变量<code>dx</code>默认是斜体，若希望其不为斜体，可以通过<code>\mathrm</code>命令改变其字体。<br>下方为积分变量是否斜体的效果对比：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>默认斜体</th>
+<th>mathrm字体</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>示例语句</td>
+<td><code>$\int_{i=1}^n f(x) dx$</code></td>
+<td><code>$\int_{i=1}^n f(x) \mathrm{d} x$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\int_{i=1}^n f(x) dx$</td>
+<td>$\int_{i=1}^n f(x) \mathrm{d} x$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS4</strong>:<br>注意，多重积分如果用多个<code>\int</code>来输入的话，积分号之间的距离会过宽。<br>正确的方法是用<code>\iint, \iiint, \iiiint, \idotsint</code>等命令输入。<br>下方是几种命令的效果对比：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>多个<code>\int</code></th>
+<th><code>\iint</code></th>
+<th><code>\iiint</code></th>
+<th><code>\iiiint</code></th>
+<th><code>\idotsint</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>示例语句</td>
+<td><code>$\int \int \int f(x) dx$</code></td>
+<td><code>$\iint f(x) dx$</code></td>
+<td><code>$\iiint f(x) dx$</code></td>
+<td><code>$\iiiint f(x) dx$</code></td>
+<td><code>$\idotsint f(x) dx$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\int \int \int f(x) dx$</td>
+<td>$\iint f(x) dx$</td>
+<td>$\iiint f(x) dx$</td>
+<td>$\iiiint f(x) dx$</td>
+<td>$\idotsint f(x) dx$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS5</strong>:<br>其他微积分常见符号还有：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>LaTeX命令</th>
+<th><code>$\partial$</code></th>
+<th><code>$\nabla$</code></th>
+<th><code>$\infty$</code></th>
+<th><code>$\oint$</code></th>
+<th><code>$\triangle$</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$\partial$</td>
+<td>$\nabla$</td>
+<td>$\infty$</td>
+<td>$\oint$</td>
+<td>$\triangle$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="7-常见数学注音和标注符号"><a href="#7-常见数学注音和标注符号" class="headerlink" title="(7) 常见数学注音和标注符号"></a>(7) 常见数学注音和标注符号</h2><p>常见注音符号如下  </p>
+<p><img src="\images\pasted-17.png" alt="upload successful"><br>常见长标注符号如下  </p>
+<p><img src="\images\pasted-18.png" alt="upload successful"></p>
+<h2 id="8-括号"><a href="#8-括号" class="headerlink" title="(8) 括号"></a>(8) 括号</h2><p>一些常见括号可以直接打出，包括小括号<code>()</code>和中括号<code>[]</code>。</p>
+<p>其他一些括号需要使用命令打出，常见括号如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>大（花）括号</th>
+<th>尖括号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>命令</td>
+<td><code>\lbrace</code>和<code>\rbrace</code></td>
+<td><code>\langle</code>和<code>\rangle</code></td>
+</tr>
+<tr>
+<td>示例语句</td>
+<td><code>$\lbrace x+[a+(b+3)] \rbrace$</code></td>
+<td><code>$ \vec{v} = v_1 \vec{i} + v_2 \vec{j} = \langle v_1,v_2 \rangle$</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$\lbrace x+[a+(b+3)] \rbrace$</td>
+<td>$ \vec{v} = v_1 \vec{i} + v_2 \vec{j} = \langle v_1,v_2 \rangle$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS</strong>:<br>在使用分数时，括号往往因为长度不够而显得不够美观。此时可以在括号前加命令<code>\big</code>, <code>\Big</code>, <code>\bigg</code>, <code>\Bigg</code>来选择括号大小。其效果对比如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>()</code></th>
+<th><code>\big</code></th>
+<th><code>\Big</code></th>
+<th><code>\bigg</code></th>
+<th><code>\Bigg</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>示例语句</td>
+<td><code>$ 3(\frac{2}{4}) $</code></td>
+<td><code>$ 3\big(\frac{2}{4}\big) $</code></td>
+<td><code>$ 3\Big(\frac{2}{4}\Big) $</code></td>
+<td><code>$ 3\bigg(\frac{2}{4}\bigg) $</code></td>
+<td><code>$ 3\Bigg(\frac{2}{4}\Bigg) $</code></td>
+</tr>
+<tr>
+<td>示例效果</td>
+<td>$ 3(\frac{2}{4}) $</td>
+<td>$ 3\big(\frac{2}{4}\big) $</td>
+<td>$ 3\Big(\frac{2}{4}\Big) $</td>
+<td>$ 3\bigg(\frac{2}{4}\bigg) $</td>
+<td>$ 3\Bigg(\frac{2}{4}\Bigg) $</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="9-空白间距"><a href="#9-空白间距" class="headerlink" title="(9) 空白间距"></a>(9) 空白间距</h2><p>我们可以用若干命令，生成不用间距的空白。<br>注意负间距命令 ! 可以用来减小间距。  </p>
+<p><img src="\images\pasted-19.png" alt="upload successful"></p>
+<h2 id="10-省略号"><a href="#10-省略号" class="headerlink" title="(10) 省略号"></a>(10) 省略号</h2><p>不同的省略号，存在点数量和方向的区别。不同形式的省略号效果如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$\dots$</code></th>
+<th><code>$\cdot$</code></th>
+<th><code>$\cdots$</code></th>
+<th><code>$\vdots$</code></th>
+<th><code>$\ddots$</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$a \dots b $</td>
+<td>$a \cdot b$</td>
+<td>$a \cdots b$</td>
+<td>$a \vdots b$</td>
+<td>$a \ddots b$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS</strong>:<br><code>\dots</code>和<code>\cdot</code>都生成三个点，但点的高度不同。<br><code>\dots</code>生成的点位于底部。<code>\cdot</code>生成的点纵向居中。</p>
+<h2 id="11-箭头"><a href="#11-箭头" class="headerlink" title="(11) 箭头"></a>(11) 箭头</h2><p>常见箭头命令如下：<br><img src="\images\pasted-20.png" alt="upload successful"></p>
+<p>示例：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$a \leftarrow b$</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$a \leftarrow b$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PS</strong>:<br>若要在箭头上下方生成内容，可以通过在箭头命令加<code>x</code>实现。如<code>\leftarrow</code>可变为<code>\xleftarrow</code>命令。<br>命令后面，先跟[]与箭头下方数学内容，再跟{}与箭头上方数学内容。箭头会自动根据内容调整长度。<br>常见示例如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$\xleftarrow[x&lt;y]{abc}$</code></th>
+<th><code>$\xrightarrow[x&lt;y]{abc}$</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$\xleftarrow[x&lt;y]{abc}$</td>
+<td>$\xrightarrow[x&lt;y]{abc}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="12-数学字体"><a href="#12-数学字体" class="headerlink" title="(12) 数学字体"></a>(12) 数学字体</h2><p>一些命令可以生成特殊的数学字体样式。具体命令如下：  </p>
+<p><img src="\images\pasted-21.png" alt="upload successful"></p>
+<h1 id="四、向量和矩阵"><a href="#四、向量和矩阵" class="headerlink" title="四、向量和矩阵"></a>四、向量和矩阵</h1><h2 id="1-向量"><a href="#1-向量" class="headerlink" title="(1) 向量"></a>(1) 向量</h2><p><code>\vec</code>表示向量，常见示例如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$ \vec{v}$</code></th>
+<th><code>$ \vec{v} = v_1 \vec{i} + v_2 \vec{j} = \langle v_1,v_2 \rangle$</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$ \vec{v}$</td>
+<td>$ \vec{v} = v_1 \vec{i} + v_2 \vec{j} = \langle v_1,v_2 \rangle$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-矩阵"><a href="#2-矩阵" class="headerlink" title="(2) 矩阵"></a>(2) 矩阵</h2><p>矩阵通过array环境生成矩阵，其语法如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\begin&#123;array&#125;[外部对齐]&#123;列对齐&#125;</span><br><span class="line">第一行第一列 &amp; 第一行第二列 \\</span><br><span class="line">第二行第一列 &amp; 第二行第二列 \\</span><br><span class="line">\end&#123;array&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>PS1: 外部对齐</strong><br>外部对齐是指整个矩阵和周围对象的对齐方式，有三种方式：居顶、居中 (缺省) 、居底，分别用 t, c, b 来表示<br>列对齐是指矩阵内部对象的对齐方式，也有三种方式：居左、居中、居右，分别用 l, c, r 表示。<br>行列内容为各个矩阵元素，使用<code>\</code>和<code>&amp;</code>分隔行列元素。<br>示例如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$ \vec{v}$</code></th>
+<th><code>$ \vec{v} = v_1 \vec{i} + v_2 \vec{j} = \langle v_1,v_2 \rangle$</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$ \vec{v}$</td>
+<td>$ \vec{v} = v_1 \vec{i} + v_2 \vec{j} = \langle v_1,v_2 \rangle$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\begin&#123;array&#125;&#123;ccc&#125;</span><br><span class="line">x_1 &amp; x_2 &amp; \dots \\</span><br><span class="line">x_3 &amp; x_4 &amp; \dots \\</span><br><span class="line">\vdots &amp; \vdots &amp; \ddots</span><br><span class="line">\end&#123;array&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为  </p>
+<script type="math/tex; mode=display">
+\begin{array}{ccc}
+x_1 & x_2 & \dots \\
+x_3 & x_4 & \dots \\
+\vdots & \vdots & \ddots
+\end{array}</script><p><strong>PS2: 矩阵两边的括号</strong><br>若想在矩阵两边生成不同类型的括号，可以说使用pmatrix, bmatrix, Bmatrix, vmatrix, Vmatrix等环境代替array环境。<br>下方依次演示各类括号。<br>如小括号<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;pmatrix&#125;</span><br><span class="line">a&amp;b\\</span><br><span class="line">c&amp;d \\</span><br><span class="line">\end&#123;pmatrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+a&b\\
+c&d \\
+\end{pmatrix}</script><p>如中括号<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;bmatrix&#125;</span><br><span class="line">a&amp;b\\</span><br><span class="line">c&amp;d \\</span><br><span class="line">\end&#123;bmatrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+a&b\\
+c&d \\
+\end{bmatrix}</script><p>如大括号<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;Bmatrix&#125;</span><br><span class="line">a&amp;b\\</span><br><span class="line">c&amp;d \\</span><br><span class="line">\end&#123;Bmatrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+\begin{Bmatrix}
+a&b\\
+c&d \\
+\end{Bmatrix}</script><p>如绝对值符号<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;vmatrix&#125;</span><br><span class="line">a&amp;b\\</span><br><span class="line">c&amp;d \\</span><br><span class="line">\end&#123;vmatrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+\begin{vmatrix}
+a&b\\
+c&d \\
+\end{vmatrix}</script><p>如双重绝对值符号<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;Vmatrix&#125;</span><br><span class="line">a&amp;b\\</span><br><span class="line">c&amp;d \\</span><br><span class="line">\end&#123;Vmatrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+\begin{Vmatrix}
+a&b\\
+c&d \\
+\end{Vmatrix}</script><p><strong>PS3:行内矩阵</strong><br><code>\smallmatrix</code>命令可以生成行间矩阵。示例如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$ 一个行间矩阵：( \begin{smallmatrix} a&amp;b \\\\ c&amp;d \end{smallmatrix} ) $</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$ 一个行间矩阵：( \begin{smallmatrix} a&amp;b \\ c&amp;d \end{smallmatrix} ) $</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>注意：在行间矩阵中，用<code>\\\\</code>来分割行，这是由于hexo语法中，<code>\</code>本身需要转义。  </p>
+<h1 id="五、-公式"><a href="#五、-公式" class="headerlink" title="五、 公式"></a>五、 公式</h1><p>普通公式可以直接输入，示例如下：  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th><code>$ 一个普通公式：x = a+b+c+d+e+f+g+h $</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>效果</td>
+<td>$ 一个普通公式：x = a+b+c+d+e+f+g+h $</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>特殊公式则需要具体命令，具体介绍如下。  </p>
+<h2 id="1-长公式"><a href="#1-长公式" class="headerlink" title="(1) 长公式"></a>(1) 长公式</h2><p>若是公式很长，或因为某些原因需要分成几段，可以通过split环境实现。<br>split用<code>\</code>和<code>&amp;</code>来分行和设置对齐的位置。同理，因为转义原因，原本的<code>\</code>在hexo中需要表示为<code>\\</code>。<br>如<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;split&#125;</span><br><span class="line">x &#x3D; &amp; a+b+c+&#123;&#125; \\</span><br><span class="line">&amp; d+e+f+g</span><br><span class="line">\end&#123;split&#125; $$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+\begin{split}
+x = & a+b+c+{} \\
+& d+e+f+g
+\end{split}</script><h2 id="2-公式组"><a href="#2-公式组" class="headerlink" title="(2) 公式组"></a>(2) 公式组</h2><p>多个公式可以共同构成公式组。<br>不需要对齐的公式组可以使用 gather 环境，需要对齐的公式组用 align 环境。<br>公式组会自动对其中的各个公式进行编号，便于引用。<br>注意，gather环境和align环境，共用一套编号。示例如下：  </p>
+<p>如gather环境，公式组不对齐，且编号。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$\begin&#123;gather&#125;</span><br><span class="line">x &#x3D; a+b+c \\</span><br><span class="line">y &#x3D; c+d+f</span><br><span class="line">\end&#123;gather&#125; $$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">\begin{gather}
+x = a+b+c \\
+y = c+d+f
+\end{gather}</script><p>如align环境，公式组对齐，且继续编号（与gather共用一套编号）。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$\begin&#123;align&#125;</span><br><span class="line">x &#x3D; a+b+c \\</span><br><span class="line">y &#x3D; c+d+f</span><br><span class="line">\end&#123;align&#125; $$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">\begin{align}
+x = a+b+c+ \\
+y = c+d+f
+\end{align}</script><p><strong>PS:</strong><br>若不想生成公式编号，则可在环境后面带<code>*</code><br>如<code>align*</code>，不生成编号。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$\begin&#123;align*&#125;</span><br><span class="line">x &#x3D; a+b+c+ \\</span><br><span class="line">y &#x3D; c+d+f</span><br><span class="line">\end&#123;align*&#125; $$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">\begin{align*}
+x = a+b+c+ \\
+y = c+d+f
+\end{align*}</script><h2 id="3-分支公式"><a href="#3-分支公式" class="headerlink" title="(3) 分支公式"></a>(3) 分支公式</h2><p>使用<code>cases</code>环境可以实现分支函数。不同分支之间，使用<code>\</code>间隔。在hexo中，因为转义需要，使用<code>\\</code>间隔。<br>如<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">y&#x3D;</span><br><span class="line">\begin&#123;cases&#125;</span><br><span class="line">-x,x \leq a \\</span><br><span class="line">x, x&gt;a</span><br><span class="line">\end&#123;cases&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><br>效果为</p>
+<script type="math/tex; mode=display">
+y=
+\begin{cases}
+-x,x \leq a \\
+x, x>a
+\end{cases}</script>]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jupyter进阶：扩展配置</title>
+    <url>/2020/01/01/Jupyter%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>Jupyter本身已经是一款十分好用的交互式python开发工具了，但其实我们还可以为Jupyter安装扩展，进一步增强其功能的丰富性。<br>下面具体介绍如何安装Jupyter扩展，以及几款扩展的推荐。<br><a id="more"></a></p>
+<h1 id="2-Jupyter扩展安装"><a href="#2-Jupyter扩展安装" class="headerlink" title="2. Jupyter扩展安装"></a>2. Jupyter扩展安装</h1><p>扩展有多重安装方式，具体命令如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># conda安装</span><br><span class="line">conda install -c conda-forge jupyter_contrib_nbextensions</span><br><span class="line"># pip安装</span><br><span class="line">pip install jupyter_contrib_nbextensions</span><br></pre></td></tr></table></figure><br>安装完毕后，打开Juyputer notebook，即可在主页面找到nbextensions选项，效果如下图所示。</p>
+<p><img src="\images\pasted-10.png" alt="upload successful"></p>
+<p>取消勾选<code>disable configuration for nbextensions without explicit compatibility (they may break your notebook environment, but can be useful to show for nbextension development)</code>后，下方呈现的各个插件就可以勾选并使用了。<br>此外，值得注意的是，部分插件并不能勾选即用，还需要另外安装，具体情况，点开下方每一款插件，可以看到详细介绍。</p>
+<h1 id="3-Jupyter扩展推荐"><a href="#3-Jupyter扩展推荐" class="headerlink" title="3. Jupyter扩展推荐"></a>3. Jupyter扩展推荐</h1><p>这里根据自己使用体验，推荐几款比较好用的扩展。</p>
+<h2 id="1-AutoSaveTime"><a href="#1-AutoSaveTime" class="headerlink" title="(1) AutoSaveTime"></a>(1) AutoSaveTime</h2><p>此扩展的作用是对ipynb文件每隔一段时间进行自动保存。时间间隔可以自由设置。</p>
+<h2 id="2-Code-prettify"><a href="#2-Code-prettify" class="headerlink" title="(2) Code prettify"></a>(2) Code prettify</h2><p>安装此插件后，将会自动在ipynb文件面板上生成一个按钮。点击按钮，可自动对选中代码进行美化，包括缩进，间隔等美化。效果如下<br><img src="https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/_images/demo-py.gif" alt="upload successful"></p>
+<h2 id="3-Codefolding"><a href="#3-Codefolding" class="headerlink" title="(3) Codefolding"></a>(3) Codefolding</h2><p>此插件能够按照缩进格式，整合代码块，并提供代码块的折叠功能。</p>
+<h2 id="4-ExecuteTime"><a href="#4-ExecuteTime" class="headerlink" title="(4) ExecuteTime"></a>(4) ExecuteTime</h2><p>此插件能够在每个cell执行后，显示cell内代码的执行时间。</p>
+<h2 id="5-highlighter"><a href="#5-highlighter" class="headerlink" title="(5) highlighter"></a>(5) highlighter</h2><p>此插件能够在ipynb文件面板上生成一个按钮。点击按钮后，能够对文件内文本进行高亮。</p>
+<h2 id="6-Runtools"><a href="#6-Runtools" class="headerlink" title="(6) Runtools"></a>(6) Runtools</h2><p>此插件提供更为先进的运行工具。如运行此cell之前所有代码、运行此cell之后所有代码等。</p>
+<h2 id="7-Table-of-Contents-2"><a href="#7-Table-of-Contents-2" class="headerlink" title="(7) Table of Contents (2)"></a>(7) Table of Contents (2)</h2><p>此插件能够根据文件Markdown内容，自动生成目录。</p>
+<h2 id="8-Variable-Inspector"><a href="#8-Variable-Inspector" class="headerlink" title="(8) Variable Inspector"></a>(8) Variable Inspector</h2><p>此插件能够像R studio一样，实时展示当前命名空间内所有变量。</p>
+<h1 id="4-Jupyter另存为"><a href="#4-Jupyter另存为" class="headerlink" title="4. Jupyter另存为"></a>4. Jupyter另存为</h1><p>Jupyter可以很方便地对文本内容和代码进行组织。此外，还可以将Jupyter转为html或Powerpoint形式，方便展示。</p>
+<h2 id="1-ipynb转html"><a href="#1-ipynb转html" class="headerlink" title="(1) ipynb转html"></a>(1) ipynb转html</h2><p>打开terminal -&gt; 进入ipynb文件当前路径 -&gt; 运行命令 <code>jupyter-nbconvert &lt;file name&gt;.ipynb</code></p>
+<h2 id="2-ipynb转Powerpoint"><a href="#2-ipynb转Powerpoint" class="headerlink" title="(2) ipynb转Powerpoint"></a>(2) ipynb转Powerpoint</h2><p><strong>Powerpoint内容组织</strong><br>在将ipynb文件转为Powerpoint形式之前，需要对页面内容进行组织。方法如下：</p>
+<ul>
+<li>切换至slides视图: view -&gt; Cell Toolbar -&gt; Slideshow</li>
+<li>选择要加入Powerpoint中的Cell: 在要加入Powerpoint的Cell，slice type中选择slice或sub-slice。<ul>
+<li>slides之间是左右切换</li>
+<li>sub-slice之间是上下切换</li>
+</ul>
+</li>
+</ul>
+<p>slides和sub-slice之间的区别如下所示：<br><img src="https://pic1.zhimg.com/50/v2-af8775b777cb3233225467b7db89939c_hd.webp" alt="upload successful"></p>
+<p><strong>Powerpoint格式转化</strong><br>在完成对Powerpoint的内容组织之后，具体格式转化有两种办法。  </p>
+<p>其一：打开terminal -&gt; 进入ipynb文件当前路径 -&gt; 运行命令 <code>jupyter-nbconvert --to slides &lt;file name&gt;.ipynb --post serve</code><br>此时，在浏览器中打开<code>127.0.0.1:8000</code>，即可显示Powerpoint文件。<br>此类方法的弊端是，Powerpoint生成之后，无法编辑和修改。  </p>
+<p>其二：安装RISE插件，命令如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda install -c damianavila82 rise</span><br><span class="line">jupyter-nbextension install rise --py --sys-prefix</span><br><span class="line">jupyter-nbextension enable rise --py --sys-prefix</span><br></pre></td></tr></table></figure><br>安装完成后，即可在Jupyter界面找到RISE插件的按钮，点击后即可实时展示Powerpoint，支持随时的进入和退出，且能够一边演示一边编辑。  </p>
+<h1 id="5-Jupyter-SVG图片显示问题"><a href="#5-Jupyter-SVG图片显示问题" class="headerlink" title="5. Jupyter SVG图片显示问题"></a>5. Jupyter SVG图片显示问题</h1><p>当打开别人的ipynb文件时，有时会出现SVG图片显示不出来的问题。<br>这和打开doc文档默认是只读模式一样，需要进一步授权信任文件。<br>Jupyter中，有两种授权模式：</p>
+<ul>
+<li>打开文件 -&gt; file -&gt; trust notebook</li>
+<li>打开terminal -&gt; 进入ipynb文件当前路径 -&gt; 运行命令 <code>jupyter trust &lt;file name&gt;.ipynb</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>项目实践</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+        <tag>jupyter notebook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>有道云笔记 vs 印象笔记</title>
+    <url>/2020/01/01/%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0-vs-%E5%8D%B0%E8%B1%A1%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>从2015年到如今，我使用有道云笔记也已经有5年了。不过其实重度使用，也只有近2年而已。<br>记得5年前，还是印象笔记最火的时候，网上捧印象笔记踩有道云笔记的言论不绝于耳。<br>在这样的情况下，我还是选择了有道云笔记，只有两个原因。<br>其一，免费，且免费力度直到现在为止也比印象笔记好很多。可以说，印象笔记不付费是没法好好用的，有道云笔记不付费也能用的很自然。<br>其二，UI。我一直对程序员们钟爱的dark系列无感，反而很喜欢有道云这样白色、扁平的UI设计。<br>然而，前几天一个偶然的原因，还是让我有了从有道云笔记迁移的想法。<br><a id="more"></a></p>
+<h1 id="2-迁移与对比"><a href="#2-迁移与对比" class="headerlink" title="2. 迁移与对比"></a>2. 迁移与对比</h1><p>事情的起因，是我很愚蠢地在一系列笔记中，都把2019打成了2018。我希望能够通过<code>替换</code>功能来修复这个问题，然而，这才发现，有道云笔记中，只有<code>查找</code>，没有<code>替换</code>。<br>在上网找解决方法的时候，发现也有人吐槽这个问题。进一步扩展开来，发现网友们吐槽有道云笔记的主要是两个方面：</p>
+<ul>
+<li>发生过笔记丢失现象，还不止一次。</li>
+<li>不开放公用导出接口，只能导出有道云笔记格式的本地文件。（我尝试过每三个月才能用一次的PDF导出，然而导出的笔记全是空白）</li>
+</ul>
+<p>由于我的笔记内容大多为日记，这引发了我深深的忧虑。第一点笔记丢失现象，让我开始为自己笔记的安全性开始担心。第二点不开放导出接口，用有道云笔记产生的笔记只能用有道云笔记打开，提高迁移成本。除非能下定决心放弃之前的内容，否则很难做出迁移的决定。  </p>
+<p>然而，虽然理性上我能理解这种商业模式的合理之处，感性上却很不爽，特别是针对日记这种内容，个人觉得应该是完全私有并且自由的。如果规定只能用有道云笔记打开，那有一天这个软件倒闭了，那我的日记不也就全部作废了吗？也因此，我做出了迁移的决定。</p>
+<p>一篇篇手动迁移真的心累，花了我一个下午，然而，在迁移到印象笔记之后，在我尝试进行新的笔记创作时，我才惊讶地发现，印象笔记竟然有如此多的功能不足。虽然印象笔记比有道云笔记多了一个<code>替换</code>的功能，但也缺少了很多有道云笔记拥有的功能，用起来很不方便，具体如下</p>
+<ul>
+<li>免费版印象笔记只支持两台设备，不满足<code>主机+笔记本+手机</code>的配置。</li>
+<li>没有多级目录。不过通过标签也可勉强解决问题。<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC85NTcwMzBiNjU5Nzg=" title="https://www.jianshu.com/p/957030b65978">标签与层级之争<i class="fa fa-external-link"></i></span>。</li>
+<li>没有格式刷</li>
+<li>没有笔记内容历史记录</li>
+<li>文本高亮只有一种颜色，不支持多种颜色高亮。</li>
+</ul>
+<h1 id="3-现状"><a href="#3-现状" class="headerlink" title="3. 现状"></a>3. 现状</h1><p>最终，我选择的解决方案是同时使用两款笔记，各取所长。<br>有道云笔记因为其完善的编辑功能，成为我笔记创作的首选，主要的笔记创作都集中在这款软件上。<br>印象笔记由于其安全和支持通用格式导出的特性，成为我笔记存储的首选。在有道云笔记完成一份笔记的创作后，我会将笔记全部内容剪切到印象笔记中进行存储。<br>希望两家笔记越来越好，特别是印象笔记。若是能够将功能完善，付费支持也可啊。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>有道云笔记</tag>
+        <tag>印象笔记</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac下的软件推荐</title>
+    <url>/2019/12/30/Mac%E4%B8%8B%E7%9A%84%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>由于系统崩溃，花了两天重新安装Mac系统。<br>重新装完系统之后还需要安装软件，这里顺便推荐几个比较好用的软件。  </p>
+<a id="more"></a>
+<h1 id="2-软件推荐"><a href="#2-软件推荐" class="headerlink" title="2. 软件推荐"></a>2. 软件推荐</h1><h2 id="1-系统增强方面"><a href="#1-系统增强方面" class="headerlink" title="(1) 系统增强方面"></a>(1) 系统增强方面</h2><ul>
+<li>The Unarchiver</li>
+<li>Moom</li>
+<li>CleanMyMac 3</li>
+<li>Paragon NTFS for Mac 15</li>
+<li>Scroll Reverser</li>
+<li>Pap.er</li>
+<li>Bartender 3</li>
+<li>Gestimer</li>
+<li>HyperSwitch</li>
+<li>CheatSheet</li>
+</ul>
+<h2 id="2-效率增强方面"><a href="#2-效率增强方面" class="headerlink" title="(2) 效率增强方面"></a>(2) 效率增强方面</h2><ul>
+<li>Chrome</li>
+<li>Safari</li>
+<li>有道云笔记（印象笔记）</li>
+<li>快译</li>
+<li>Sublime</li>
+<li>Mweb</li>
+<li>Xcode</li>
+<li>PDF Expert</li>
+<li>Mindnode</li>
+<li>office组件</li>
+</ul>
+<h2 id="3-日常与娱乐所需"><a href="#3-日常与娱乐所需" class="headerlink" title="(3) 日常与娱乐所需"></a>(3) 日常与娱乐所需</h2><ul>
+<li>QQ</li>
+<li>Wechat</li>
+<li>Steam</li>
+<li>网易云音乐（qq音乐）</li>
+<li>IINA</li>
+</ul>
+<h1 id="3-Dock美化"><a href="#3-Dock美化" class="headerlink" title="3. Dock美化"></a>3. Dock美化</h1><p>在安装完软件后，还需要在LaunchPad和Docker中将其整理归类。<br>在这一步，有一个非常好用的小技巧：每输入一次以下代码，即可在Docker中添加一个间隔。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaults write com.apple.dock persistent-apps -array-add &#39;&#123;&quot;tile-type&quot;&#x3D;&quot;spacer-tile&quot;;&#125;&#39;; killall Dock</span><br></pre></td></tr></table></figure><br>如此一来既可<br>以通过调整间隔位置，在Docker中在视觉上将软件进行分类了，强迫症表示一本满足。<br>效果如下所示<br><img src="\images\pasted-9.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Excel中文乱码的解决方法</title>
+    <url>/2019/12/30/Excel%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="1-乱码原因"><a href="#1-乱码原因" class="headerlink" title="1. 乱码原因"></a>1. 乱码原因</h1><p>Excel通过bom识别CSV文件编码。bom是微软自己定义的一种文件头部协定，存储在文件头部，存储内容就<br>是标识文件编码的信息。<br>很多CSV文件并非由微软软件生成，头部并没有bom，此时Excel默认按照unicode编码识别文件。若CSV文件<br>的编码方式为UTF-8，则会出现中文乱码。  </p>
+<a id="more"></a>
+<h1 id="2-解决方法一：文件头部加入bom"><a href="#2-解决方法一：文件头部加入bom" class="headerlink" title="2. 解决方法一：文件头部加入bom"></a>2. 解决方法一：文件头部加入bom</h1><p>可通过NotePad++等文本编辑器，将CSV文件另存为有bom头部的形式。<br>此时再用Excel读取，即可解决UTF-8编码下的中文乱码问题。  </p>
+<h1 id="3-解决方法一：从excel导入文件"><a href="#3-解决方法一：从excel导入文件" class="headerlink" title="3. 解决方法一：从excel导入文件"></a>3. 解决方法一：从excel导入文件</h1><p>先打开Excel。随后执行“数据 -&gt; 自文本 -&gt; 分隔符号选择逗号 -&gt; 完成导入”。<br>以这种方式，同样可解决中文乱码问题。</p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Excel</tag>
+        <tag>乱码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>conda配置多python环境</title>
+    <url>/2019/12/30/conda%E9%85%8D%E7%BD%AE%E5%A4%9Apython%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>在Windows/Mac中，可以很方便地通过<span class="exturl" data-url="aHR0cHM6Ly93d3cuYW5hY29uZGEuY29tLw==" title="https://www.anaconda.com/">Anaconda<i class="fa fa-external-link"></i></span>构建多个Python和R环境，相互之间互不干扰，实现不同工作环境的隔离。<br>然而，在服务器端，往往无图形化界面。那么如何通过命令行构建多python环境就成了问题。<br>下面介绍如何在命令行环境中，通过conda配置多python环境。</p>
+<a id="more"></a>
+<h2 id="2-conda安装"><a href="#2-conda安装" class="headerlink" title="2. conda安装"></a>2. conda安装</h2><p>在官网找到<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmNvbmRhLmlvL2VuL2xhdGVzdC9taW5pY29uZGEuaHRtbA==" title="https://docs.conda.io/en/latest/miniconda.html">conda下载链接<i class="fa fa-external-link"></i></span>，下载需要版本的.sh文件，并进行安装。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget -bc &lt;conda link&gt;</span><br><span class="line">bash &lt;conda .sh file name&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-环境配置"><a href="#3-环境配置" class="headerlink" title="3. 环境配置"></a>3. 环境配置</h2><p>创建新环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda create --name py27 python&#x3D;2.7</span><br></pre></td></tr></table></figure><br>激活环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda activate py27</span><br></pre></td></tr></table></figure><br>查看所有环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda info --envs</span><br></pre></td></tr></table></figure><br>返回默认环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda deactivate</span><br></pre></td></tr></table></figure><br>删除环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda remove --name py27 --all</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-将新环境加入Jupyter菜单"><a href="#4-将新环境加入Jupyter菜单" class="headerlink" title="4. 将新环境加入Jupyter菜单"></a>4. 将新环境加入Jupyter菜单</h2><p>Jupyter中可以选择用什么kernel来启动。所以为了将新环境加入Jupyter菜单中，只需要将其加入到Jupyter的kernel列表中。<br>Jupyter提供名为<code>ipykernel</code>的工具来管理kernel。为了能够达成目的，需要进行以下操作。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 安装并激活新环境</span><br><span class="line">conda create --name py27 python&#x3D;2.7</span><br><span class="line">conda activate py27</span><br><span class="line"></span><br><span class="line"># 在新环境中安装ipykernel</span><br><span class="line">pip install ipykernel</span><br><span class="line"></span><br><span class="line"># 在新环境中，将新的kernel添加到ipykernel列表中</span><br><span class="line">python -m ipykernel install --user --name py27</span><br><span class="line"></span><br><span class="line"># 退出新环境</span><br><span class="line">conda deactivate</span><br><span class="line"></span><br><span class="line"># 运行Jupyter notebook</span><br><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure><br>此时打开Jupyter的菜单，即可看到新添加进去的环境。  </p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+        <tag>Linux</tag>
+        <tag>Conda</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title> win7旗舰版与CentOS7双系统安装</title>
+    <url>/2019/12/30/win7%E6%97%97%E8%88%B0%E7%89%88%E4%B8%8ECentOS7%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="1-安装顺序"><a href="#1-安装顺序" class="headerlink" title="1. 安装顺序"></a>1. 安装顺序</h1><p>两个系统安装时都会安装开机启动项，为了使得二者不会相互覆盖，正确的安装顺序是<br>1.磁盘分区<br>2.选择一个磁盘安装Win7<br>3.选择另一个磁盘安装CenOS7  </p>
+<a id="more"></a>
+<h1 id="2-启动项修复"><a href="#2-启动项修复" class="headerlink" title="2. 启动项修复"></a>2. 启动项修复</h1><p>若是安装后，出现了启动项覆盖，则需要在CentOS系统下加载Win的启动项，建议使用EasyBCD工具。  </p>
+<h1 id="3-踩坑记录"><a href="#3-踩坑记录" class="headerlink" title="3. 踩坑记录"></a>3. 踩坑记录</h1><h2 id="1-启动过程报错"><a href="#1-启动过程报错" class="headerlink" title="(1) 启动过程报错"></a>(1) 启动过程报错</h2><p>报错如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dracut-initqueue[624]:Warning: Could not boot.</span><br><span class="line">dracut-initqueue[624]:Warning: &#x2F;dev&#x2F;root does not exist.</span><br><span class="line">Starting Dracut EmergencyShell…</span><br><span class="line">Warning: &#x2F;dev&#x2F;root does not exist</span><br></pre></td></tr></table></figure><br>错误原因：UltroISO在Window下写入U盘的安装文件路径，没有被linux安装程序识别<br>解决方法如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hd:LABEL&#x3D;CentOS\x207\x20x86_64 rd.live.check quiet 改为hd:&#x2F;dev&#x2F;sdb4 quiet</span><br><span class="line">注意：这里需要进入&#x2F;dev下ls查看硬件名称，可能不是sdb4而是其他</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-分区过程过程中报错"><a href="#2-分区过程过程中报错" class="headerlink" title="(2) 分区过程过程中报错"></a>(2) 分区过程过程中报错</h2><p>报错如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">No valid bootloader target device found. </span><br><span class="line">For UEFI installation , you must include an EFI System Partition on a </span><br><span class="line">GPT-formatted disk, mounted at &#x2F;boot&#x2F;efi.</span><br></pre></td></tr></table></figure><br>错误原因：使用UEFI时必须使用GPT分区格式，且需要挂载/boot/efi<br>解决方法如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在启动时按F2，在boot中将UEFI设置为disable，则默认使用BOIS启动</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-Win启动消失"><a href="#3-Win启动消失" class="headerlink" title="(3) Win启动消失"></a>(3) Win启动消失</h2><p>情况描述：CentOS7安装成功后，重启电脑，只看到CentOS7的选项，没有选择进入windos7系统的选项<br>错误原因：CentOS7使用新的grub2系统，原windos下的grub项目失效，所以需要进入/boot/grub2目录后使用vi编辑grub.cfg文件。<br>解决方法:修改Centos 7的Grub2引导，添加Windows的启动项<br>a. 运行命令<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vi &#x2F;boot&#x2F;grub2&#x2F;grub.cfg</span><br></pre></td></tr></table></figure></p>
+<p>b. 找到语句<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BEGIN &#x2F;etc&#x2F;grub.d&#x2F;30_os-prober</span><br></pre></td></tr></table></figure></p>
+<p>c. 后面加入win启动项</p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+        <tag>Windows</tag>
+        <tag>CentOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac下的软件破解方法</title>
+    <url>/2019/12/30/Mac%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%A0%B4%E8%A7%A3%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>Mac下软件丰富而强大，但部分软件价格过于昂贵，对于学生党十分不友好。<br>此处提供几个破解软件下载网站，以及软件破解方法。<br>有条件还是建议支持正版，也鼓励先试用后补票。<br><a id="more"></a></p>
+<h1 id="2-破解软件下载网站"><a href="#2-破解软件下载网站" class="headerlink" title="2. 破解软件下载网站"></a>2. 破解软件下载网站</h1><p><span class="exturl" data-url="aHR0cDovL3hjbGllbnQuaW5mby8/Xz04ZjBkYThlYzYzZDY4YTBlMzYxZjhjMzM2YjNkZGIyNw==" title="http://xclient.info/?_=8f0da8ec63d68a0e361f8c336b3ddb27">xclient<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuZmVuZy5jb20v" title="https://www.feng.com/">威锋<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cubWFjYmwuY29tLw==" title="https://www.macbl.com/">马可波罗<i class="fa fa-external-link"></i></span>  </p>
+<h1 id="3-Mac软件破解方法"><a href="#3-Mac软件破解方法" class="headerlink" title="3. Mac软件破解方法"></a>3. Mac软件破解方法</h1><p>很多时候，破解软件下载下来，Mac却提示文件破损。<br>这其实是一种错误信息，真实原因是Mac开启了内核保护，不允许安装Appstore之外的第三方软件。<br>此时，只需暂时关闭内核保护，安装完破解软件后重新开启，即可成功破解。  </p>
+<h2 id="1-关闭内核保护"><a href="#1-关闭内核保护" class="headerlink" title="(1) 关闭内核保护"></a>(1) 关闭内核保护</h2><p>在terminal中输入以下命令<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-调整安全选择设置"><a href="#2-调整安全选择设置" class="headerlink" title="(2) 调整安全选择设置"></a>(2) 调整安全选择设置</h2><p>Perferance -&gt; 安全性与隐私 -&gt; anywhere</p>
+<h2 id="3-安装软件"><a href="#3-安装软件" class="headerlink" title="(3) 安装软件"></a>(3) 安装软件</h2><p>安装之后，重新开启内核保护之前，需打开软件一次。</p>
+<h2 id="4-重新开启内核保护"><a href="#4-重新开启内核保护" class="headerlink" title="(4)重新开启内核保护"></a>(4)重新开启内核保护</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo spctl --master-enable</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>破解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac批量创建文件夹的方法</title>
+    <url>/2019/12/30/Mac%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="批量创建文件夹"><a href="#批量创建文件夹" class="headerlink" title="批量创建文件夹"></a>批量创建文件夹</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir Lecture&#123;01..09&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Chrome上的拓展及脚本安装</title>
+    <url>/2019/12/30/Chrome%E4%B8%8A%E7%9A%84%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>我们知道，Chrome本身提供了多种拓展，大大增强了Chrome浏览器的功能丰富性。<br>但除此之外，其实我们还可以在Chrome浏览器上安装脚本，进一步增强其易用性。<br>此处就简单介绍几种个人常用的Chrome拓展和脚本，供大家参考。  </p>
+<a id="more"></a>
+<h1 id="2-Chrome拓展"><a href="#2-Chrome拓展" class="headerlink" title="2. Chrome拓展"></a>2. Chrome拓展</h1><h2 id="1-AdBlock-—-最佳广告拦截工具"><a href="#1-AdBlock-—-最佳广告拦截工具" class="headerlink" title="(1) AdBlock — 最佳广告拦截工具"></a>(1) AdBlock — 最佳广告拦截工具</h2><p>AdBlock是Chrome上最受欢迎的拓展之一，其功能便是拦截烦人的广告，并且免费，非常良心。</p>
+<h2 id="2-LastPass"><a href="#2-LastPass" class="headerlink" title="(2) LastPass"></a>(2) LastPass</h2><p>LastPass是著名的密码管理工具，用它而不用Chrome自带的密码管理，是看重了其跨平台的能力。<br>LastPass免费版能够支持两台设备，跨越多个应用和浏览器使用，非常方便。 </p>
+<h2 id="3-捕捉网页截图"><a href="#3-捕捉网页截图" class="headerlink" title="(3) 捕捉网页截图"></a>(3) 捕捉网页截图</h2><p>捕捉网页截图用于在页面上进行截图，最重要的是其支持长截图，即让页面滚动进行长距离截图，非常有用。</p>
+<h2 id="4-Video-Downloader-Plus"><a href="#4-Video-Downloader-Plus" class="headerlink" title="(4) Video Downloader Plus"></a>(4) Video Downloader Plus</h2><p>Video Downloader Plus能够让你下载页面中的视频。<br>其实IDM(Internet Download Manager)功能更加强大，是Windows平台下的最强下载软件，并且提供Chrome插件。然而需要付费。<br>Video Downloader Plus为免费插件，并且基础功能也勉强够用。具体可酌情选择。 </p>
+<h2 id="5-Grammar-and-Spelling-checker-by-Ginger"><a href="#5-Grammar-and-Spelling-checker-by-Ginger" class="headerlink" title="(5) Grammar and Spelling checker by Ginger"></a>(5) Grammar and Spelling checker by Ginger</h2><p>Ginger能够自动实现英文拼写和语法纠错，英语读写苦手必备。  </p>
+<h2 id="6-Kopernio"><a href="#6-Kopernio" class="headerlink" title="(6) Kopernio"></a>(6) Kopernio</h2><p>Kopernio是一个文献全文数据库，能够让用户绕开文献数据库(如web of science)的封锁，下载文献全文，科研党必备。</p>
+<h2 id="7-Momentum"><a href="#7-Momentum" class="headerlink" title="(7)Momentum"></a>(7)Momentum</h2><p>Momentum是一个Chrome美化插件，主要用于美化Chrome的tab页面。<br>原始的Chrome tab页面会列出谷歌搜索和常用网页。<br>Momentum则会每天更新一张风景图，一则英文谚语，并且支持更多的功能定制，其效果如下所示。  </p>
+<p><img src="\images\pasted-8.png" alt="upload successful"></p>
+<h2 id="8-阅读模式"><a href="#8-阅读模式" class="headerlink" title="(8) 阅读模式"></a>(8) 阅读模式</h2><p>阅读模式是仿照<code>Safari浏览器阅读模式</code>的一个插件，作用在于去除页面中的杂乱信息，提供一个清晰干净的阅读页面。</p>
+<h2 id="9-专注看图"><a href="#9-专注看图" class="headerlink" title="(9) 专注看图"></a>(9) 专注看图</h2><p>与阅读模式类似，专注看图也是一款阅读体验优化的软件。<br>只不过阅读模式侧重文字的提取和体验优化。专注看图则是专注于网页中图片的提取，适合看图党。  </p>
+<h1 id="2-Chrome脚本"><a href="#2-Chrome脚本" class="headerlink" title="2. Chrome脚本"></a>2. Chrome脚本</h1><p>脚本比插件更强大，因为其更加自由，支持更多的自定义。<br>要安装脚本，首先需要安装脚本的管理器，即油猴(Tamperonkey)插件。<br>在Chrome线上应用程序商店中，安装完Tamperonkey，即可安装插件了。<br><span class="exturl" data-url="aHR0cHM6Ly93d3cudGFtcGVybW9ua2V5Lm5ldC9zY3JpcHRzLnBocA==" title="https://www.tampermonkey.net/scripts.php">Tamperonkey主页<i class="fa fa-external-link"></i></span>列出来几个脚本来源网站，都支持脚本的一键安装，非常方便。并且Tamperonkey还支持插件的管理以及云同步，便于跨机器使用。<br>这里推荐几个个人常用的脚本，抛砖引玉。 </p>
+<h2 id="1-Youtube系列"><a href="#1-Youtube系列" class="headerlink" title="(1) Youtube系列"></a>(1) Youtube系列</h2><h3 id="Youtube"><a href="#Youtube" class="headerlink" title="Youtube+"></a>Youtube+</h3><p>youtube播放效果增强，功能十分强大，广受好评。<br>不过只支持旧版布局的Youtube，所以往往需要和<code>Youtube - Restore Classic</code>搭配使用。</p>
+<h3 id="Youtube-Restore-Classic"><a href="#Youtube-Restore-Classic" class="headerlink" title="Youtube - Restore Classic"></a>Youtube - Restore Classic</h3><p>如其标题中表达的一样，此脚本的作用是自动将youtube布局修改为旧版(经典模式)。<br>适合需要使用<code>Youtube+</code>或者喜欢经典布局的用户使用。  </p>
+<h3 id="Youtube-Best-Video-Downloader-2"><a href="#Youtube-Best-Video-Downloader-2" class="headerlink" title="Youtube Best Video Downloader 2"></a>Youtube Best Video Downloader 2</h3><p>用于youtube视频下载，不能与Youtube+一起使用。</p>
+<h3 id="EasyVideoDownload"><a href="#EasyVideoDownload" class="headerlink" title="EasyVideoDownload"></a>EasyVideoDownload</h3><p>同样用于youtube视频下载，可与Youtube+兼容。</p>
+<h2 id="2-bilibili系列"><a href="#2-bilibili系列" class="headerlink" title="(2) bilibili系列"></a>(2) bilibili系列</h2><h3 id="bilibili-merged-flv-mp4-ass-enhance"><a href="#bilibili-merged-flv-mp4-ass-enhance" class="headerlink" title="bilibili merged flv+mp4+ass+enhance"></a>bilibili merged flv+mp4+ass+enhance</h3><p>bilibili播放效果增强，并且支持视频下载</p>
+<h3 id="解除B站区域限制"><a href="#解除B站区域限制" class="headerlink" title="解除B站区域限制"></a>解除B站区域限制</h3><p>bilibili某些番剧，限定了只支持某些地区能够观看。<br>此脚本可以解除区域限制，让用户自由观看所有番剧。  </p>
+<h2 id="3-百度系列"><a href="#3-百度系列" class="headerlink" title="(3)百度系列"></a>(3)百度系列</h2><h3 id="百度网盘直接下载助手"><a href="#百度网盘直接下载助手" class="headerlink" title="百度网盘直接下载助手"></a>百度网盘直接下载助手</h3><p>破解百度网盘下载链接，从而可以使用其他下载工具对文件进行下载，跳过百度网盘的限速。</p>
+<h3 id="百度文库文字复制及原格式下载"><a href="#百度文库文字复制及原格式下载" class="headerlink" title="百度文库文字复制及原格式下载"></a>百度文库文字复制及原格式下载</h3><p>功能如标题，能够绕开百度文库限制，实现文库中文章文字的复制及原格式下载。</p>
+<h2 id="4-豆瓣系列"><a href="#4-豆瓣系列" class="headerlink" title="(4) 豆瓣系列"></a>(4) 豆瓣系列</h2><h3 id="MoreMovieRatings"><a href="#MoreMovieRatings" class="headerlink" title="MoreMovieRatings"></a>MoreMovieRatings</h3><p>在豆瓣电影中，除豆瓣评分外，还显示IMDb评分。  </p>
+<h3 id="豆瓣资源下载大师：1秒搞定豆瓣电影-音乐-图书下载"><a href="#豆瓣资源下载大师：1秒搞定豆瓣电影-音乐-图书下载" class="headerlink" title="豆瓣资源下载大师：1秒搞定豆瓣电影|音乐|图书下载"></a>豆瓣资源下载大师：1秒搞定豆瓣电影|音乐|图书下载</h3><p>在豆瓣电影|音乐|图书的具体页面右侧，显示全网能够找到的下载链接。（含直链|FTP|BT|磁力|ED2K|NZB|迅雷|百度盘|115盘等）<br>省了自己一个个搜索下载链接的功夫，直接在页面右侧点击对应下载链接即可。  </p>
+<h2 id="5-其他"><a href="#5-其他" class="headerlink" title="(5) 其他"></a>(5) 其他</h2><h3 id="破解VIP会员视频集合"><a href="#破解VIP会员视频集合" class="headerlink" title="破解VIP会员视频集合"></a>破解VIP会员视频集合</h3><p>VIP会员破解，适用于爱奇艺，优酷等多个平台。<br>可以实现VIP会员视频的免费观看。  </p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Chrome</tag>
+        <tag>扩展</tag>
+        <tag>脚本</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux备份方法</title>
+    <url>/2019/12/30/Linux%E5%A4%87%E4%BB%BD%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>由于Ubuntu自带的backup存在很多bug，问题多多，所以在此介绍一下其他的Linux备份方法。<br>以下分别介绍parimage和tar两种常用的备份手段。<br><a id="more"></a></p>
+<h1 id="2-parimage"><a href="#2-parimage" class="headerlink" title="2. parimage"></a>2. parimage</h1><h2 id="1-使用条件"><a href="#1-使用条件" class="headerlink" title="(1)使用条件"></a>(1)使用条件</h2><p>parimage不支持etx4格式的分区。<br>若要使用parimage，必须使用其他格式进行分区。<br><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1PVWYyc2s3Mi1PRSZhbXA7dD0zNXM=" title="https://www.youtube.com/watch?v=OUf2sk72-OE&amp;t=35s">使用教程<i class="fa fa-external-link"></i></span></p>
+<h2 id="2-安装"><a href="#2-安装" class="headerlink" title="(2) 安装"></a>(2) 安装</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install partimage</span><br></pre></td></tr></table></figure>
+<h2 id="3-创建备份文件夹"><a href="#3-创建备份文件夹" class="headerlink" title="(3) 创建备份文件夹"></a>(3) 创建备份文件夹</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir &#x2F;backup</span><br></pre></td></tr></table></figure>
+<h2 id="4-开始备份"><a href="#4-开始备份" class="headerlink" title="(4) 开始备份"></a>(4) 开始备份</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">partimage</span><br></pre></td></tr></table></figure>
+<p>按照提示一步步进行操作即可。  </p>
+<h1 id="3-tar命令备份"><a href="#3-tar命令备份" class="headerlink" title="3. tar命令备份"></a>3. tar命令备份</h1><h2 id="1-备份命令"><a href="#1-备份命令" class="headerlink" title="(1) 备份命令"></a>(1) 备份命令</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar cvpzf backup.tgz –exclude&#x3D;&#x2F;proc –exclude&#x3D;&#x2F;lost+found –exclude&#x3D;&#x2F;backup.tgz –exclude&#x3D;&#x2F;mnt –exclude&#x3D;&#x2F;sys &#x2F;</span><br></pre></td></tr></table></figure>
+<h2 id="2-命令解释"><a href="#2-命令解释" class="headerlink" title="(2) 命令解释"></a>(2) 命令解释</h2><ul>
+<li>cvpfz: “创建档案文件”、“保持权限”(保留所有东西原来的权限)、“使用gzip来减小文件尺寸”。</li>
+<li>backup.gz: 文件名</li>
+<li>/: 要备份的目录，这里是整个文件系统</li>
+<li>-exlude： 不备份的目录，包括“/proc”、“/lost+ found”、“/sys”、“/mnt”和“backup.gz”自身</li>
+</ul>
+<h2 id="（3）备份恢复"><a href="#（3）备份恢复" class="headerlink" title="（3）备份恢复"></a>（3）备份恢复</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar xvpfz backup.tgz -C &#x2F;</span><br><span class="line"># mkdir proc</span><br><span class="line"># mkdir lost+found</span><br><span class="line"># mkdir mnt</span><br><span class="line"># mkdir sys</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>备份</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mac下配置环境变量的方法</title>
+    <url>/2019/12/30/mac%E4%B8%8B%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<h1 id="1-环境变量位置"><a href="#1-环境变量位置" class="headerlink" title="1. 环境变量位置"></a>1. 环境变量位置</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>权限</th>
+<th>优先级</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/etc/paths</td>
+<td>root</td>
+<td>1</td>
+<td>文件，每一行代表一个环境变量</td>
+</tr>
+<tr>
+<td>/etc/paths.d/xxx</td>
+<td>root</td>
+<td>2</td>
+<td>文件夹，里面可以新建任意不带后缀名的文件，环境变量写在文件中</td>
+</tr>
+<tr>
+<td>~/.bash_profile</td>
+<td>用户</td>
+<td>3</td>
+<td>文件，~代表当前用户目录，该文件可能不存在，不存在创建一个即可</td>
+</tr>
+<tr>
+<td>临时变量</td>
+<td>用户</td>
+<td>4</td>
+<td>仅在当前终端有效，关闭终端后自动失效</td>
+</tr>
+</tbody>
+</table>
+</div>
+<a id="more"></a>
+<h1 id="2-环境变量修改"><a href="#2-环境变量修改" class="headerlink" title="2. 环境变量修改"></a>2. 环境变量修改</h1><p>优先级代表查找顺序，优先级高的优先查找和执行。<br>不建议修改root权限的环境变量，建议只修改用户权限的环境变量，即~/.bash_profile中的环境变量。  </p>
+<h1 id="3-bash-profile修改"><a href="#3-bash-profile修改" class="headerlink" title="3. ~/.bash_profile修改"></a>3. ~/.bash_profile修改</h1><p>该文件格式是：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PATH&#x3D;&lt;path1&gt;:&lt;path2&gt;:&lt;path3&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PYTHON_HOME&#x3D;~&#x2F;WorkSpace&#x2F;Python</span><br><span class="line">export ANDROID_ADB&#x3D;~&#x2F;Library&#x2F;Android&#x2F;sdk&#x2F;platform-tools</span><br><span class="line">export PATH&#x3D;$&#123;PATH&#125;:$&#123;PYTHON_HOME&#125;:$&#123;ANDROID_ADB&#125;</span><br></pre></td></tr></table></figure><br>只需按照格式，在文件中添加对应环境变量即可。  </p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mac中修改默认文件的打开方式</title>
+    <url>/2019/12/30/mac%E4%B8%8B%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="1-修改单个文件的默认打开方式"><a href="#1-修改单个文件的默认打开方式" class="headerlink" title="1. 修改单个文件的默认打开方式"></a>1. 修改单个文件的默认打开方式</h1><p>右键单击该文件 -&gt; 打开方式 -&gt; 其他 -&gt; 选择一个应用程序 -&gt; 始终以此方式打开<br><a id="more"></a><br><img src="\images\pasted-5.png" alt="upload successful"></p>
+<h1 id="2-修改同类型文件的默认打开方式"><a href="#2-修改同类型文件的默认打开方式" class="headerlink" title="2. 修改同类型文件的默认打开方式"></a>2. 修改同类型文件的默认打开方式</h1><p>右键单击该文件 -&gt; 显示简介 -&gt; 打开方式 -&gt; 选择一个应用程序 -&gt; 全部更改</p>
+<p><img src="\images\pasted-7.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>让你摆脱鼠标的Chrome控制插件——Vimium</title>
+    <url>/2019/12/30/%E8%AE%A9%E4%BD%A0%E6%91%86%E8%84%B1%E9%BC%A0%E6%A0%87%E7%9A%84Chrome%E6%8E%A7%E5%88%B6%E6%8F%92%E4%BB%B6%E2%80%94%E2%80%94Vimium/</url>
+    <content><![CDATA[<h1 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h1><p>今天推荐一款Chrome上的插件，Vimium。<br>Vimium可以通过设置键盘快捷键，进而控制Chrome浏览器。其功能十分全面强大，通过键盘快捷键，可以完全取代鼠标点击等操作。  </p>
+<a id="more"></a>
+<h1 id="二、常用命令"><a href="#二、常用命令" class="headerlink" title="二、常用命令"></a>二、常用命令</h1><p>此处简单介绍一下我自己设置的操作快捷键（快捷键可自由定制），以此来介绍Vimium能够做到的基础功能。</p>
+<h2 id="1-网页操作"><a href="#1-网页操作" class="headerlink" title="1. 网页操作"></a>1. 网页操作</h2><p>q 历史向前<br>e 历史向后  </p>
+<h2 id="2-页面操作"><a href="#2-页面操作" class="headerlink" title="2. 页面操作"></a>2. 页面操作</h2><p>w 到达页面顶端<br>s 到达页面底端<br>a 到达页面最左端<br>d 到达页面最右端<br>j 页面向下滑动（相当于滚轮向下一格）<br>k 页面向上欢动（相当于滚轮向下一格）<br>x 关闭页面（相当于ctrl+w)<br>z 恢复关闭的标签页<br>r 刷新页面  </p>
+<h2 id="3-标签页操作"><a href="#3-标签页操作" class="headerlink" title="3. 标签页操作"></a>3. 标签页操作</h2><p>h 切换到左边标签页<br>l 切换到右边标签页<br>t 新建标签页  </p>
+<h2 id="4-文本相关"><a href="#4-文本相关" class="headerlink" title="4. 文本相关"></a>4. 文本相关</h2><p>c 复制向前页面url<br>v 在新的标签页打开“剪切板”内的地址<br>o 从历史记录和书签中进行搜索<br>i 将焦点置于页面第一个文本框<br>f 在新的标签页打开当前页面的某个链接<br>gf 拷贝当前页面的某个链接<br>gs 查看页面源代码  </p>
+<h1 id="三、使用体验"><a href="#三、使用体验" class="headerlink" title="三、使用体验"></a>三、使用体验</h1><p>用惯了Vimium后，基本在chrome内部摆脱了对鼠标的依赖，工作效率得到了一定的提升。<br>但其也存在着一定不足。<br>首先，只适用于浏览器，具体windows应用间暂时还是无法摆脱对鼠标的依赖。<br>其次，某些网页端应用往往拥有自己的快捷键规则，往往会和Vimium的快捷键造成冲突，引发错误。</p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Chrome</tag>
+        <tag>插件</tag>
+        <tag>Vimium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一套键鼠控制多个显示器的方法</title>
+    <url>/2019/12/30/%E4%B8%80%E5%A5%97%E9%94%AE%E9%BC%A0%E6%8E%A7%E5%88%B6%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%EF%BC%88%E6%98%BE%E7%A4%BA%E5%99%A8%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>当拥有多台设备时，若是能够只用一套键鼠连接所有设备，那将非常方便。<br>此处介绍几种能够实现多设备键鼠互连的方法。  </p>
+<a id="more"></a>
+<h1 id="1-有网络（无线）"><a href="#1-有网络（无线）" class="headerlink" title="1. 有网络（无线）"></a>1. 有网络（无线）</h1><h2 id="1-Synergy"><a href="#1-Synergy" class="headerlink" title="(1) Synergy"></a>(1) Synergy</h2><p>Synergy目前官网是付费的，不过可以Google<code>1.5的免费版本</code>先进行试用，觉得OK了再购买最新高级版，享受更多功能。<br>其优势在于跨平台，可以连接Mac/win/linux等多个系统的设备。</p>
+<h2 id="2-mouth-without-borders"><a href="#2-mouth-without-borders" class="headerlink" title="(2) mouth without borders"></a>(2) mouth without borders</h2><p>免费，但仅限windows，仅限两台设备连接</p>
+<h1 id="2-无网络（有线）"><a href="#2-无网络（有线）" class="headerlink" title="2. 无网络（有线）"></a>2. 无网络（有线）</h1><h2 id="1-Smart-KM-Link"><a href="#1-Smart-KM-Link" class="headerlink" title="(1) Smart KM Link"></a>(1) Smart KM Link</h2><p>需要两台电脑都有usb接口，通过usb接口进行数据传输。<br>只支持两台设备互联，速度相比Synergy和mouth without borders更快，有线总是比无线更快更稳定，所以卡顿，断线的情况很少。</p>
+<h2 id="2-KVM转换器"><a href="#2-KVM转换器" class="headerlink" title="(2) KVM转换器"></a>(2) KVM转换器</h2><p>支持多个接口，多个设备，最强大的方法。</p>
+<h1 id="3-其他"><a href="#3-其他" class="headerlink" title="3. 其他"></a>3. 其他</h1><p>最终，我通过将服务器的服务，封装为URL链接的方式解决了这个问题。<br>自此，在用户机的浏览器上，只需输入服务器对应服务的ip和端口号，即可访问服务，也就用不着用键鼠再链接服务器了。<br>自用服务器常用的服务为Jupyter notebook和Transmission，都支持URL封装，具体配置将另开一篇博客进行介绍。</p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>Synergy</tag>
+        <tag>mouth without borders</tag>
+        <tag>Smart KM Link</tag>
+        <tag>KVM转换器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu下利用openconnect科学上网</title>
+    <url>/2019/12/30/ubuntu%E4%B8%8B%E5%88%A9%E7%94%A8openconnect%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
+    <content><![CDATA[<h1 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h1><p>高校VPN往往使用Cisco connect进行封装。而Linux平台无法直接使用Cisco connect。<br>openconnect是Cisco connect的重新封装，比较稳定，可以在Linux平台上直接使用。  </p>
+<a id="more"></a>
+<h1 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install network-manager-openconnect-gnome</span><br></pre></td></tr></table></figure>
+<h1 id="三、使用命令"><a href="#三、使用命令" class="headerlink" title="三、使用命令"></a>三、使用命令</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo openconnect -u &lt;user name&gt; &lt;vpn-server-ip&gt;</span><br></pre></td></tr></table></figure>
+<p>回车键后，按照提示输入密码即可。  </p>
+<h1 id="四、配置文件"><a href="#四、配置文件" class="headerlink" title="四、配置文件"></a>四、配置文件</h1><p>为了避免每次登陆都要输入ip、账号、密码的麻烦，也可直接修改配置文件。<br>存储配置文件后，每次openconnect启动，会直接按照配置文件中的参数运行。  </p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>科学上网</tag>
+        <tag>openconnect</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>R语言数据聚合和透视的实现方式</title>
+    <url>/2019/12/30/R%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88%E5%92%8C%E9%80%8F%E8%A7%86%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>在R语言中，有多种方式实现数据的聚合和透视，包括自带函数和第三方库等。<br>这里举例几个自己使用过的函数。  </p>
+<h1 id="1-sqldf"><a href="#1-sqldf" class="headerlink" title="1. sqldf"></a>1. sqldf</h1><p>sqldf包中的sqldf函数，直接使用SQL语言进行聚合。<br><a id="more"></a><br>可以实现SQL语言能够处理的所有操作，功能强大<br>资源消耗较小，运算效率较高<br>强烈推荐   </p>
+<h1 id="2-reshape2"><a href="#2-reshape2" class="headerlink" title="2. reshape2"></a>2. reshape2</h1><p>reshape2包中的cast函数，可以实现Excel中数据透视表的所有功能<br>代码环境，数据透视表的定制型和便捷性更强<br>资源消耗较小，运算效率较高<br>推荐  </p>
+<h1 id="3-aggregate"><a href="#3-aggregate" class="headerlink" title="3. aggregate"></a>3. aggregate</h1><p>R原生函数，需要自己建立factor level，可由多个factor level组成list，实现多个level同时聚合<br>资源消耗较大，运算效率较低<br>无法实现复杂的透视逻辑，一次只能指定一种运算（sum/mean/count）<br>不推荐  </p>
+<h1 id="4-tapply"><a href="#4-tapply" class="headerlink" title="4. tapply"></a>4. tapply</h1><p>原生函数，同aggregate，需要自己建立factor level<br>资源消耗加大，运算效率较低<br>无法实现复杂的透视逻辑，一次只能指定一种运算（sum/mean/count）<br>不推荐  </p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>R</tag>
+        <tag>数据</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>R中文乱码的解决方法</title>
+    <url>/2019/12/30/R%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h1><p>R和Rstudio对中文的支持较差，以至于中文容易在console中变成乱码。</p>
+<h1 id="二、网上提供的解决方案"><a href="#二、网上提供的解决方案" class="headerlink" title="二、网上提供的解决方案"></a>二、网上提供的解决方案</h1><p>网上找到的几种解决方案，核心思路都是将字符编码集转换为utf-8，从而实现对中文的支持。<br><a id="more"></a><br>具体在实现方法上有所不同，分为以下几种：  </p>
+<ul>
+<li>将R Script的编码改为utf-8</li>
+<li>将源数据的编码改为utf-8<ul>
+<li>使用文本编辑器直接修改</li>
+<li>在console中通过iconv()函数转换字符编码集</li>
+</ul>
+</li>
+<li>将RStudio的语言改为utf-8<ul>
+<li>控制台-&gt;地区与语言-&gt;系统管理(Tab)-&gt;非 unicde程式的语言-&gt;选择 中文, 简体</li>
+<li>console中设定”Sys.setlocale(“LC_ALL”,”Chinese”)”</li>
+</ul>
+</li>
+<li>将区域语言改为中文/英文\</li>
+</ul>
+<h1 id="二、其他解决方案"><a href="#二、其他解决方案" class="headerlink" title="二、其他解决方案"></a>二、其他解决方案</h1><p>针对我遇到的情况，以上方法全部无效。<br>经过尝试，最终有效的解决方案为：  </p>
+<ul>
+<li>R和Excel的默认编码都是ASCII  </li>
+<li>不改变R和RStudio的编码，即从ASCII改为utf-8  </li>
+<li>而是将原始数据的编码格式改为ASCII，进行读取  </li>
+</ul>
+<p>最终成功解决中文乱码问题。</p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>乱码</tag>
+        <tag>R</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo博客系列（三）：Hexo博客编辑器</title>
     <url>/2019/12/30/Hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9Amd%E7%BC%96%E8%BE%91%E5%99%A8/</url>
     <content><![CDATA[<p>Hexo博客的默认格式是<code>.md</code>，那么自然需要一个配套的Markdown编辑器。<br>以下介绍三种自己用过的，Markdown编辑器。</p>
@@ -138,7 +1573,8 @@
 <h1 id="二、hexo安装"><a href="#二、hexo安装" class="headerlink" title="二、hexo安装"></a>二、hexo安装</h1><h2 id="1-官网教程-1"><a href="#1-官网教程-1" class="headerlink" title="1.官网教程"></a>1.官网教程</h2><p><span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3poLWNuL2RvY3MvaW5kZXguaHRtbCMlRTUlQUUlODklRTglQTMlODUtSGV4bw==" title="https://hexo.io/zh-cn/docs/index.html#%E5%AE%89%E8%A3%85-Hexo">hexo官网安装文档<i class="fa fa-external-link"></i></span></p>
 <h2 id="2-代码安装-2"><a href="#2-代码安装-2" class="headerlink" title="2. 代码安装"></a>2. 代码安装</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &lt;path&gt;                              #跳转至目录</span><br><span class="line">npm install -g hexo-cli                #安装hexo</span><br><span class="line">hexo init &lt;folder&gt;                     #初始化文件夹</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install                            #安装依赖包</span><br><span class="line">npm install hexo-deployer-git --save   #安装拓展</span><br></pre></td></tr></table></figure>
 <p>在windows平台，若使用PowerShell运行安装代码，可能会出现以下错误。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo : 无法加载文件 C:\Users\yehan\AppData\Roaming\npm\hexo.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https :&#x2F;go.microsoft.com&#x2F;fwlink&#x2F;?LinkID&#x3D;135170 中的 about_Execution_Policies。</span><br></pre></td></tr></table></figure><br>原因是PowerShell默认禁止在系统上运行脚本，需要首先使用管理员权限运行PowerShell，然后输入以下代码进行修改：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set-ExecutionPolicy RemoteSigned   #选择Y</span><br></pre></td></tr></table></figure></p>
-<h1 id="三、hexo配置"><a href="#三、hexo配置" class="headerlink" title="三、hexo配置"></a>三、hexo配置</h1><h2 id="1-Github同步配置"><a href="#1-Github同步配置" class="headerlink" title="1. Github同步配置"></a>1. Github同步配置</h2><h3 id="1-建立GitHub账号，建立名为-github-io的New-Respository"><a href="#1-建立GitHub账号，建立名为-github-io的New-Respository" class="headerlink" title="(1) 建立GitHub账号，建立名为.github.io的New Respository"></a>(1) 建立GitHub账号，建立名为<GitHub用户名>.github.io的New Respository</h3><h3 id="2-本地安装git，并配置user-name和user-email"><a href="#2-本地安装git，并配置user-name和user-email" class="headerlink" title="(2) 本地安装git，并配置user.name和user.email"></a>(2) 本地安装git，并配置user.name和user.email</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &lt;GitHub用户名&gt;</span><br><span class="line">git config --global user.email &lt;GitHub注册邮箱&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="三、hexo配置"><a href="#三、hexo配置" class="headerlink" title="三、hexo配置"></a>三、hexo配置</h1><h2 id="1-Github同步配置"><a href="#1-Github同步配置" class="headerlink" title="1. Github同步配置"></a>1. Github同步配置</h2><h3 id="1-建立GitHub账号，建立New-Respository"><a href="#1-建立GitHub账号，建立New-Respository" class="headerlink" title="(1) 建立GitHub账号，建立New Respository"></a>(1) 建立GitHub账号，建立New Respository</h3><p>respository名为<GitHub用户名>.github.io</p>
+<h3 id="2-本地安装git，并配置user-name和user-email"><a href="#2-本地安装git，并配置user-name和user-email" class="headerlink" title="(2) 本地安装git，并配置user.name和user.email"></a>(2) 本地安装git，并配置user.name和user.email</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &lt;GitHub用户名&gt;</span><br><span class="line">git config --global user.email &lt;GitHub注册邮箱&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="3-生成ssh密钥文件"><a href="#3-生成ssh密钥文件" class="headerlink" title="(3) 生成ssh密钥文件"></a>(3) 生成ssh密钥文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &lt;GitHub注册邮箱&gt;</span><br></pre></td></tr></table></figure>
 <p>此步生成两个文件。<code>id_rsa</code>为私钥文件。<code>id_rsa.pub</code>为公钥文件。</p>
 <h3 id="4-查看并复制公钥文件"><a href="#4-查看并复制公钥文件" class="headerlink" title="(4) 查看并复制公钥文件"></a>(4) 查看并复制公钥文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &lt;keygen folder&gt;</span><br><span class="line">vim id_rsa.pub</span><br></pre></td></tr></table></figure>
@@ -156,6 +1592,7 @@
 <h3 id="3-next启用"><a href="#3-next启用" class="headerlink" title="(3) next启用"></a>(3) next启用</h3><p>配置文件位于<folder>下的_config.yml文件，修改以下内容<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure></p>
 <h1 id="四、hexo部署"><a href="#四、hexo部署" class="headerlink" title="四、hexo部署"></a>四、hexo部署</h1><h2 id="1-单独部署命令"><a href="#1-单独部署命令" class="headerlink" title="1. 单独部署命令"></a>1. 单独部署命令</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean                  #清空静态文件</span><br><span class="line">hexo generate               #(hexo g) 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹</span><br><span class="line">hexo server                 #(hexo s) 启动本地web服务，用于博客的预览</span><br><span class="line">hexo deploy                 #(hexo d) 部署博客到服务器（比如github, heroku等平台）</span><br></pre></td></tr></table></figure>
 <h2 id="2-组合部署命令"><a href="#2-组合部署命令" class="headerlink" title="2.组合部署命令"></a>2.组合部署命令</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo d -g                  #生成服务器部署</span><br><span class="line">hexo s -g                  #生成本地预览</span><br></pre></td></tr></table></figure>
+<h2 id="3-存在问题"><a href="#3-存在问题" class="headerlink" title="3. 存在问题"></a>3. 存在问题</h2><p>运行命令<code>hexo -v</code>或<code>hexo s</code>时，可能会出现以下错误：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(node:9876) Warning: Accessing non-existent property &#39;lineno&#39; of module exports inside circular dependency</span><br><span class="line">(Use &#96;node --trace-warnings ...&#96; to show where the warning was created)</span><br><span class="line">(node:9876) Warning: Accessing non-existent property &#39;column&#39; of module exports inside circular dependency</span><br><span class="line">(node:9876) Warning: Accessing non-existent property &#39;filename&#39; of module exports inside circular dependency</span><br><span class="line">(node:9876) Warning: Accessing non-existent property &#39;lineno&#39; of module exports inside circular dependency</span><br><span class="line">(node:9876) Warning: Accessing non-existent property &#39;column&#39; of module exports inside circular dependency</span><br><span class="line">(node:9876) Warning: Accessing non-existent property &#39;filename&#39; of module exports inside circular dependency</span><br></pre></td></tr></table></figure><br>上述问题会进一步导致，运行<code>hexo d</code>时，出现以下错误：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FATAL Something&#39;s wrong. Maybe you can find the solution here: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;troubleshooting.html</span><br><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: The &quot;mode&quot; argument must be integer. Received an instance of Object</span><br></pre></td></tr></table></figure><br>错误的原因是，node.js版本过高，与hexo不兼容。一般可以通过将node.js版本降级解决问题。<br>具体hexo与node.js的版本兼容，可以参照官网<br><span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvI1JlcXVpcmVtZW50cw==" title="https://hexo.io/docs/#Requirements">Minimum required Node.js version<i class="fa fa-external-link"></i></span></p>
 ]]></content>
       <categories>
         <category>项目实践</category>
@@ -164,6 +1601,32 @@
         <tag>hexo</tag>
         <tag>博客</tag>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>starting over is harder than starting up</title>
+    <url>/2019/12/27/starting%20over%20is%20harder%20than%20starting%20up/</url>
+    <content><![CDATA[<p>2019年7月13日，放在办公室的笔记本电脑被人偷走，损失惨重。也让我对学校的安保深深失望。<br>不仅仅是价值一万八的Mac Pro没了，更重要的是电脑里面的所有资料也都找不回了，包括博客的源文件，统计学的学习总结，以及马上要进行的考试资料。<br><a id="more"></a><br><br><br>为此消沉了良久，后续也一直很忙，紧接着就是考试，以及新学期的紧张学习，博客的事情也就一直放着没管。<br>如今过了半年，心绪稍平，紧张的学期也暂时结束，才终于可以腾出手来解决博客的事情。<br><br><br>由于所有博客的源文件都丢失了，这意味着要重新开始。<br>此外，由于换了新的笔记本，从Mac系统迁移到了Windos系统，全部环境也需要重新配置一遍。<br>那就重新开始吧，Here we go agin.</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>学习路径</title>
+    <url>/2019/12/22/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/</url>
+    <content><![CDATA[<h1 id="一-数学基础"><a href="#一-数学基础" class="headerlink" title="一. 数学基础"></a>一. 数学基础</h1><h2 id="1-基本知识"><a href="#1-基本知识" class="headerlink" title="(1) 基本知识"></a>(1) 基本知识</h2><p><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDIwLzAxLzAyL0toYW4lRTclQjMlQkIlRTUlODglOTclRUYlQkMlODglRTQlQjglODAlRUYlQkMlODklRUYlQkMlOUElRTYlOTclQTklRTYlOUMlOUYlRTYlOTUlQjAlRTUlQUQlQTYv" title="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E6%97%A9%E6%9C%9F%E6%95%B0%E5%AD%A6/">Khan系列（一）：早期数学<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDIwLzAxLzAyL0toYW4lRTclQjMlQkIlRTUlODglOTclRUYlQkMlODglRTQlQkElOEMlRUYlQkMlODklRUYlQkMlOUElRTclQUUlOTclRTYlOTUlQjAv" title="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%AE%97%E6%95%B0/">Khan系列（二）：基本算数<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDIwLzAxLzAyL0toYW4lRTclQjMlQkIlRTUlODglOTclRUYlQkMlODglRTQlQjglODklRUYlQkMlODklRUYlQkMlOUElRTUlOUYlQkElRTYlOUMlQUMlRTUlODclQTAlRTQlQkQlOTUv" title="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%87%A0%E4%BD%95/">Khan系列（三）：基本几何<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDIwLzAxLzAyL0toYW4lRTclQjMlQkIlRTUlODglOTclRUYlQkMlODglRTUlOUIlOUIlRUYlQkMlODklRUYlQkMlOUElRTklQTIlODQlRTUlQTQlODclRTQlQkIlQTMlRTYlOTUlQjAv" title="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E9%A2%84%E5%A4%87%E4%BB%A3%E6%95%B0/">Khan系列（四）：预备代数<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDIwLzAxLzAyL0toYW4lRTclQjMlQkIlRTUlODglOTclRUYlQkMlODglRTQlQkElOTQlRUYlQkMlODklRUYlQkMlOUElRTQlQkIlQTMlRTYlOTUlQjAlRTUlOUYlQkElRTclQTElODAv" title="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/">Khan系列（五）：代数基础<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDIwLzAxLzAyL0toYW4lRTclQjMlQkIlRTUlODglOTclRUYlQkMlODglRTUlODUlQUQlRUYlQkMlODklRUYlQkMlOUElRTQlQkIlQTMlRTYlOTUlQjBJLw==" title="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E4%BB%A3%E6%95%B0I/">Khan系列（六）：代数I<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDIwLzAxLzAyL0toYW4lRTclQjMlQkIlRTUlODglOTclRUYlQkMlODglRTQlQjglODMlRUYlQkMlODklRUYlQkMlOUElRTklQUIlOTglRTQlQjglQUQlRTUlODclQTAlRTQlQkQlOTUv" title="https://yehansharp.github.io/2020/01/02/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E9%AB%98%E4%B8%AD%E5%87%A0%E4%BD%95/">Khan系列（七）：高中几何<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDIwLzAxLzA0L0toYW4lRTclQjMlQkIlRTUlODglOTclRUYlQkMlODglRTUlODUlQUIlRUYlQkMlODklRUYlQkMlOUElRTQlQkIlQTMlRTYlOTUlQjBJSS8=" title="https://yehansharp.github.io/2020/01/04/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E5%85%AB%EF%BC%89%EF%BC%9A%E4%BB%A3%E6%95%B0II/">Khan系列（八）：代数II<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDIwLzAxLzA0L0toYW4lRTclQjMlQkIlRTUlODglOTclRUYlQkMlODglRTQlQjklOUQlRUYlQkMlODklRUYlQkMlOUElRTUlQUUlOEMlRTclQkIlOTMlRTYlODAlQkIlRTclQkIlOTMv" title="https://yehansharp.github.io/2020/01/04/Khan%E7%B3%BB%E5%88%97%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E5%AE%8C%E7%BB%93%E6%80%BB%E7%BB%93/">Khan系列（九）：完结总结<i class="fa fa-external-link"></i></span><br> <a id="more"></a></p>
+<h1 id="二、编程基础"><a href="#二、编程基础" class="headerlink" title="二、编程基础"></a>二、编程基础</h1><p><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDIwLzAxLzA5L1B5dGhvbiVFRiVCQyU4OCVFNCVCOCU4MCVFRiVCQyU4OSVFRiVCQyU5QSVFNSU5RiVCQSVFNyVBMSU4MCVFNyVBRiU4Ny8=" title="https://yehansharp.github.io/2020/01/09/Python%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/">Python（一）：基础篇<i class="fa fa-external-link"></i></span>  </p>
+<h1 id="三、心理学"><a href="#三、心理学" class="headerlink" title="三、心理学"></a>三、心理学</h1><p><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDIwLzEwLzA5LyVFNSVCOSVCOCVFNyVBNiU4RiVFOCVBRiVCRSVFRiVCQyU4OCVFNCVCOCU4MCVFRiVCQyU4OS8=" title="https://yehansharp.github.io/2020/10/09/%E5%B9%B8%E7%A6%8F%E8%AF%BE%EF%BC%88%E4%B8%80%EF%BC%89/">幸福课（一）<i class="fa fa-external-link"></i></span>  </p>
+<h1 id="四、其他"><a href="#四、其他" class="headerlink" title="四、其他"></a>四、其他</h1><p><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDE5LzEyLzMwL0dpdCVFNSVBRCVBNiVFNCVCOSVBMCVFNyVBQyU5NCVFOCVBRSVCMC8=" title="https://yehansharp.github.io/2019/12/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">git<i class="fa fa-external-link"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly95ZWhhbnNoYXJwLmdpdGh1Yi5pby8yMDIwLzAxLzAyL0xhdGV4JUU1JUFEJUE2JUU0JUI5JUEwJUU3JUFDJTk0JUU4JUFFJUIwLw==" title="https://yehansharp.github.io/2020/01/02/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Latex<i class="fa fa-external-link"></i></span></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>编程</tag>
+        <tag>其他</tag>
       </tags>
   </entry>
 </search>
